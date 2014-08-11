@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   get 'home/wg_logged_in' => 'home#wg_logged_in'
+  delete 'home/wg_log_out' => 'home#wg_log_out'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

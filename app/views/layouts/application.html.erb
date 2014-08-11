@@ -15,9 +15,9 @@
     <div class="col-lg-8"></div>
     <div class="col-lg-4"><div class="pull-right">
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.id %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        Logged in as <strong><%= session[:user_nickname] %></strong>
+        <!--%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %-->
+        <%= link_to 'Logout', home_wg_log_out_path, method: :delete, :class => 'btn btn-warning' %>
 
       <% else %>
         <form method="post" action="https://api.worldoftanks.ru/wot/auth/login/">
