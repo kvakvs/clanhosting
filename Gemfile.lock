@@ -1,4 +1,16 @@
 PATH
+  remote: deps/autoprefixer-rails-2.2.0.20140804
+  specs:
+    autoprefixer-rails (2.2.0.20140804)
+      execjs
+
+PATH
+  remote: deps/bootstrap-sass-3.2.0.1
+  specs:
+    bootstrap-sass (3.2.0.1)
+      sass (~> 3.2)
+
+PATH
   remote: deps/forem
   specs:
     forem (1.0.0.beta1)
@@ -42,10 +54,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (2.2.0.20140804)
-      execjs
-    bootstrap-sass (3.2.0.1)
-      sass (~> 3.2)
     builder (3.2.2)
     cancancan (1.9.2)
     coffee-rails (4.0.1)
@@ -149,8 +157,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails
-  bootstrap-sass (~> 3.2.0)
+  autoprefixer-rails!
+  bootstrap-sass (~> 3.2.0)!
   coffee-rails (~> 4.0.0)
   forem!
   jbuilder (~> 2.0)

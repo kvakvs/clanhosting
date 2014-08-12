@@ -39,10 +39,10 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 #-------------------------------------------------------------------------------
+# Twitter Bootstrap
+gem 'bootstrap-sass', '~> 3.2.0', :path => "deps/bootstrap-sass-3.2.0.1"
+gem 'autoprefixer-rails', :path => "deps/autoprefixer-rails-2.2.0.20140804"
+
 gem 'forem', :path => "deps/forem", :branch => "rails4"
 gem 'will_paginate', '3.0.5'
-#gem 'devise' #auth
-
-# Twitter Bootstrap
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
+# gem 'devise' #auth
