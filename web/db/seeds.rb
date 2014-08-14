@@ -11,7 +11,7 @@ Forem.decorate_user_class!
 
 Forem::Category.create(:name => 'General')
 
-user = User.new #Forem.user_class.first
+user = Forem.user_class.first
 unless user.nil?
   forum = Forem::Forum.find_or_create_by(:category_id => Forem::Category.first.id,
                                :name => "Default",
