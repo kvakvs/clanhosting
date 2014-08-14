@@ -54,6 +54,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bert (1.1.6)
+    bertrpc (1.3.1)
+      bert (>= 1.1.0, < 2.0.0)
     builder (3.2.2)
     cancancan (1.9.2)
     coffee-rails (4.0.1)
@@ -158,6 +161,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails!
+  bertrpc
   bootstrap-sass (~> 3.2.0)!
   coffee-rails (~> 4.0.0)
   forem!

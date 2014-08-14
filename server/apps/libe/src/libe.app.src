@@ -1,0 +1,12 @@
+{application, libe,
+ [
+  {description, "Custom Functions Library for Erlang"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  %{mod, { libe_app, []}},
+  {env, []}
+ ]}.

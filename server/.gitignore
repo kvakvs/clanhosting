@@ -1,0 +1,6 @@
+.rebar
+*.beam
+ebin
+ebin/*
+deps
+deps/*

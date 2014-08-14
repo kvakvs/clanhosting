@@ -1,0 +1,12 @@
+{application, clanhosting,
+ [
+  {description, "Clan Hosting server"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { ch_app, []}},
+  {env, []}
+ ]}.
