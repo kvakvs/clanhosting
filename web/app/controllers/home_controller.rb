@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-
+    Rails.application.bert_svc.call.derp.herp(1, 2, 3)
   end
 
   def wg_logged_in
