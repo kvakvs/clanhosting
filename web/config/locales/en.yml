@@ -32,4 +32,8 @@ en:
     frontpage: "Home"
     lang_switch: "Language"
     no_forum_yet: "No forum yet."
-    create_forum: "Make a new forum"
+    create_forum: "As clan leader you can make new forum now!"
+    new_forum:
+      title: "New Forum for your Clan"
+    create_forum_only_leader: "Only clan leader can create a new forum."
+    logged_out: "Logged out successfully"

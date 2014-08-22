@@ -25,8 +25,9 @@ clan_info(ClanId, Token, Lang) ->
       {ok, ClanInfoList} = ch_lib:json_api_request("GET", Url),
       %% Данные находятся в info["data"][clan_id]
       ClanInfo1 = proplists:get_value(<<"data">>, ClanInfoList),
-      IdBin = list_to_binary(integer_to_list(ClanId)),
-      ClanInfo  = proplists:get_value(IdBin, ClanInfo1),
+      IdBin     = list_to_binary(integer_to_list(ClanId)),
+      ClanInfo2 = proplists:get_value(IdBin, ClanInfo1),
+      ClanInfo  = ch_lib:proplist_to_bert_dict(ClanInfo2, []),
       ch_clan_cache:new(ClanId, ClanInfo),
       {reply, {bert, dict, ClanInfo}}
   end.

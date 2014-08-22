@@ -3,7 +3,7 @@
 <head>
   <title><%=t 'app.title' %></title>
   <meta charset="utf-8" />
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "forem" %>
   <%= javascript_include_tag "forem" %>
@@ -21,8 +21,7 @@
         &bull; <%= link_to t('app.forums'), forem.category_path(:id => session[:user_clan]) %>
       <% end %>
       <% if user_signed_in? and not session[:clan_forum_exists] %>
-        <%= t('app.no_forum_yet') %>
-        <%= link_to t('app.create_forum'), main_app.home_new_forum_path %>
+        &bull; <%= t('app.no_forum_yet') %>
       <% end %>
     </div>
 
@@ -47,6 +46,7 @@
         </form>
       <% end %>
     </div><!--col-->
+
     <div class="col-lg-1 text-right">
       <%= t 'app.lang_switch' %>
       <%= link_to 'RU', main_app.root_url(:locale => 'ru') %>

@@ -7,9 +7,9 @@
 
 %% API
 -export([account_info/3,
-        new_session/2,
-        after_login/3,
-        get_session/1]).
+  new_session/2,
+  after_login/3,
+  get_session/1, logged_out/1]).
 
 %% @doc Возвращает информацию об игроке
 -spec account_info(AccountId :: integer(), Token :: binary(), Lang :: binary())
@@ -25,7 +25,8 @@ account_info(AccountId, Token, Lang) ->
   %% Данные находятся в info["data"][account_id]
   AccountInfo1 = proplists:get_value(<<"data">>, AccountInfoList),
   IdBin = list_to_binary(integer_to_list(AccountId)),
-  AccountInfo  = proplists:get_value(IdBin, AccountInfo1),
+  AccountInfo2 = proplists:get_value(IdBin, AccountInfo1),
+  AccountInfo  = ch_lib:proplist_to_bert_dict(AccountInfo2, []),
   {reply, {bert, dict, AccountInfo}}.
 
 %% @doc Создаёт новую сессию с айди и данными аккаунта. Для одновременного
@@ -44,6 +45,10 @@ get_session(AccountId) ->
     {ok, Ses}          -> {reply, Ses};
     {error, not_found} -> {error, not_found}
   end.
+
+logged_out(AccountId) ->
+  ch_session_cache:delete(AccountId),
+  {reply, ok}.
 
 %% @doc Вызывает цепочкой account_info затем new_session, для минимизации обмена
 %% данными с вебом

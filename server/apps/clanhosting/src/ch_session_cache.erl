@@ -6,7 +6,7 @@
 -module(ch_session_cache).
 
 %% API
--export([init/0, new/2, find/1]).
+-export([init/0, new/2, find/1, delete/1]).
 
 init() ->
   ets:new(?MODULE, [named_table, public]).
@@ -18,5 +18,8 @@ new(Key, Props) when is_integer(Key) ->
 find(Key) when is_integer(Key) ->
   case ets:lookup(?MODULE, Key) of
     [] -> {error, not_found};
-    [Session] -> {ok, Session}
+    [{_, Session}] -> {ok, Session}
   end.
+
+delete(Key) ->
+  ets:delete(?MODULE, Key).

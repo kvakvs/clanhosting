@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :prefetch_account_info, :prefetch_clan_info
+  before_action :set_locale, :prefetch_account_info
   def set_locale
     loc = params[:locale] || session[:locale] || I18n.default_locale
     I18n.locale = session[:locale] = loc
@@ -13,18 +13,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def prefetch_clan_info
-    return session[:clan_info] if session.has_key?(:clan_info)
-    return '' unless session[:user_clan].is_a? Integer
-
-    rpc = Rails.application.get_rpc
-    clan_info = rpc.call.ch_clan_api.clan_info(session[:user_clan],
-                                               session[:user_token],
-                                               'en')
-    session[:clan_info] = clan_info
-    session[:clan_forum_exists] = Forem::Category.exists?(:name => session[:user_clan].to_s)
-  end
-
   def user_signed_in?
     session.has_key? :user_account
   end
@@ -35,7 +23,7 @@ class ApplicationController < ActionController::Base
       if @current_user
         @current_user
       else
-        u = User.new
+        u = User.new(:id => session[:user_account],)
         @current_user = u
       end
     else

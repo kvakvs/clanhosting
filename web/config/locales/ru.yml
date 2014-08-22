@@ -33,4 +33,8 @@ ru:
     frontpage: "Главная"
     lang_switch: "Язык"
     no_forum_yet: "Форума пока нет."
-    create_forum: "Создайте его!"
+    create_forum: "Как командир клана, вы можете создать его!"
+    new_forum:
+      title: "Новый форум для вашего клана"
+    create_forum_only_leader: "Только командир клана может создать новый форум."
+    logged_out: "Вы вышли из учётной записи"

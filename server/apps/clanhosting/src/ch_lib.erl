@@ -6,7 +6,7 @@
 -module(ch_lib).
 
 %% API
--export([json_api_request/2]).
+-export([json_api_request/2, proplist_to_bert_dict/2]).
 
 %% @private
 %% Url - iolist with Url, flattened here, Method - "GET"
@@ -21,3 +21,11 @@ json_api_request(Method, Url) ->
     {error, Reason} ->
       {error, Reason}
   end.
+
+%% @doc Gets K element from proplist Prop, puts it back as {bert, dict, [...]}
+proplist_to_bert_dict([], A) -> A;
+proplist_to_bert_dict([{K, V0 = [{_,_}|_]} | Prop0], Accum) ->
+  V = proplist_to_bert_dict(V0, []),
+  proplist_to_bert_dict(Prop0, [{K, {bert, dict, V}} | Accum]);
+proplist_to_bert_dict([{K, V} | Prop0], Accum) ->
+  proplist_to_bert_dict(Prop0, [{K, V} | Accum]).

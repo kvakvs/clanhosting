@@ -18,5 +18,5 @@ new(Key, Props) when is_integer(Key) ->
 find(Key) when is_integer(Key) ->
   case ets:lookup(?MODULE, Key) of
     [] -> {error, not_found};
-    [Session] -> {ok, Session}
+    [{_, Session}] -> {ok, Session}
   end.
