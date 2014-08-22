@@ -19,13 +19,13 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+ru:
   app:
-    login_with_wot_id: "Login with WoT ID"
-    register: "Register"
-    forums: "Forums"
-    logout: "Log out"
-    logged_in_as: "Logged in as"
+    login_with_wot_id: "Войти с помощью WoT ID"
+    register: "Регистрация"
+    forums: "Форумы"
+    logout: "Выйти"
+    logged_in_as: "Пользователь"
     title: "WoT Clan Hosting"
-    no_clan: "not in any clan"
-    member_of_clan: "member of"
+    no_clan: "не состоит в клане"
+    member_of_clan: "участник клана"

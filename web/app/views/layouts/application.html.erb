@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Clanhosting</title>
+  <title><%=t 'app.title' %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,25 +12,29 @@
 <% if alert %><p class="alert alert-danger"><%= alert %></p><% end %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
-      <%= link_to 'Forums', '/forums' %>
+    <div class="col-lg-4">
+      <%= link_to t('app.forums'), '/forums' %>
     </div>
 
-    <div class="col-lg-4"><div class="pull-right">
+    <div class="col-lg-6"><div class="pull-right">
       <% if user_signed_in? %>
-        Logged in as <strong><%= session[:user_nickname] %></strong>
+        <%=t 'app.logged_in_as' %> <strong><%= session[:user_nickname] %></strong>,
+          <% if session[:user_clan] == :null %><%= t 'app.member_of_clan', session[:user_clan] %> <% else %><%= t 'app.no_clan' %><% end %>
         <!--%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %-->
-        <%= link_to 'Logout', main_app.wg_log_out_path, method: :delete, :class => 'btn btn-warning' %>
+        <%= link_to t('app.logout'), main_app.wg_log_out_path, method: :delete, :class => 'btn btn-warning' %>
 
       <% else %>
         <form method="post" action="https://api.worldoftanks.ru/wot/auth/login/">
-          <a href="https://worldoftanks.ru/registration/ru/" class="btn btn-default">Register</a>
+          <a href="https://worldoftanks.ru/registration/ru/" class="btn btn-default"><%=t 'app.register' %></a>
           <input type="hidden" name="application_id" value="a2725c4b342fdf9977ffe92a2b84f4ee" />
           <input type="hidden" name="redirect_uri" value="<%= main_app.home_wg_logged_in_url %>" />
           <input type="hidden" name="expires_at" value="86400" />
-          <input type="submit" value="Login with Wargaming ID" class="btn btn-primary" />
+          <input type="submit" value="<%=t 'app.login_with_wot_id' %>" class="btn btn-primary" />
         </form>
       <% end %>
+
+      <%= link_to 'ru', root_url(:locale => 'ru') %>
+      <%= link_to 'en', root_url(:locale => 'en') %>
     </div> <!--pull-right-->
     </div> <!--col-->
   </div> <!--row-->

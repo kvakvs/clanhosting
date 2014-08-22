@@ -39,9 +39,9 @@ loop(Socket, Transport) ->
 
 decode_packet(Data) ->
   Request = bert:decode(Data),
-  lager:debug("in> ~p", [Request]),
+  lager:debug("rpc in> ~p", [Request]),
   Reply = handle_packet(Request),
-  lager:debug("<out ~p", [Reply]),
+  lager:debug("rpc <out ~p", [Reply]),
   bert:encode(Reply).
 
 handle_packet({call, ch_user_api, Fun, Args}) ->

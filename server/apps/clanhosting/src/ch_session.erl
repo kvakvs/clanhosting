@@ -11,6 +11,7 @@
 init() ->
   ets:new(?MODULE, [named_table, public]).
 
+%% TODO: session expiration
 new(Key, Props) when is_integer(Key) ->
   ets:insert(?MODULE, {Key, Props}).
 

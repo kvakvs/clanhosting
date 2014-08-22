@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_action :set_locale
+  def set_locale
+    loc = params[:locale] || session[:locale] || I18n.default_locale
+    I18n.locale = session[:locale] = loc
+  end
+
   def user_signed_in?
     session.has_key? :user_account
   end

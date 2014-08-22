@@ -11,6 +11,10 @@
 
 start() ->
   ok = lager:start(),
+  application:start(crypto),
+  application:start(public_key),
+  application:start(ssl),
+  application:start(lhttpc),
   application:start(clanhosting).
 
 start(_StartType, _StartArgs) ->
