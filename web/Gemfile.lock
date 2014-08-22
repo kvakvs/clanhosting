@@ -1,17 +1,7 @@
-PATH
-  remote: deps/autoprefixer-rails-2.2.0.20140804
-  specs:
-    autoprefixer-rails (2.2.0.20140804)
-      execjs
-
-PATH
-  remote: deps/bootstrap-sass-3.2.0.1
-  specs:
-    bootstrap-sass (3.2.0.1)
-      sass (~> 3.2)
-
-PATH
-  remote: deps/forem
+GIT
+  remote: git://github.com/kvakvs/forem.git
+  revision: 519f2de9f83a23655745f1ca36a2991dd2251489
+  branch: clanhosting
   specs:
     forem (1.0.0.beta1)
       cancancan (~> 1.7)
@@ -23,6 +13,25 @@ PATH
       select2-rails (~> 3.5.4)
       simple_form (~> 3.0.1)
       workflow (= 1.0.0)
+
+GIT
+  remote: git://github.com/radar/forem-bootstrap.git
+  revision: 10be50afc1d0a22af1306076e41624c55fc585be
+  specs:
+    forem-bootstrap (0.0.1)
+      bootstrap-sass (~> 3.1)
+
+PATH
+  remote: deps/autoprefixer-rails-2.2.0.20140804
+  specs:
+    autoprefixer-rails (2.2.0.20140804)
+      execjs
+
+PATH
+  remote: deps/bootstrap-sass-3.2.0.1
+  specs:
+    bootstrap-sass (3.2.0.1)
+      sass (~> 3.2)
 
 GEM
   remote: https://rubygems.org/
@@ -121,10 +130,10 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
-    select2-rails (3.5.9)
+    sdoc (0.4.1)
+      json (~> 1.7, >= 1.7.7)
+      rdoc (~> 4.0)
+    select2-rails (3.5.9.1)
       thor (~> 0.14)
     simple_form (3.0.2)
       actionpack (~> 4.0)
@@ -146,7 +155,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
+    turbolinks (2.3.0)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -165,6 +174,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)!
   coffee-rails (~> 4.0.0)
   forem!
+  forem-bootstrap!
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.4)

@@ -4,6 +4,8 @@
   <title><%=t 'app.title' %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "forem" %>
+  <%= javascript_include_tag "forem" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -13,10 +15,11 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <%= link_to t('app.forums'), '/forums' %>
+      <%= link_to t('app.frontpage'), main_app.root_path %>
+      <% if session[:user_clan] != 'null' %>&bull; <%= link_to t('app.forums'), forem.category_path(:id => session[:user_clan]) %><% end %>
     </div>
 
-    <div class="col-lg-6"><div class="pull-right">
+    <div class="col-lg-6"><div class="text-right">
       <% if user_signed_in? %>
         <%=t 'app.logged_in_as' %> <strong><%= session[:user_nickname] %></strong>,
           <% if session[:user_clan] == :null %><%= t 'app.member_of_clan', session[:user_clan] %> <% else %><%= t 'app.no_clan' %><% end %>
@@ -33,17 +36,16 @@
         </form>
       <% end %>
 
-      <%= link_to 'ru', root_url(:locale => 'ru') %>
-      <%= link_to 'en', root_url(:locale => 'en') %>
-    </div> <!--pull-right-->
-    </div> <!--col-->
-  </div> <!--row-->
-  <div class="row">
-    <div class="col-lg-12">
-    <%= yield %>
-    </div> <!--col-->
-  </div> <!--row-->
-</div>
+      <%= link_to 'ru', main_app.root_url(:locale => 'ru') %>
+      <%= link_to 'en', main_app.root_url(:locale => 'en') %>
+    </div><!--right-->
+    </div><!--col-->
+  </div><!--row-->
+
+<div class="row"><div class="col-lg-12">
+<%= yield %>
+</div><!--col--></div> <!--row-->
+</div><!--ctnr-->
 
 </body>
 </html>

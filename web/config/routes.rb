@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  mount Forem::Engine, :at => '/forums'
+  scope '/:clan_id', :clan_id => 'null' do
+    mount Forem::Engine, :at => '/forums', :as => 'forem'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
