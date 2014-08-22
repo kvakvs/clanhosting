@@ -5,17 +5,16 @@ Rails.application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  scope '/:clan_id', :clan_id => 'null' do
-    mount Forem::Engine, :at => '/forums', :as => 'forem'
-  end
+  mount Forem::Engine, :at => '/forums'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  get 'home/wg_logged_in' => 'home#wg_logged_in'
-  delete 'home/wg_log_out' => 'home#wg_log_out', :as => :wg_log_out
+  get 'home/wot_logged_in' => 'home#wot_logged_in'
+  delete 'home/wot_log_out' => 'home#wot_log_out', :as => :wot_log_out
+  get 'home/new_forum' => 'home#new_forum'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

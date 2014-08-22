@@ -1,1 +1,6 @@
 <h1>Welcome</h1>
+
+<% if user_signed_in? and not session[:clan_forum_exists] %>
+  <%= t('app.no_forum_yet') %>
+  <%= link_to t('app.create_forum'), main_app.home_new_forum_path %>
+<% end %>

@@ -1,3 +1,4 @@
+# coding: utf-8
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -30,3 +31,6 @@ ru:
     no_clan: "не состоит в клане"
     member_of_clan: "участник клана"
     frontpage: "Главная"
+    lang_switch: "Язык"
+    no_forum_yet: "Форума пока нет."
+    create_forum: "Создайте его!"

@@ -122,4 +122,10 @@ ActiveRecord::Schema.define(version: 20140811230241) do
     t.boolean  'forem_auto_subscribe', default: false
   end
 
+  create_table 'sessions', force: true do |t|
+    # t.integer 'id'
+    t.string 'session_id'
+    t.string 'data', :text, :limit => 64.kilobytes + 1
+  end
+  add_index 'sessions', ['session_id'], name: 'index_sessions_sesid'
 end

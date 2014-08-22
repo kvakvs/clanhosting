@@ -18,7 +18,8 @@ start() ->
   application:start(clanhosting).
 
 start(_StartType, _StartArgs) ->
-  ch_session:init(),
+  ch_session_cache:init(),
+  ch_clan_cache:init(),
   start_listening(),
   ch_sup:start_link().
 

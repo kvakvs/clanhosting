@@ -21,7 +21,8 @@ module Clanhosting
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :ru
+    config.encoding = 'utf-8'
 
     attr_accessor :bert_connection
     @bert_connection = nil
@@ -29,20 +30,6 @@ module Clanhosting
     def get_rpc
       return @bert_connection unless @bert_connection.nil?
       @bert_connection = BERTRPC::Service.new('localhost', 10000)
-    end
-
-    attr_accessor :clanhosting_ses
-    @clanhosting_ses = nil
-    def set_ses(s)
-      @clanhosting_ses = s
-    end
-
-    def get_ses
-      nil if session[:user_account].nil?
-      if @clanhosting_ses.nil?
-        @clanhosting_ses = get_rpc.call.get_session(session[:user_account])
-      end
-      @clanhosting_ses
     end
   end
 end
