@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811230241) do
+ActiveRecord::Schema.define(version: 20140823203231) do
 
   create_table 'forem_categories', force: true do |t|
     t.string   'name',       null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140811230241) do
     t.string 'subject'
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.boolean  'locked',       default: false,            null: false
+    t.boolean  'locked',       default: false,      null: false
     t.boolean  'pinned',       default: false
     t.boolean  'hidden',       default: false
     t.datetime 'last_post_at'
@@ -108,6 +108,22 @@ ActiveRecord::Schema.define(version: 20140811230241) do
   add_index 'forem_views', ['user_id'], name: 'index_forem_views_on_user_id'
   add_index 'forem_views', ['viewable_id'], name: 'index_forem_views_on_viewable_id'
 
+  create_table 'sessions', force: true do |t|
+    t.string 'session_id'
+    t.string 'data',       limit: 65537
+    t.string 'text',       limit: 65537
+  end
+
+  add_index 'sessions', ['session_id'], name: 'index_sessions_sesid'
+
+  create_table 'sites', force: true do |t|
+    t.integer 'clan_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+  end
+
+  add_index 'sites', ['clan_id'], name: 'index_sites_clan_id'
+
   create_table 'users', force: true do |t|
     t.datetime 'remember_created_at'
     t.integer  'sign_in_count',        default: 0
@@ -122,10 +138,4 @@ ActiveRecord::Schema.define(version: 20140811230241) do
     t.boolean  'forem_auto_subscribe', default: false
   end
 
-  create_table 'sessions', force: true do |t|
-    # t.integer 'id'
-    t.string 'session_id'
-    t.string 'data', :text, :limit => 64.kilobytes + 1
-  end
-  add_index 'sessions', ['session_id'], name: 'index_sessions_sesid'
 end

@@ -30,7 +30,7 @@ class HomeController < ApplicationController
   end
 
   def new_site
-    redirect_to root_path if (session[:clan_forum_exists] or
+    redirect_to root_path if (session[:clan_site_exists] or
                               not session[:is_clan_leader])
     @clan_members = []
     session[:clan_info]['members'].each do |_, member|
@@ -50,7 +50,6 @@ class HomeController < ApplicationController
     clan_info['abbreviation'] = clan_info['abbreviation'].force_encoding('utf-8')
 
     session[:clan_info] = clan_info
-    session[:clan_forum_exists] = Forem::Category.exists?(:name => session[:user_clan].to_s)
 
     m = clan_info['members'][session[:user_account].to_s]
     session[:is_clan_leader] = (not m.nil? and m['role'] == 'leader')

@@ -1,6 +1,6 @@
 <h1><%= t 'page.home.title' %></h1>
 
-<% if user_signed_in? and not session[:clan_forum_exists] %>
+<% if user_signed_in? and not session[:clan_site_exists] %>
   <p><%= t('app.no_site_yet') %></p>
   <% if session[:is_clan_leader] %>
     <p><%= t('app.create_site') %></p>

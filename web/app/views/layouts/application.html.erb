@@ -17,10 +17,10 @@
   <div class="row">
     <div class="col-lg-4">
       <%= link_to t('app.frontpage'), main_app.root_path, :class => 'btn btn-default' %>
-      <% if session[:user_clan] != 'null' and (not session[:user_clan].nil?) and session[:clan_forum_exists] %>
+      <% if session[:user_clan] != 'null' and (not session[:user_clan].nil?) and session[:clan_site_exists] %>
         <%= link_to t('app.forums'), forem.category_path(:id => session[:user_clan]), :class => 'btn btn-default' %>
       <% end %>
-      <% if user_signed_in? and not session[:clan_forum_exists] %>
+      <% if user_signed_in? and not session[:clan_site_exists] %>
         <%= t('app.no_site_yet') %>
       <% end %>
     </div>

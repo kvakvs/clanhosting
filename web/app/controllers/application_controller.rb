@@ -1,11 +1,19 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :prefetch_account_info
-  def set_locale
+  before_action :pre_set_locale
+  before_action :pre_fetch_account_info
+  before_action :pre_check_site_exists
+
+  def pre_check_site_exists
+    #session[:clan_forum_exists] = Forem::Category.exists?(:name => session[:user_clan].to_s)
+    session[:clan_site_exists] = Site.exists?(:clan_id => session[:user_clan])
+  end
+
+  def pre_set_locale
     loc = params[:locale] || session[:locale] || I18n.default_locale
     I18n.locale = session[:locale] = loc
   end
 
-  def prefetch_account_info
+  def pre_fetch_account_info
     if not session.has_key?(:account_info) and session[:user_account].is_a? Integer
       rpc = Rails.application.get_rpc
       acc_info = rpc.call.ch_user_api.get_session(session[:user_account])
