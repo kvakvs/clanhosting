@@ -1,1 +1,13 @@
 <h1><%= t 'app.new_site.title' %></h1>
+
+<form role="form">
+  <div class="form-group">
+    <label for="delegate"><%=t 'app.new_site.delegate_label' %></label>
+    <%= select_tag :delegate,
+                   options_for_select([[t('app.new_site.delegate_nobody'), 0]] + @clan_members),
+                   :class => 'form-control' %>
+    <p class="help-block"><%=t 'app.new_site.delegate_help' %></p>
+  </div>
+  <%= button_tag t('app.new_site.submit'),
+        :type => 'submit', :class => 'btn btn-primary' %>
+</form>

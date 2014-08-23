@@ -32,6 +32,13 @@ class HomeController < ApplicationController
   def new_site
     redirect_to root_path if (session[:clan_forum_exists] or
                               not session[:is_clan_leader])
+    @clan_members = []
+    session[:clan_info]['members'].each do |_, member|
+      name      = member['account_name']
+      member_id = member['account_id']
+      next if member_id == session[:user_account]
+      @clan_members.append [name, member_id]
+    end
   end
 
   def fetch_clan_info

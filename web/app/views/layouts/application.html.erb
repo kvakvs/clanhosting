@@ -35,7 +35,8 @@
             <%= session[:clan_info]['name'] %>
           <% else %>
             <%= t 'app.no_clan' %><% end %>
-        <%= link_to t('app.logout'), main_app.wot_log_out_path, method: :delete, :class => 'btn btn-warning' %>
+        <%= link_to t('app.logout'), main_app.wot_log_out_path,
+                    :method => :delete, :class => 'btn btn-default' %>
 
       <% else %>
         <form method="post" action="https://api.worldoftanks.ru/wot/auth/login/">

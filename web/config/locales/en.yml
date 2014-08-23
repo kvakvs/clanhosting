@@ -35,6 +35,13 @@ en:
     create_site: "As clan leader you can create new website for your clan or delegate right to do this to other member of your clan"
     new_site:
       title: "New website for your Clan"
+      delegate_nobody: "- share with nobody, i'll do it myself -"
+      delegate_label: "Share the rights to configure your clan site with another clan member"
+      delegate_help: "You can later revert or change this via site control panel"
+      submit: "Create site"
+#      activate_forums: "Activate forums"
+#      activate_wall: "Activate clan news feed"
+#      activate_pwall: "Activate personal publications feed for clan members"
     create_site_only_leader: "Only clan leader can create a new clan website."
     logged_out: "Logged out successfully"
     leader_of_clan: "clan leader of"
