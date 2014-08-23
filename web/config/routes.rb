@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/wot_logged_in' => 'home#wot_logged_in'
   delete 'home/wot_log_out' => 'home#wot_log_out', :as => :wot_log_out
-  get 'home/new_forum' => 'home#new_forum'
+  get 'home/new_site' => 'home#new_site'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

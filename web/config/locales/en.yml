@@ -31,9 +31,10 @@ en:
     member_of_clan: "member of"
     frontpage: "Home"
     lang_switch: "Language"
-    no_forum_yet: "No forum yet."
-    create_forum: "As clan leader you can make new forum now!"
-    new_forum:
-      title: "New Forum for your Clan"
-    create_forum_only_leader: "Only clan leader can create a new forum."
+    no_site_yet: "No clan website yet."
+    create_site: "As clan leader you can create new website for your clan now!"
+    new_site:
+      title: "New website for your Clan"
+    create_site_only_leader: "Only clan leader can create a new clan website."
     logged_out: "Logged out successfully"
+    leader_of_clan: "clan leader of"

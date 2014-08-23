@@ -1,10 +1,10 @@
 <h1>Welcome</h1>
 
 <% if user_signed_in? and not session[:clan_forum_exists] %>
-  <%= t('app.no_forum_yet') %>
-  <% if session[:is_clan_admin] %>
-    <%= link_to t('app.create_forum'), main_app.home_new_forum_path %>
+  <%= t('app.no_site_yet') %>
+  <% if session[:is_clan_leader] %>
+    <%= link_to t('app.create_site'), main_app.home_new_site_path %>
   <% else %>
-    <%= t 'app.create_forum_only_leader' %>
+    <%= t 'app.create_site_only_leader' %>
   <% end %>
 <% end %>

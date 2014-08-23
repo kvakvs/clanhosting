@@ -29,8 +29,9 @@ class HomeController < ApplicationController
     session.clear
   end
 
-  def new_forum
-
+  def new_site
+    redirect_to root_path if (session[:clan_forum_exists] or
+                              not session[:is_clan_leader])
   end
 
   def fetch_clan_info
@@ -45,6 +46,6 @@ class HomeController < ApplicationController
     session[:clan_forum_exists] = Forem::Category.exists?(:name => session[:user_clan].to_s)
 
     m = clan_info['members'][session[:user_account].to_s]
-    session[:is_clan_admin] = (not m.nil? and m['role'] == 'leader')
+    session[:is_clan_leader] = (not m.nil? and m['role'] == 'leader')
   end
 end
