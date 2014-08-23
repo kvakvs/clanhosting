@@ -15,13 +15,13 @@
 -spec account_info(AccountId :: integer(), Token :: binary(), Lang :: binary())
       -> {reply, proplists:proplist()}.
 account_info(AccountId, Token, Lang) ->
-  Url = [ch_conf:wg_api_url("account", "info"),
-        "?access_token=", binary_to_list(Token),
-        "&application_id=", ch_conf:wg_app_id(),
-        "&account_id=", integer_to_list(AccountId),
-        "&language=", binary_to_list(Lang)
-        ],
-  {ok, AccountInfoList} = ch_lib:json_api_request("GET", Url),
+  Url = ch_http:format_url( ch_conf:wg_api_url("account", "info")
+                          , [ {"access_token", binary_to_list(Token)}
+                            , {"application_id", ch_conf:wg_app_id()}
+                            , {"account_id", integer_to_list(AccountId)}
+                            , {"language", binary_to_list(Lang)}
+                            ]),
+  {ok, AccountInfoList} = ch_lib:json_api_request(get, Url),
   %% Данные находятся в info["data"][account_id]
   AccountInfo1 = proplists:get_value(<<"data">>, AccountInfoList),
   IdBin = list_to_binary(integer_to_list(AccountId)),

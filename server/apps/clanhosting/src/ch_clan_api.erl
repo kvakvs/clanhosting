@@ -16,13 +16,13 @@ clan_info(ClanId, Token, Lang) ->
     {ok, Clan} ->
       {reply, {bert, dict, Clan}};
     {error, not_found} ->
-      Url = [ch_conf:wg_api_url("clan", "info"),
-            "?access_token=", binary_to_list(Token),
-            "&application_id=", ch_conf:wg_app_id(),
-            "&clan_id=", integer_to_list(ClanId),
-            "&language=", binary_to_list(Lang)
-            ],
-      {ok, ClanInfoList} = ch_lib:json_api_request("GET", Url),
+      Url = ch_http:format_url( ch_conf:wg_api_url("clan", "info")
+                              , [ {"access_token", binary_to_list(Token)}
+                                , {"application_id", ch_conf:wg_app_id()}
+                                , {"clan_id", integer_to_list(ClanId)}
+                                , {"language", binary_to_list(Lang)}
+                                ]),
+      {ok, ClanInfoList} = ch_lib:json_api_request(get, Url),
       %% Данные находятся в info["data"][clan_id]
       ClanInfo1 = proplists:get_value(<<"data">>, ClanInfoList),
       IdBin     = list_to_binary(integer_to_list(ClanId)),
