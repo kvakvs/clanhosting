@@ -1,10 +1,21 @@
-<h1>Welcome</h1>
+<h1><%= t 'page.home.title' %></h1>
 
 <% if user_signed_in? and not session[:clan_forum_exists] %>
-  <%= t('app.no_site_yet') %>
+  <p><%= t('app.no_site_yet') %></p>
   <% if session[:is_clan_leader] %>
-    <%= link_to t('app.create_site'), main_app.home_new_site_path %>
+    <p><%= t('app.create_site') %></p>
+    <%= link_to t('app.create_site_button'), main_app.home_new_site_path,
+                :class => 'btn btn-primary' %>
   <% else %>
-    <%= t 'app.create_site_only_leader' %>
+    <p><%= t 'app.create_site_only_leader' %></p>
   <% end %>
 <% end %>
+
+<div class="row">
+  <div class="col-lg-6">
+    <%= render :partial => 'features' %>
+  </div>
+  <div class="col-lg-6">
+      <%= render :partial => 'find_or_join' %>
+  </div>
+</div>
