@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'control_panel/index'
+
+  get 'control_panel/newsfeed'
+
+  get 'control_panel/acl'
+
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
@@ -20,6 +26,8 @@ Rails.application.routes.draw do
   post 'home/new_site' => 'home#new_site_create'
 
   get 'manage' => 'control_panel#index', :as => :control_panel
+  get 'manage/newsfeed' => 'control_panel#newsfeed'
+  get 'manage/acl' => 'control_panel#acl'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

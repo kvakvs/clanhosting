@@ -49,6 +49,16 @@ ru:
     leader_of_clan: "командир клана"
     create_site_button: "Создать!"
     control_panel: "Панель управления"
+    site_is_not_created_notice: "Сайт вашего клана не найден или удалён."
+    site_exists: "Сайт для вашего клана уже существует."
   page:
     home:
       title: "Добро пожаловать"
+  cp:
+    manage_forums: "Управление форумами"
+    manage_newsfeed: "Управление лентой новостей клана"
+    manage_acl: "Управление правами доступа"
+    acl:
+      leader_is_always_admin: "Командир клана всегда является администратором сайта клана."
+  acl:
+    no_rights_to_see_this: "У вас недостаточно прав, чтобы находиться на этой странице"

@@ -29,9 +29,17 @@ class HomeController < ApplicationController
     session.clear
   end
 
+  before_filter :pre_check_new_site!, only: [:new_site, :new_site_create]
+  def pre_check_new_site!
+    if session[:clan_site_exists]
+      redirect_to root_path, alert: t('app.site_exists')
+    end
+    unless session[:is_clan_leader]
+      redirect_to root_path, alert: t('acl.no_rights_to_see_this')
+    end
+  end
+
   def new_site
-    redirect_to root_path if (session[:clan_site_exists] or
-                              not session[:is_clan_leader])
     @clan_members = []
     session[:clan_info]['members'].each do |_, member|
       name      = member['account_name']
@@ -42,9 +50,9 @@ class HomeController < ApplicationController
   end
 
   def new_site_create
-    redirect_to root_path if (session[:clan_site_exists] or
-                              not session[:is_clan_leader])
-    site = Site.new( :clan_id => session[:user_clan])
+    site = Site.new(:clan_id => session[:user_clan],
+                    :clan_tag => session[:clan_info]['abbreviation'],
+                    :clan_name => session[:clan_info]['name'])
     site.save
 
     flash[:notice] = t('app.new_site.created')

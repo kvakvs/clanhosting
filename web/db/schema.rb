@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 20140823203231) do
 
   create_table 'sites', force: true do |t|
     t.integer 'clan_id'
+    t.string 'clan_tag'
+    t.string 'clan_name'
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end

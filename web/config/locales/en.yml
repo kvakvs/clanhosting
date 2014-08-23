@@ -48,6 +48,16 @@ en:
     leader_of_clan: "clan leader of"
     create_site_button: "Create now!"
     control_panel: "Control Panel"
+    site_is_not_created_notice: "Site for your clan does not exist."
+    site_exists: "Site for your clan already exists"
   page:
     home:
       title: "Welcome"
+  cp:
+    manage_forums: "Manage Forums"
+    manage_newsfeed: "Manage Clan News Feed"
+    manage_acl: "Manage Access Rights"
+    acl:
+      leader_is_always_admin: "Clan commander (a leader) always has administrative access rights."
+  acl:
+    no_rights_to_see_this: "You do not have enough access rights to see this page"

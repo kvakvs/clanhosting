@@ -1,1 +1,5 @@
 <h1><%= t 'app.control_panel' %></h1>
+
+<p><%= link_to t('cp.manage_forums'), '#', :class => 'bg-danger' %></p>
+<p><%= link_to t('cp.manage_newsfeed'), manage_newsfeed_path %></p>
+<p><%= link_to t('cp.manage_acl'), manage_acl_path %></p>
