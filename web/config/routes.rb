@@ -12,9 +12,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
   get 'home/wot_logged_in' => 'home#wot_logged_in'
   delete 'home/wot_log_out' => 'home#wot_log_out', :as => :wot_log_out
+
   get 'home/new_site' => 'home#new_site'
+  post 'home/new_site' => 'home#new_site_create'
+
+  get 'manage' => 'control_panel#index', :as => :control_panel
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

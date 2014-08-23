@@ -41,11 +41,13 @@ en:
       submit: "Create site"
 #      activate_forums: "Activate forums"
 #      activate_wall: "Activate clan news feed"
-#      activate_pwall: "Activate personal publications feed for clan members"
+
+      created: "Site was created for your clan. To customize visit control panel in top menu."#      activate_pwall: "Activate personal publications feed for clan members"
     create_site_only_leader: "Only clan leader can create a new clan website."
     logged_out: "Logged out successfully"
     leader_of_clan: "clan leader of"
     create_site_button: "Create now!"
+    control_panel: "Control Panel"
   page:
     home:
       title: "Welcome"

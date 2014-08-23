@@ -1,6 +1,7 @@
 <h1><%= t 'app.new_site.title' %></h1>
 
-<form role="form">
+<%= form_tag main_app.home_new_site_path,
+             :role => 'form', :method => 'post' do %>
   <div class="form-group">
     <label for="delegate"><%=t 'app.new_site.delegate_label' %></label>
     <%= select_tag :delegate,
@@ -10,4 +11,4 @@
   </div>
   <%= button_tag t('app.new_site.submit'),
         :type => 'submit', :class => 'btn btn-primary' %>
-</form>
+<% end #form %>

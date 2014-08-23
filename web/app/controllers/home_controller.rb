@@ -41,6 +41,16 @@ class HomeController < ApplicationController
     end
   end
 
+  def new_site_create
+    redirect_to root_path if (session[:clan_site_exists] or
+                              not session[:is_clan_leader])
+    site = Site.new( :clan_id => session[:user_clan])
+    site.save
+
+    flash[:notice] = t('app.new_site.created')
+    redirect_to root_path
+  end
+
   def fetch_clan_info
     rpc = Rails.application.get_rpc
     clan_info = rpc.call.ch_clan_api.clan_info(session[:user_clan],
