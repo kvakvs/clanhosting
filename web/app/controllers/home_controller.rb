@@ -42,10 +42,9 @@ class HomeController < ApplicationController
   def new_site
     @clan_members = []
     session[:clan_info]['members'].each do |_, member|
-      name      = member['account_name']
       member_id = member['account_id']
       next if member_id == session[:user_account]
-      @clan_members.append [name, member_id]
+      @clan_members.append [member['account_name'], member_id]
     end
   end
 

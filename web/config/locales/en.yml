@@ -59,5 +59,7 @@ en:
     manage_acl: "Manage Access Rights"
     acl:
       leader_is_always_admin: "Clan commander (a leader) always has administrative access rights."
+      grant: "Grant rights"
+      grant_site_admin: "Grant site admin rights to"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

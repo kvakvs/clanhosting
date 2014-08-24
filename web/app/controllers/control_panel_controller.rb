@@ -24,6 +24,9 @@ class ControlPanelController < ApplicationController
   end
 
   def acl
-
+    @clan_members = []
+    session[:clan_info]['members'].each do |_, member|
+      @clan_members.append [member['account_name'], member['account_id']]
+    end
   end
 end

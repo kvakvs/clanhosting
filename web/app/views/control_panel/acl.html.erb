@@ -1,3 +1,15 @@
 <h1><%= t 'cp.manage_acl' %></h1>
 
 <p><%= t 'cp.acl.leader_is_always_admin' %></p>
+
+
+<%= form_tag main_app.manage_acl_path,
+             :role => 'form', :method => 'post' do %>
+  <div class="form-group">
+      <label for="delegate"><%=t 'cp.acl.grant_site_admin' %></label>
+      <%= select_tag :delegate, options_for_select(@clan_members),
+                     :class => 'form-control' %>
+  </div>
+  <%= button_tag t('cp.acl.grant'),
+                 :type => 'submit', :class => 'btn btn-primary' %>
+<% end #form %>
