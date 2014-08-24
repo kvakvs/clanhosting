@@ -4,8 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :pre_check_site_exists!
 
   def pre_check_site_exists!
-    #session[:clan_forum_exists] = Forem::Category.exists?(:name => session[:user_clan].to_s)
-    session[:clan_site_exists] = Site.exists?(:clan_id => session[:user_clan])
+    clan = session[:user_clan]
+    unless clan.is_a? Integer
+      session[:clan_site_exists] = false
+      return
+    end
+    rpc = Rails.application.get_rpc
+    session[:clan_site_exists] = (1 == rpc.call.ch_site_api.exists(clan))
   end
 
   def pre_set_locale!

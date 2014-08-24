@@ -13,10 +13,12 @@
 -spec json_api_request(Method :: string(), Url :: iolist())
       -> {ok, {struct, proplists:proplist()}} | {error, any()}.
 json_api_request(Method, Url) ->
-  case ch_http:Method(Url, [{timeout, 15000}]) of
-    {ok, Result} ->
-      Response = mochijson2:decode(ch_http:body(Result), [{format, proplist}]),
-%%       lager:debug("resp: ~p", [Response]),
+%%   case ch_http:Method(Url, [{timeout, 15000}]) of
+%%     {ok, Result} ->
+%%       Response = mochijson2:decode(ch_http:body(Result), [{format, proplist}]),
+  case lhttpc:request(lists:flatten(Url), Method, [], 15000) of
+    {ok, {{_StatusCode, _ReasonPhrase}, _Hdrs, ResponseBody}} ->
+      Response = mochijson2:decode(ResponseBody, [{format, proplist}]),
       {ok, Response};
     {error, Reason} ->
       {error, Reason}

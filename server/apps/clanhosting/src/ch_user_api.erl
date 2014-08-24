@@ -13,7 +13,7 @@
 
 %% @doc Возвращает информацию об игроке
 -spec account_info(AccountId :: integer(), Token :: binary(), Lang :: binary())
-      -> {reply, proplists:proplist()}.
+      -> {reply, {bert, dict, proplists:proplist()}}.
 account_info(AccountId, Token, Lang) ->
   Url = ch_http:format_url( ch_conf:wg_api_url("account", "info")
                           , [ {"access_token", binary_to_list(Token)}
@@ -32,14 +32,14 @@ account_info(AccountId, Token, Lang) ->
 %% @doc Создаёт новую сессию с айди и данными аккаунта. Для одновременного
 %% вызова account_info и new_session можно использовать after_login(id)
 -spec new_session(AccountId :: integer(), AccountInfo :: proplists:proplist())
-      -> {reply, proplists:proplist()}.
+      -> {reply, {bert, dict, proplists:proplist()}}.
 new_session(AccountId, AccountInfo) ->
   ch_session_cache:new(AccountId, AccountInfo),
   {reply, AccountInfo}.
 
 %% @doc Получить имеющуюся сессию или дать ошибку
 -spec get_session(AccountId :: integer())
-      -> {reply, proplists:proplist()} | {error, not_found}.
+      -> {reply, {bert, dict, proplists:proplist()}} | {error, not_found}.
 get_session(AccountId) ->
   case ch_session_cache:find(AccountId) of
     {ok, Ses}          -> {reply, Ses};
@@ -53,7 +53,7 @@ logged_out(AccountId) ->
 %% @doc Вызывает цепочкой account_info затем new_session, для минимизации обмена
 %% данными с вебом
 -spec after_login(AccountId :: integer(), Token :: binary(), Lang :: binary())
-      -> {reply, proplists:proplist()}.
+      -> {reply, {bert, dict, proplists:proplist()}}.
 after_login(AccountId, Token, Lang) ->
   {reply, AccountInfo} = account_info(AccountId, Token, Lang),
   {reply, _} = new_session(AccountId, AccountInfo),

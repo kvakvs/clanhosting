@@ -6,12 +6,12 @@ HERE := $(shell pwd)
 all: deps compile
 
 .PHONY: run
-run: deps compile
+run: compile
 	$(RUNCMD)
 
 .PHONY: compile
 compile:
-	rebar compile
+	rebar compile skip_deps=true
 
 .PHONY: deps
 deps:

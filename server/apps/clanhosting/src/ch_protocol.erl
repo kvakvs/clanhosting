@@ -44,7 +44,6 @@ decode_packet(Data) ->
   lager:debug("rpc <out ~p", [Reply]),
   bert:encode(Reply).
 
-handle_packet({call, ch_user_api, Fun, Args}) ->
-  erlang:apply(ch_user_api, Fun, Args);
-handle_packet({call, ch_clan_api, Fun, Args}) ->
-  erlang:apply(ch_clan_api, Fun, Args).
+handle_packet({call, ch_user_api, F, A}) -> erlang:apply(ch_user_api, F, A);
+handle_packet({call, ch_clan_api, F, A}) -> erlang:apply(ch_clan_api, F, A);
+handle_packet({call, ch_site_api, F, A}) -> erlang:apply(ch_site_api, F, A).

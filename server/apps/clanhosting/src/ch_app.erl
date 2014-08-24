@@ -11,7 +11,10 @@
 
 start() ->
   ok = lager:start(),
-  libe_app:ensure_started([ssl, crypto, public_key, lhttpc, clanhosting]).
+  libe_app:ensure_started([
+      ssl, crypto, public_key, lhttpc, riak_pool,
+      clanhosting
+    ]).
 
 start(_StartType, _StartArgs) ->
   ch_session_cache:init(),

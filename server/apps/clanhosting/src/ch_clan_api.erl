@@ -10,7 +10,7 @@
 
 %% @doc Возвращает информацию об игроке из кэша или из базы данных Wargaming
 -spec clan_info(ClanId :: integer(), Token :: binary(), Lang :: binary())
-      -> {reply, proplists:proplist()}.
+      -> {reply, {bert, dict, proplists:proplist()}}.
 clan_info(ClanId, Token, Lang) ->
   case ch_clan_cache:find(ClanId) of
     {ok, Clan} ->
