@@ -6,7 +6,7 @@
 -module(ch_model_site).
 
 %% API
--export([make_key/1, create/3, read/2]).
+-export([make_key/1, update/3, read/2]).
 
 %% @doc Создаёт сложный ключ для сайта
 make_key(ClanId) when is_integer(ClanId) ->
@@ -15,7 +15,7 @@ make_key(ClanId) when is_integer(ClanId) ->
     <<"site">>}.
 
 %% @doc Использовать из riak_pool:with_worker(fun(W) -> ... end)
-create(Worker, ClanId, Fields) ->
+update(Worker, ClanId, Fields) ->
   {Bucket, Key} = make_key(ClanId),
   Map = lists:foldl(
     fun({UpdKey, UpdValue0}, MapAccum) ->

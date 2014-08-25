@@ -6,7 +6,7 @@
 -module(ch_site_api).
 
 %% API
--export([exists/1, new/2, read/1]).
+-export([exists/1, read/1, update/2]).
 
 -spec exists(ClanId :: integer()) -> {reply, {bert, boolean()}}.
 exists(ClanId) ->
@@ -17,11 +17,11 @@ exists(ClanId) ->
     {error, _E}  -> {reply, 0}  %{bert, false}}
   end.
 
--spec new(ClanId :: integer(), Fields :: proplists:proplist()) -> {reply, ok}.
-new(ClanId, Fields0) ->
+-spec update(ClanId :: integer(), Fields :: dict:dict()) -> {reply, ok}.
+update(ClanId, Fields0) ->
   Fields = dict:to_list(Fields0),
   riak_pool:with_worker(fun(Worker) ->
-                          ch_model_site:create(Worker, ClanId, Fields)
+                          ch_model_site:update(Worker, ClanId, Fields)
                         end),
   {reply, ok}.
 
