@@ -10,7 +10,9 @@ class ApplicationController < ActionController::Base
       return
     end
     rpc = Rails.application.get_rpc
-    session[:clan_site_exists] = (1 == rpc.call.ch_site_api.exists(clan))
+    site_info = rpc.call.ch_site_api.read(clan)
+    session[:clan_site_exists] = (not site_info.nil?)
+    session[:site_info] = site_info
   end
 
   def pre_set_locale!
