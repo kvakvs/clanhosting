@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     rpc = Rails.application.get_rpc
     site_info = rpc.call.ch_site_api.read(clan)
     session[:clan_site_exists] = (not site_info.nil?)
+    # TODO: Cache for limited time
     session[:site_info] = site_info
   end
 

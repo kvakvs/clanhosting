@@ -1,4 +1,4 @@
-<h1><%= t 'page.home.title' %></h1>
+<% unless user_signed_in? %><h1><%= t 'page.home.title' %></h1><% end %>
 
 <% if user_signed_in? and not session[:clan_site_exists] %>
   <p><%= t('app.no_site_yet') %></p>
@@ -11,6 +11,7 @@
   <% end %>
 <% end %>
 
+<% unless user_signed_in? %>
 <div class="row">
   <div class="col-lg-6">
     <%= render :partial => 'features' %>
@@ -19,3 +20,4 @@
       <%= render :partial => 'find_or_join' %>
   </div>
 </div>
+<% end %>
