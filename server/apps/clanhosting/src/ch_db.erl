@@ -13,7 +13,8 @@
         update_set/3, read_set/2]).
 -type type_and_key() :: {atom(), integer(), integer()} | {atom(), integer()}.
 
--spec make_key(ObjectId :: type_and_key()) -> {binary(), binary()}.
+-spec make_key(RiakType :: binary(),
+               ObjectId :: type_and_key()) -> {binary(), binary()}.
 make_key(RiakType, {TableType, ClanId}) ->
   %% Создаёт сложный ключ для сайта (без айди, один для бакета)
   ClanIdBin = libe_types:as_binary(ClanId),

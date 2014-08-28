@@ -1,3 +1,9 @@
 <h1><%= t 'cp.manage_newsfeed' %></h1>
 
-<p>Find me in app/views/control_panel/newsfeed.html.erb</p>
+<p>
+  <%= link_to t('cp.newsfeed.add'), manage_newsfeed_add_form_path, :class => 'btn btn-primary'  %>
+</p>
+
+<% @news.each do |item| %>
+  fsfs
+<% end %>

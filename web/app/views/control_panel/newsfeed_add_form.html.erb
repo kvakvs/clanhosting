@@ -1,0 +1,22 @@
+<h1><%= t 'cp.newsfeed.add' %></h1>
+
+<%= form_tag main_app.manage_newsfeed_add_path,
+             :role => 'form', :method => 'post' do %>
+  <div class="form-group">
+    <label for="title"><%= t('cp.newsfeed.title') %></label>
+    <input type="text" class="form-control" id="title"
+           placeholder="<%= t('cp.newsfeed.title_hint') %>">
+  </div>
+  <div class="form-group">
+    <label for="short"><%= t('cp.newsfeed.short') %></label>
+    <textarea class="form-control" id="short"
+              placeholder="<%= t('cp.newsfeed.short_hint') %>"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="long"><%= t('cp.newsfeed.long') %></label>
+    <textarea class="form-control" id="long" rows=7
+              placeholder="<%= t('cp.newsfeed.long_hint') %>"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary"><%= t('cp.newsfeed.add') %></button>
+<% end %>

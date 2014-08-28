@@ -39,9 +39,6 @@ en:
       delegate_label: "Share the rights to configure your clan site with another clan member"
       delegate_help: "You can later revert or change this via site control panel"
       submit: "Create site"
-#      activate_forums: "Activate forums"
-#      activate_wall: "Activate clan news feed"
-
       created: "Site was created for your clan. To customize visit control panel in top menu."#      activate_pwall: "Activate personal publications feed for clan members"
     create_site_only_leader: "Only clan leader can create a new clan website."
     logged_out: "Logged out successfully"
@@ -60,6 +57,13 @@ en:
     acl:
       leader_is_always_admin: "Clan commander (a leader) always has administrative access rights."
       grant: "Grant rights"
-      grant_site_admin: "Grant site admin rights to"
+    newsfeed:
+      add: "Add News Post"
+      title: "Title"
+      title_hint: "Short one-line title. Can be empty!"
+      short: "Short Text"
+      short_hint: "Few lines to describe what's up"
+      long: "Long Text"
+      long_hint: "Full text for news. Can be left empty!"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

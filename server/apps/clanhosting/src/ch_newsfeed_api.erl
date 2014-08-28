@@ -8,7 +8,7 @@
 %% API
 -export([read_one/2, update_index/2, update_one/3, read_index/1]).
 
--spec update_index(ClanId :: integer(), Fields :: dict:dict()) -> {reply, ok}.
+-spec update_index(ClanId :: integer(), Fields :: dict()) -> {reply, ok}.
 update_index(ClanId, Fields0) ->
   Fields = dict:to_list(Fields0),
   riak_pool:with_worker(fun(Worker) ->
@@ -17,7 +17,7 @@ update_index(ClanId, Fields0) ->
   {reply, ok}.
 
 -spec update_one(ClanId :: integer(), Id :: integer(),
-                 Fields :: dict:dict()) -> {reply, ok}.
+                 Fields :: dict()) -> {reply, ok}.
 update_one(ClanId, Id, Fields0) ->
   Fields = dict:to_list(Fields0),
   riak_pool:with_worker(fun(Worker) ->
@@ -35,7 +35,9 @@ read_one(ClanId, Id) ->
     {error, _E} -> {reply, {bert, nil}}
   end.
 
--spec read_index(ClanId :: integer()) -> {reply, {bert, dict, proplists:proplist()}}.
+%% TODO: Index can grow big. Force clean or shard.
+-spec read_index(ClanId :: integer())
+      -> {reply, {bert, dict, proplists:proplist()}}.
 read_index(ClanId) ->
   case riak_pool:with_worker(fun(Worker) ->
     ch_db:read_set(Worker, {newsfeed, ClanId})

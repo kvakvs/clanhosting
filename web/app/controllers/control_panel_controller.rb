@@ -20,6 +20,12 @@ class ControlPanelController < ApplicationController
   end
 
   def newsfeed
+    rpc = Rails.application.get_rpc
+    @news = rpc.call.ch_newsfeed_api.read_index(session[:member_clan]) || []
+    @news.sort_by! { |item| item[:created] }
+  end
+
+  def newsfeed_add_form
 
   end
 

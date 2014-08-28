@@ -17,7 +17,7 @@ exists(ClanId) ->
     {error, _E}  -> {reply, 0}  %{bert, false}}
   end.
 
--spec update(ClanId :: integer(), Fields :: dict:dict()) -> {reply, ok}.
+-spec update(ClanId :: integer(), Fields :: dict()) -> {reply, ok}.
 update(ClanId, Fields0) ->
   Fields = dict:to_list(Fields0),
   riak_pool:with_worker(fun(Worker) ->

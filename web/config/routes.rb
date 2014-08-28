@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  mount Forem::Engine, :at => '/forums'
+  #mount Forem::Engine, :at => '/forums'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   post 'home/new_site' => 'home#new_site_create'
 
   get 'manage' => 'control_panel#index', :as => :control_panel
+
   get 'manage/newsfeed' => 'control_panel#newsfeed'
+  get 'manage/newsfeed/add' => 'control_panel#newsfeed_add_form', :as => :manage_newsfeed_add_form
+  post 'manage/newsfeed/add' => 'control_panel#newsfeed_add', :as => :manage_newsfeed_add
+
   get 'manage/acl' => 'control_panel#acl'
 
   # Example of regular route:
