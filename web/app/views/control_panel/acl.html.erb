@@ -2,14 +2,15 @@
 
 <p><%= t 'cp.acl.leader_is_always_admin' %></p>
 
-
-<%= form_tag main_app.manage_acl_path,
-             :role => 'form', :method => 'post' do %>
-  <div class="form-group">
-      <label for="delegate"><%=t 'cp.acl.grant_site_admin' %></label>
-      <%= select_tag :delegate, options_for_select(@clan_members),
-                     :class => 'form-control' %>
-  </div>
-  <%= button_tag t('cp.acl.grant'),
-                 :type => 'submit', :class => 'btn btn-primary' %>
-<% end #form %>
+<table class="table table-condensed">
+  <tr>
+    <th><%= t 'cp.acl.member_name' %></th>
+    <% AclItem::ACLS.each do |acl_name| %>
+    <th><%= acl_name %></th>
+    <% end %>
+  </tr>
+  <% @clan_members.each do |item| %>
+    <%= render :partial => 'acl_item',
+               :locals => {:i => item} %>
+  <% end %>
+</table>
