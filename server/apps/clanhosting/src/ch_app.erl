@@ -13,6 +13,7 @@ start() ->
   ok = lager:start(),
   libe_app:ensure_started([
       ssl, crypto, public_key, lhttpc, riak_pool,
+      flake,
       clanhosting
     ]).
 

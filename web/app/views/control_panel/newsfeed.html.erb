@@ -4,6 +4,14 @@
   <%= link_to t('cp.newsfeed.add'), manage_newsfeed_add_form_path, :class => 'btn btn-primary'  %>
 </p>
 
+<table class="table table-condensed">
+<tr>
+    <th><%= t 'cp.newsfeed.title' %></th>
+    <th><%= t 'cp.newsfeed.short' %></th>
+    <th><%= t 'cp.newsfeed.updated' %></th>
+</tr>
 <% @news.each do |item| %>
-  fsfs
+  <%= render :partial => 'newsfeed_item',
+             :locals => {:i => item} %>
 <% end %>
+</table>

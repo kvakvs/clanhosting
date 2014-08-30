@@ -4,17 +4,17 @@
              :role => 'form', :method => 'post' do %>
   <div class="form-group">
     <label for="title"><%= t('cp.newsfeed.title') %></label>
-    <input type="text" class="form-control" id="title"
+    <input type="text" class="form-control" id="title" name="title"
            placeholder="<%= t('cp.newsfeed.title_hint') %>">
   </div>
   <div class="form-group">
     <label for="short"><%= t('cp.newsfeed.short') %></label>
-    <textarea class="form-control" id="short"
+    <textarea class="form-control" id="short" name="short"
               placeholder="<%= t('cp.newsfeed.short_hint') %>"></textarea>
   </div>
   <div class="form-group">
     <label for="long"><%= t('cp.newsfeed.long') %></label>
-    <textarea class="form-control" id="long" rows=7
+    <textarea class="form-control" id="long" name="long" rows=7
               placeholder="<%= t('cp.newsfeed.long_hint') %>"></textarea>
   </div>
 

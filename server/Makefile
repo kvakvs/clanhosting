@@ -1,5 +1,5 @@
 APPS := clanhosting libe
-RUNCMD := erl -sname clanhosting@localhost -config ch.config -pa ebin apps/*/ebin apps/*/src deps/*/ebin -s ch_app
+RUNCMD := erl -sname clanhosting@localhost -config ch.config -pa ebin apps/*/ebin deps/*/ebin -s ch_app
 HERE := $(shell pwd)
 
 .PHONY: all

@@ -65,5 +65,6 @@ en:
       short_hint: "Few lines to describe what's up"
       long: "Long Text"
       long_hint: "Full text for news. Can be left empty!"
+      updated: "Updated"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"
