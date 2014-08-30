@@ -11,7 +11,7 @@
 -spec exists(ClanId :: integer()) -> {reply, {bert, boolean()}}.
 exists(ClanId) ->
   case riak_pool:with_worker(fun(Worker) ->
-                               ch_db:read_map(Worker, {site, ClanId})
+                               ch_db:read_map_object(Worker, {site, ClanId})
                              end) of
     {ok, _Value} -> {reply, 1}; %{bert, true}};
     {error, _E}  -> {reply, 0}  %{bert, false}}
@@ -28,7 +28,7 @@ update(ClanId, Fields0) ->
 -spec read(ClanId :: integer()) -> {reply, {bert, dict, proplists:proplist()}}.
 read(ClanId) ->
   case riak_pool:with_worker(fun(Worker) ->
-                               ch_db:read_map(Worker, {site, ClanId})
+                               ch_db:read_map_object(Worker, {site, ClanId})
                              end) of
     {ok, Value} -> {reply, {bert, dict, Value}};
     {error, _E} -> {reply, {bert, nil}}

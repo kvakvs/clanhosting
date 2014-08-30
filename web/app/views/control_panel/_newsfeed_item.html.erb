@@ -2,4 +2,11 @@
   <td><%= i['title'] %></td>
   <td><%= i['short'] %></td>
   <td><%= i['updated_at'] %></td>
+  <td>
+    <%= button_to t('cp.newsfeed.delete_post'),
+        main_app.manage_newsfeed_delete_path(:id => i['id']),
+        :onclick => "return confirm('#{t('cp.newsfeed.confirm_delete')}\\n#{i['short']}')",
+        :method => 'delete',
+        :class => 'btn btn-danger btn-xs' %>
+  </td>
 </tr>

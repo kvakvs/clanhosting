@@ -51,9 +51,11 @@ update_one(ClanId, Id, Fields0) ->
       -> {reply, {bert, dict, proplists:proplist()}}.
 read_one(ClanId, Id) ->
   case riak_pool:with_worker(fun(Worker) ->
-    ch_db:read_map(Worker, {newsfeed, ClanId, Id})
+    ch_db:read_map_object(Worker, {newsfeed, ClanId, Id})
   end) of
-    {ok, Value} -> {reply, {bert, dict, Value}};
+    {ok, MapObject} ->
+      Map = ch_db:map_object_to_orddict(MapObject),
+      {reply, {bert, dict, Map}};
     {error, _E} -> {reply, {bert, nil}}
   end.
 
@@ -71,7 +73,7 @@ delete_one(ClanId, Id) ->
       -> {reply, {bert, dict, proplists:proplist()}}.
 read_index(ClanId) ->
   case riak_pool:with_worker(fun(Worker) ->
-    ch_db:read_set(Worker, {newsfeed, ClanId})
+    ch_db:read_set_object(Worker, {newsfeed, ClanId})
   end) of
     {ok, SetObject} -> {reply, riakc_set:value(SetObject)};
     {error, _E}     -> {reply, {bert, nil}}

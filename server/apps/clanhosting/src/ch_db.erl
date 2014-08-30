@@ -9,12 +9,14 @@
 
 %% API
 -export([update_map/4,
-  read_map/2,
+  read_map_object/2,
   make_key/2,
   make_id/0,
   update_set/5,
-  read_set/2,
-  delete_map/2]).
+  read_set_object/2,
+  delete_map/2,
+  map_object_to_orddict/1
+]).
 
 -type type_and_key() :: {atom(), integer(), binary()} | {atom(), integer()}.
 -type set_value() :: [binary()].
@@ -62,15 +64,19 @@ delete_map(Worker, ObjectId) ->
   riak_pool:delete(Worker, Bucket, Key).
 
 %% @doc Использовать из riak_pool:with_worker(fun(W) -> ... end)
--spec read_map(Worker :: pid(), ObjectId :: type_and_key()) -> {ok|error, any()}.
-read_map(Worker, ObjectId) ->
+-spec read_map_object(Worker :: pid(), ObjectId :: type_and_key())
+      -> {ok, riakc_map:crdt_map()} | {error, any()}.
+read_map_object(Worker, ObjectId) ->
   {Bucket, Key} = make_key(<<"maps">>, ObjectId),
   case riak_pool:fetch_type(Worker, Bucket, Key) of
-    {ok, Obj} ->
-      {ok, remove_register_from_keys(riakc_map:value(Obj))};
-    {error, E} ->
-      {error, E}
+    {ok, MapObject}  -> {ok, MapObject};
+    {error, E} -> {error, E}
   end.
+
+%% @doc Достать из riakc_map обычный словарь
+-spec map_object_to_orddict(riakc_map:crdt_map()) -> orddict:orddict().
+map_object_to_orddict(MapObject) ->
+  remove_register_from_keys(riakc_map:value(MapObject)).
 
 %% @doc Использовать из riak_pool:with_worker(fun(W) -> ... end)
 -spec update_set(Worker :: pid(), ObjectId :: type_and_key(),
@@ -90,8 +96,9 @@ update_set(Worker, ObjectId, BasedOn, Add, Delete) ->
   riak_pool:update_type(Worker, Bucket, Key, riakc_set:to_op(Set)).
 
 %% @doc Использовать из riak_pool:with_worker(fun(W) -> ... end)
--spec read_set(Worker :: pid(), ObjectId :: type_and_key()) -> {ok|error, any()}.
-read_set(Worker, ObjectId) ->
+-spec read_set_object(Worker :: pid(), ObjectId :: type_and_key())
+      -> {ok, riakc_set:riakc_set()} | {error, any()}.
+read_set_object(Worker, ObjectId) ->
   {Bucket, Key} = make_key(<<"sets">>, ObjectId),
   case riak_pool:fetch_type(Worker, Bucket, Key) of
     {ok, SetObject} -> {ok, SetObject};
@@ -111,7 +118,7 @@ make_id() ->
 read_or_new_set(_Worker, _ObjectId, new) ->
   riakc_set:new();
 read_or_new_set(Worker, ObjectId, existing) ->
-  case read_set(Worker, ObjectId) of
+  case read_set_object(Worker, ObjectId) of
     {ok, S}    -> S;
     {error, _} -> riakc_set:new()
   end.

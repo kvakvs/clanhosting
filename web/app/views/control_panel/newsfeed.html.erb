@@ -1,7 +1,9 @@
 <h1><%= t 'cp.manage_newsfeed' %></h1>
 
 <p>
-  <%= link_to t('cp.newsfeed.add'), manage_newsfeed_add_form_path, :class => 'btn btn-primary'  %>
+  <%= link_to t('cp.newsfeed.add'),
+              manage_newsfeed_add_form_path,
+              :class => 'btn btn-primary' %>
 </p>
 
 <table class="table table-condensed">
@@ -9,6 +11,7 @@
     <th><%= t 'cp.newsfeed.title' %></th>
     <th><%= t 'cp.newsfeed.short' %></th>
     <th><%= t 'cp.newsfeed.updated' %></th>
+    <th></th>
 </tr>
 <% @news.each do |item| %>
   <%= render :partial => 'newsfeed_item',

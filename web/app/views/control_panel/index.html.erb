@@ -1,6 +1,31 @@
 <h1><%= t 'app.control_panel' %></h1>
 
-<p><%= link_to t('cp.manage_forums'), '#', :class => 'bg-danger' %></p>
-<p><%= link_to t('cp.manage_alliances'), '#', :class => 'bg-danger' %></p>
-<p><%= link_to t('cp.manage_newsfeed'), manage_newsfeed_path %></p>
-<p><%= link_to t('cp.manage_acl'), manage_acl_path, :class => 'bg-danger' %></p>
+<div class="row">
+  <div class="col-lg-4">
+    <%= link_to t('cp.manage_forums'), '#', :class => 'bg-danger' %>
+  </div>
+  <div class="col-lg-8">
+    <%= t('cp.forums.about_short') %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <%= link_to t('cp.manage_alliances'), '#', :class => 'bg-danger' %>
+  </div>
+  <div class="col-lg-8">
+    <%= t('cp.alliance.about_short') %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <%= link_to t('cp.manage_newsfeed'), manage_newsfeed_path %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <%= link_to t('cp.manage_acl'), manage_acl_path, :class => 'bg-danger' %>
+  </div>
+  <div class="col-lg-8">
+    <%= t('cp.acl.about_short') %>
+  </div>
+</div>

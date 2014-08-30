@@ -57,6 +57,7 @@ en:
     acl:
       leader_is_always_admin: "Clan commander (a leader) always has administrative access rights."
       grant: "Grant rights"
+      about_short: "Access control lists allow to grant some access rights other members of your alliance."
     newsfeed:
       add: "Add News Post"
       title: "Title"
@@ -66,5 +67,14 @@ en:
       long: "Long Text"
       long_hint: "Full text for news. Can be left empty!"
       updated: "Updated"
+      delete_post: "Delete"
+      deleted: "Post deleted"
+      fill_at_least_short: "Fill at least short post text, other fields are optional"
+      confirm_delete: "Delete news post?"
+    manage_alliances: "Manage clan alliances"
+    alliance:
+      about_short: "Alliance is a list of clans friendly to your clan. Members of an alliance can see selected forums of your clan, and vice versa."
+    forums:
+      about_short: "Forum control allows you to restructure forums of your clan, also has some options and moderation tools."
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

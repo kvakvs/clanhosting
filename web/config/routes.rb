@@ -28,8 +28,12 @@ Rails.application.routes.draw do
   get 'manage' => 'control_panel#index', :as => :control_panel
 
   get 'manage/newsfeed' => 'control_panel#newsfeed'
-  get 'manage/newsfeed/add' => 'control_panel#newsfeed_add_form', :as => :manage_newsfeed_add_form
-  post 'manage/newsfeed/add' => 'control_panel#newsfeed_add', :as => :manage_newsfeed_add
+  get 'manage/newsfeed/add' => 'control_panel#newsfeed_add_form',
+        :as => :manage_newsfeed_add_form
+  post 'manage/newsfeed/add' => 'control_panel#newsfeed_add',
+        :as => :manage_newsfeed_add
+  delete 'manage/newsfeed/:id' => 'control_panel#newsfeed_delete',
+        :as => :manage_newsfeed_delete
 
   get 'manage/acl' => 'control_panel#acl'
 
