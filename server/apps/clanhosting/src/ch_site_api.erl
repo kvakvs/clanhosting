@@ -30,7 +30,7 @@ read(ClanId) ->
   case riak_pool:with_worker(fun(Worker) ->
                                ch_db:read_map_object(Worker, {site, ClanId})
                              end) of
-    {ok, Value} -> {reply, {bert, dict, Value}};
+    {ok, Value} -> {reply, {bert, dict, ch_db:map_object_to_orddict(Value)}};
     {error, _E} -> {reply, {bert, nil}}
   end.
 

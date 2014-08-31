@@ -6,7 +6,7 @@
   <tr>
     <th><%= t 'cp.acl.member_name' %></th>
     <% AclItem::ACLS.each do |acl_name| %>
-    <th><%= acl_name %></th>
+    <th><%= t('cp.acl.acl_' + acl_name) %></th>
     <% end %>
   </tr>
   <% @clan_members.each do |member_name_id| %>
