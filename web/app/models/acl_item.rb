@@ -1,11 +1,9 @@
 class AclItem
-  ACLS = ['clan_admin', 'edit_forums', 'moderate_forums', 'post_news']
+  ACLS = %w(clan_admin edit_forums moderate_forums post_news)
 
-  def self.read_all(clan_id)
+  def self.read_for_user(clan_id, user_id)
     rpc = Rails.application.get_rpc
-    AclItem::ACLS.map { |acl_name|
-      rpc.call.ch_acl_api.read(clan_id, acl_name)
-    }
+    rpc.call.ch_acl_api.read_for_user(clan_id, user_id)
   end
 
   def self.has_access(clan_id, acl, user_id)

@@ -58,6 +58,8 @@ en:
       leader_is_always_admin: "Clan commander (a leader) always has administrative access rights."
       grant: "Grant rights"
       about_short: "Access control lists allow to grant some access rights other members of your alliance."
+      yes: "Yes"
+      no: "No"
     newsfeed:
       add: "Add News Post"
       title: "Title"

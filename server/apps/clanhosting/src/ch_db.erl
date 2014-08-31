@@ -16,7 +16,7 @@
   read_set_object/2,
   delete_map/2,
   map_object_to_orddict/1
-]).
+  , set_object_to_list/1]).
 
 -type type_and_key() :: {atom(), integer(), binary()} | {atom(), integer()}.
 -type set_value() :: [binary()].
@@ -77,6 +77,11 @@ read_map_object(Worker, ObjectId) ->
 -spec map_object_to_orddict(riakc_map:crdt_map()) -> orddict:orddict().
 map_object_to_orddict(MapObject) ->
   remove_register_from_keys(riakc_map:value(MapObject)).
+
+%% @doc Достать из riakc_set список чего-нибудь
+-spec set_object_to_list(riakc_set:riakc_set()) -> list().
+set_object_to_list(SetObject) ->
+  ordsets:to_list(riakc_set:value(SetObject)).
 
 %% @doc Использовать из riak_pool:with_worker(fun(W) -> ... end)
 -spec update_set(Worker :: pid(), ObjectId :: type_and_key(),

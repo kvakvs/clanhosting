@@ -9,8 +9,8 @@
     <th><%= acl_name %></th>
     <% end %>
   </tr>
-  <% @clan_members.each do |item| %>
+  <% @clan_members.each do |member_name_id| %>
     <%= render :partial => 'acl_item',
-               :locals => {:i => item} %>
+               :locals => {:i => member_name_id} %>
   <% end %>
 </table>

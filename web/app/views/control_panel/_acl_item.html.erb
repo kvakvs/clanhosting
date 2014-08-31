@@ -1,6 +1,10 @@
 <tr>
   <td><%= i[0] %></td>
   <% AclItem::ACLS.each do |acl_name| %>
-  <td><%= AclItem::has_access(session[:user_clan], acl_name, i[1]) %></td>
+    <% if @clan_acl[i[1]].include? acl_name %>
+      <td class="bg-success"><%= t('cp.acl.yes') %></td>
+    <% else %>
+      <td><%= t('cp.acl.no') %></td>
+    <% end %>
   <% end %>
 </tr>

@@ -42,6 +42,11 @@ class ControlPanelController < ApplicationController
   end
 
   def acl
+    ## member[0] is user name, member[1] is user id
     @clan_members = Clan::get_members_helper session[:clan_info]
+    @clan_acl = {}
+    @clan_members.each do |member|
+      @clan_acl[member[1]] = AclItem::read_for_user(session[:user_clan], member[1]) || []
+    end
   end
 end
