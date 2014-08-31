@@ -1,5 +1,5 @@
 class AclItem
-  ACLS = %w(clan_admin edit_forums moderate_forums post_news)
+  ACLS = %w(clan_admin edit_forums moderate_forums post_news alliances)
 
   def self.read_for_user(clan_id, user_id)
     rpc = Rails.application.get_rpc

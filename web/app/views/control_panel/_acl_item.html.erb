@@ -2,11 +2,19 @@
   <td><%= i[0] %></td>
   <% AclItem::ACLS.each do |acl_name| %>
     <% if @clan_acl[i[1]].include?(acl_name) %>
-      <td><span class="bg-success"><%= t('cp.acl.have') %></span></td>
+      <td>
+        <span class="bg-success"><%= t('cp.acl.have') %></span>
+        <button type="button" class="btn btn-danger btn-xs">Revoke</button>
+      </td>
     <% elsif User.is_user_clan_admin(session[:clan_info], i[1]) %>
-      <td><span class="bg-success"><%= t('cp.acl.yes_leader') %></span></td>
+      <td>
+        <span class="bg-success"><%= t('cp.acl.yes_leader') %></span>
+      </td>
     <% else %>
-      <td><span class="bg-warning"><%= t('cp.acl.doesnt_have') %></span></td>
+      <td>
+        <span class="bg-warning"><%= t('cp.acl.doesnt_have') %></span>
+        <button type="button" class="btn btn-success btn-xs">Grant</button>
+      </td>
     <% end %>
   <% end %>
 </tr>

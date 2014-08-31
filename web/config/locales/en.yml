@@ -54,6 +54,7 @@ en:
     manage_forums: "Manage Forums"
     manage_newsfeed: "Manage Clan News Feed"
     manage_acl: "Manage Access Rights"
+    manage_alliances: "Manage Clan Alliances"
     acl:
       leader_is_always_admin: "Clan commander (a leader) always has administrative access rights."
       grant: "Grant rights"
@@ -62,6 +63,11 @@ en:
       doesnt_have: "No"
       member_name: "Clan Member"
       yes_leader: "Yes (leader)"
+      acl_clan_admin: "Manage site"
+      acl_edit_forums: "Manage forums"
+      acl_moderate_forums: "Moderate topics and posts"
+      acl_post_news: "Clan news"
+      acl_alliances: "Clan alliance"
     newsfeed:
       add: "Add News Post"
       title: "Title"
@@ -75,7 +81,6 @@ en:
       deleted: "Post deleted"
       fill_at_least_short: "Fill at least short post text, other fields are optional"
       confirm_delete: "Delete news post?"
-    manage_alliances: "Manage clan alliances"
     alliance:
       about_short: "Alliance is a list of clans friendly to your clan. Members of an alliance can see selected forums of your clan, and vice versa."
     forums:

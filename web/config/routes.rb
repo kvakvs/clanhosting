@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   get 'control_panel/acl'
 
-  # This line mounts Forem's routes at /forums by default.
-  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # This line mounts Forem's routes at /forum by default.
+  # This means, any requests to the /forum URL of your application will go to Forem::ForumController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  #mount Forem::Engine, :at => '/forums'
+  #mount Forem::Engine, :at => '/forum'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -36,6 +36,16 @@ Rails.application.routes.draw do
         :as => :manage_newsfeed_delete
 
   get 'manage/acl' => 'control_panel#acl'
+
+  scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
+    resources :forum
+    scope '/forum/:forum_id/' do
+      resources :thread
+      scope '/thread/:thread_id/' do
+        resources :post
+      end
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -76,7 +86,7 @@ Rails.application.routes.draw do
   #   concern :toggleable do
   #     post 'toggle'
   #   end
-  #   resources :posts, concerns: :toggleable
+  #   resources :post, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
