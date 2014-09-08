@@ -90,5 +90,6 @@ en:
       add: "Add a new forum"
       forum_title_hint: "Single line forum title for forums index page"
       forum_desc_hint: "One or several lines describing forum topic. Printed in small font under title."
+      fill_at_least_title: "Please fill at least forum title field"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

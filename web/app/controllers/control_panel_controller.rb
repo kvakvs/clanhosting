@@ -57,7 +57,15 @@ class ControlPanelController < ApplicationController
     @forums = Forum::list(session[:user_clan])
   end
 
-  def forums_add
+  def forums_add_form
+  end
 
+  def forums_add
+    return redirect_to manage_forums_add_form_path,
+                       :alert => t('cp.forums.fill_at_least_title') if params[:title]==''
+    fields = {:title => params[:title],
+              :desc => params[:desc] || '' }
+    Forum::create(session[:user_clan], fields)
+    redirect_to manage_forums_path
   end
 end

@@ -13,7 +13,6 @@
 
 -spec add_forum(ClanId :: integer(), Fields :: dict()) -> {reply, ok}.
 add_forum(ClanId, Fields) ->
-%%   {reply, {bert, dict, Index}} = read_index(ClanId),
   ForumId = ch_db:make_id(),
   {reply, ok} = update_one(ClanId, ForumId, Fields),
   {reply, ok} = add_to_index(ClanId, [ForumId]).

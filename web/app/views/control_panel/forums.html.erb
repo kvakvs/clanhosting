@@ -12,8 +12,8 @@
     <th></th>
   </tr>
   <% @forums.each do |forum| %>
-    <td>@</td>
-    <td></td>
+    <td><%= forum['title'] %></td>
+    <td><%= forum['desc'] %></td>
     <td>
       <%= link_to 'Sort Up', '#', :class => 'btn btn-xs btn-default' %>
       <%= link_to 'Sort Down', '#', :class => 'btn btn-xs btn-default' %>

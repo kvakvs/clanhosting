@@ -12,4 +12,9 @@ class Forum
       value
     }
   end
+
+  def self.create(clan_id, fields)
+    rpc = Rails.application.get_rpc
+    rpc.call.ch_forum_api.add_forum(clan_id, fields)
+  end
 end
