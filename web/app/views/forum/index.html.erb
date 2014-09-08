@@ -1,1 +1,5 @@
 <h1>Forums!</h1>
+
+<% @forums.each do |forum| %>
+  <p><%= "Forum #{forum.to_s}" %></p>
+<% end %>

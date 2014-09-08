@@ -1,0 +1,23 @@
+<h1><%= t 'cp.manage_forums' %></h1>
+
+<p>
+  <%= link_to t('cp.forums.add'), manage_forums_add_form_path,
+              :class => 'btn btn-primary' %>
+</p>
+
+<table class="table table-condensed">
+  <tr>
+    <th><%= t 'cp.forums.forum_title' %></th>
+    <th><%= t 'cp.forums.forum_desc' %></th>
+    <th></th>
+  </tr>
+  <% @forums.each do |forum| %>
+    <td>@</td>
+    <td></td>
+    <td>
+      <%= link_to 'Sort Up', '#', :class => 'btn btn-xs btn-default' %>
+      <%= link_to 'Sort Down', '#', :class => 'btn btn-xs btn-default' %>
+      <%= link_to 'Delete', '#', :class => 'btn btn-xs btn-danger' %>
+    </td>
+  <% end %>
+</table>

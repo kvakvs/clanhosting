@@ -85,5 +85,10 @@ en:
       about_short: "Alliance is a list of clans friendly to your clan. Members of an alliance can see selected forums of your clan, and vice versa."
     forums:
       about_short: "Forum control allows you to restructure forums of your clan, also has some options and moderation tools."
+      forum_title: "Forum Title"
+      forum_desc: "Description"
+      add: "Add a new forum"
+      forum_title_hint: "Single line forum title for forums index page"
+      forum_desc_hint: "One or several lines describing forum topic. Printed in small font under title."
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'home/new_site' => 'home#new_site'
   post 'home/new_site' => 'home#new_site_create'
 
+  #----------------------------------------
   get 'manage' => 'control_panel#index', :as => :control_panel
 
   get 'manage/newsfeed' => 'control_panel#newsfeed'
@@ -36,6 +37,13 @@ Rails.application.routes.draw do
         :as => :manage_newsfeed_delete
 
   get 'manage/acl' => 'control_panel#acl'
+
+  get 'manage/forums' => 'control_panel#forums'
+  get 'manage/forums/add' => 'control_panel#forums_add_form',
+      :as => :manage_forums_add_form
+  post 'manage/forums/add' => 'control_panel#forums_add',
+       :as => :manage_forums_add
+  #----------------------------------------
 
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
     resources :forum

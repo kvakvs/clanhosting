@@ -19,6 +19,7 @@ class ControlPanelController < ApplicationController
 
   end
 
+  #----------------------------------------
   def newsfeed
     @news = NewsfeedItem::all_for_clan(session[:user_clan])
   end
@@ -40,6 +41,7 @@ class ControlPanelController < ApplicationController
     NewsfeedItem::create(session[:user_clan], fields)
     redirect_to manage_newsfeed_path
   end
+  #----------------------------------------
 
   def acl
     ## member[0] is user name, member[1] is user id
@@ -48,5 +50,14 @@ class ControlPanelController < ApplicationController
     @clan_members.each do |member|
       @clan_acl[member[1]] = AclItem::read_for_user(session[:user_clan], member[1]) || []
     end
+  end
+  #----------------------------------------
+
+  def forums
+    @forums = Forum::list(session[:user_clan])
+  end
+
+  def forums_add
+
   end
 end

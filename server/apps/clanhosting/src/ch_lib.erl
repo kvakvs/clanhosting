@@ -6,7 +6,7 @@
 -module(ch_lib).
 
 %% API
--export([json_api_request/2, proplist_to_bert_dict/2]).
+-export([json_api_request/2, proplist_to_bert_dict/2, memoize/3]).
 
 %% @private
 %% Url - iolist with Url, flattened here, Method - "GET"
@@ -31,3 +31,13 @@ proplist_to_bert_dict([{K, V0 = [{_,_}|_]} | Prop0], Accum) ->
   proplist_to_bert_dict(Prop0, [{K, {bert, dict, V}} | Accum]);
 proplist_to_bert_dict([{K, V} | Prop0], Accum) ->
   proplist_to_bert_dict(Prop0, [{K, V} | Accum]).
+
+%% @doc Query cache:get or (if not found) run Fun() and memoize result
+memoize(Cache, K, Fun) ->
+  case cache:get(Cache, K) of
+    undefined ->
+      Value = Fun(),
+      cache:put(Cache, K, Value),
+      Value;
+    Existing -> Existing
+  end.

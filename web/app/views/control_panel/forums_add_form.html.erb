@@ -1,0 +1,17 @@
+<h1><%= t 'cp.forums.add' %></h1>
+
+<%= form_tag main_app.manage_forums_add_path,
+             :role => 'form', :method => 'post' do %>
+  <div class="form-group">
+    <label for="title"><%= t('cp.forums.forum_title') %></label>
+    <input type="text" class="form-control" id="title" name="title"
+           placeholder="<%= t('cp.forums.forum_title_hint') %>">
+  </div>
+  <div class="form-group">
+    <label for="short"><%= t('cp.forums.forum_desc') %></label>
+    <textarea class="form-control" id="short" name="short"
+              placeholder="<%= t('cp.forums.forum_desc_hint') %>"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary"><%= t('cp.forums.add') %></button>
+<% end %>

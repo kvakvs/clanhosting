@@ -49,7 +49,7 @@
     ]},
 
     {flake, [
-        {interface, "em1"},
+        {interface, "eth0"},
         {timestamp_path, "priv/timestamp.dets"},
         {allowable_downtime, 2592000000}
       ]}
