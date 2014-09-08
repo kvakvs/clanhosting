@@ -16,7 +16,7 @@
   read_set_object/2,
   delete_map/2,
   map_object_to_orddict/1
-  , set_object_to_list/1]).
+  , set_object_to_list/1, add_to_index/2, remove_from_index/2]).
 
 -type type_and_key() :: {atom(), integer(), binary()} | {atom(), integer()}.
 -type set_value() :: [binary()].
@@ -113,6 +113,21 @@ read_set_object(Worker, ObjectId) ->
 make_id() ->
   {ok, Id} = flake_server:id(),
   libe_hex:bin_to_hex(Id).
+
+-spec add_to_index(TypeKey :: type_and_key(), AddIds :: [set_value()]) -> ok.
+add_to_index(TypeKey, AddIds) ->
+  riak_pool:with_worker(fun(Worker) ->
+    update_set(Worker, TypeKey, existing, AddIds, [])
+  end),
+  ok.
+
+-spec remove_from_index(TypeKey :: type_and_key(), DeleteIds :: [set_value()]) -> ok.
+remove_from_index(TypeKey, DeleteIds) ->
+  riak_pool:with_worker(fun(Worker) ->
+    ch_db:update_set(Worker, TypeKey, existing, [], DeleteIds)
+  end),
+  ok.
+
 
 %%%-----------------------------------------------------------------------------
 %%% INTERNAL
