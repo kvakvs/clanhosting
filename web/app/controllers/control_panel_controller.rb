@@ -68,4 +68,9 @@ class ControlPanelController < ApplicationController
     Forum::create(session[:user_clan], fields)
     redirect_to manage_forums_path
   end
+
+  def forums_delete
+    Forum::delete(session[:user_clan], params[:forum_id])
+    redirect_to manage_forums_path, :notice => t('cp.forums.deleted')
+  end
 end

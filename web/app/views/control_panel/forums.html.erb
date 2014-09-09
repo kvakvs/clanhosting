@@ -9,15 +9,27 @@
   <tr>
     <th><%= t 'cp.forums.forum_title' %></th>
     <th><%= t 'cp.forums.forum_desc' %></th>
+    <th><%= t 'cp.forums.sorting_id' %></th>
     <th></th>
   </tr>
   <% @forums.each do |forum| %>
-    <td><%= forum['title'] %></td>
-    <td><%= forum['desc'] %></td>
-    <td>
-      <%= link_to 'Sort Up', '#', :class => 'btn btn-xs btn-default' %>
-      <%= link_to 'Sort Down', '#', :class => 'btn btn-xs btn-default' %>
-      <%= link_to 'Delete', '#', :class => 'btn btn-xs btn-danger' %>
-    </td>
+    <tr>
+      <td><%= forum['title'] %></td>
+      <td><%= forum['desc'] %></td>
+      <td><%= forum['sort_by'] || '0' %></td>
+      <td>
+        <%= button_to t('cp.forums.delete_forum'),
+                      main_app.manage_forums_delete_path(:forum_id => forum['id']),
+                      :onclick => "return confirm('#{t('cp.forum.confirm_delete')}\\n#{forum['title']}')",
+                      :method => 'delete',
+                      :class => 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
   <% end %>
 </table>
+
+<p class="bg-danger">
+  TODO: <%= link_to t('cp.forums.apply_sorting'),
+              '#',
+              :class => 'btn btn-xs btn-default' %>
+</p>

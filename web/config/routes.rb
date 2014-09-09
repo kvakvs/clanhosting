@@ -43,6 +43,8 @@ Rails.application.routes.draw do
       :as => :manage_forums_add_form
   post 'manage/forums/add' => 'control_panel#forums_add',
        :as => :manage_forums_add
+  delete 'manage/forums/:forum_id' => 'control_panel#forums_delete',
+         :as => :manage_forums_delete
   #----------------------------------------
 
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
