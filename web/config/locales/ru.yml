@@ -96,6 +96,8 @@ ru:
       apply_sorting: "Изменить сортировку"
       delete_forum: "Удалить"
       deleted: "Форум удалён"
+      edit_forum: "Редактировать"
+      update: "Обновить"
     forum:
       confirm_delete: "Желаете удалить этот форум?"
   acl:

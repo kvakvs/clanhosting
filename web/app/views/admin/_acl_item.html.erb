@@ -1,6 +1,6 @@
 <tr>
   <td><%= i[0] %></td>
-  <% AclItem::ACLS.each do |acl_name| %>
+  <% AccessRights::ACLS.each do |acl_name| %>
     <% if @clan_acl[i[1]].include?(acl_name) %>
       <td>
         <span class="bg-success"><%= t('cp.acl.have') %></span>

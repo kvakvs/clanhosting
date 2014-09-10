@@ -95,6 +95,8 @@ en:
       apply_sorting: "Change Order"
       delete_forum: "Delete"
       deleted: "Forum deleted"
+      edit_forum: "Edit"
+      update: "Update"
     forum:
       confirm_delete: "Do you want to delete the following forum?"
   acl:

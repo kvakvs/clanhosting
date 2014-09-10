@@ -11,13 +11,18 @@ class Forum
 
     # TODO: альянсы тоже! Не забыть альянсы получать парами клан_id+форум
 
-    f_index.map! { |forum_id|
-      value = rpc.call.ch_forum_api.read_one(clan_id, forum_id)
-      value['id'] = forum_id
-      value['title'] = value['title'].force_encoding('utf-8')
-      value['desc'] = value['desc'].force_encoding('utf-8')
-      value
+    f_index.map { |forum_id|
+      read(clan_id, forum_id)
     }
+  end
+
+  def self.read(clan_id, forum_id)
+    rpc = Rails.application.get_rpc
+    value = rpc.call.ch_forum_api.read_one(clan_id, forum_id)
+    value['id'] = forum_id
+    value['title'] = value['title'].force_encoding('utf-8')
+    value['desc'] = value['desc'].force_encoding('utf-8')
+    value
   end
 
   def self.create(clan_id, fields)

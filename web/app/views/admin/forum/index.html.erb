@@ -1,7 +1,7 @@
 <h1><%= t 'cp.manage_forums' %></h1>
 
 <p>
-  <%= link_to t('cp.forums.add'), manage_forums_add_form_path,
+  <%= link_to t('cp.forums.add'), new_admin_forum_path,
               :class => 'btn btn-primary' %>
 </p>
 
@@ -19,10 +19,13 @@
       <td><%= forum['sort_by'] || '0' %></td>
       <td>
         <%= button_to t('cp.forums.delete_forum'),
-                      main_app.manage_forums_delete_path(:forum_id => forum['id']),
+                      main_app.admin_forum_path(:id => forum['id']),
                       :onclick => "return confirm('#{t('cp.forum.confirm_delete')}\\n#{forum['title']}')",
                       :method => 'delete',
                       :class => 'btn btn-xs btn-danger' %>
+        <%= link_to t('cp.forums.edit_forum'),
+                      main_app.edit_admin_forum_path(:id => forum['id']),
+                      :class => 'btn btn-xs btn-default' %>
       </td>
     </tr>
   <% end %>

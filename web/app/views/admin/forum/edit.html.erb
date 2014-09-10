@@ -1,0 +1,19 @@
+<h1><%= t 'cp.forums.edit_forum' %></h1>
+
+<%= form_tag main_app.admin_forum_path,
+             :role => 'form', :method => 'post' do %>
+  <%= hidden_field_tag :name => 'id', :value => @forum['id'] %>
+  <div class="form-group">
+    <label for="title"><%= t('cp.forums.forum_title') %></label>
+    <input type="text" class="form-control" id="title" name="title"
+           placeholder="<%= t('cp.forums.forum_title_hint') %>"
+          value="<%= @forum['title'] %>">
+  </div>
+  <div class="form-group">
+    <label for="desc"><%= t('cp.forums.forum_desc') %></label>
+    <textarea class="form-control" id="desc" name="desc"
+              placeholder="<%= t('cp.forums.forum_desc_hint') %>"><%= @forum['desc'] %></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary"><%= t('cp.forums.update') %></button>
+<% end %>

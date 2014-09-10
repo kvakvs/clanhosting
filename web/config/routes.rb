@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'control_panel/index'
+  get 'admin/index'
 
-  get 'control_panel/newsfeed'
+  get 'admin/newsfeed'
 
-  get 'control_panel/acl'
+  get 'admin/acl'
 
   # This line mounts Forem's routes at /forum by default.
   # This means, any requests to the /forum URL of your application will go to Forem::ForumController#index.
@@ -26,25 +26,31 @@ Rails.application.routes.draw do
   post 'home/new_site' => 'home#new_site_create'
 
   #----------------------------------------
-  get 'manage' => 'control_panel#index', :as => :control_panel
+  # get 'admin' => 'admin#index', :as => :admin
 
-  get 'manage/newsfeed' => 'control_panel#newsfeed'
-  get 'manage/newsfeed/add' => 'control_panel#newsfeed_add_form',
-        :as => :manage_newsfeed_add_form
-  post 'manage/newsfeed/add' => 'control_panel#newsfeed_add',
-        :as => :manage_newsfeed_add
-  delete 'manage/newsfeed/:id' => 'control_panel#newsfeed_delete',
-        :as => :manage_newsfeed_delete
+  # get 'manage/newsfeed' => 'admin#newsfeed'
+  # get 'manage/newsfeed/add' => 'admin#newsfeed_add_form',
+  #       :as => :manage_newsfeed_add_form
+  # post 'manage/newsfeed/add' => 'admin#newsfeed_add',
+  #       :as => :manage_newsfeed_add
+  # delete 'manage/newsfeed/:id' => 'admin#newsfeed_delete',
+  #       :as => :manage_newsfeed_delete
+  #
+  # get 'manage/acl' => 'admin#acl'
 
-  get 'manage/acl' => 'control_panel#acl'
-
-  get 'manage/forums' => 'control_panel#forums'
-  get 'manage/forums/add' => 'control_panel#forums_add_form',
-      :as => :manage_forums_add_form
-  post 'manage/forums/add' => 'control_panel#forums_add',
-       :as => :manage_forums_add
-  delete 'manage/forums/:forum_id' => 'control_panel#forums_delete',
-         :as => :manage_forums_delete
+  # get 'manage/forums' => 'admin#forums'
+  # get 'manage/forums/add' => 'admin#forums_add_form',
+  #     :as => :manage_forums_add_form
+  # post 'manage/forums/add' => 'admin#forums_add',
+  #      :as => :manage_forums_add
+  # delete 'manage/forums/:forum_id' => 'admin#forums_delete',
+  #        :as => :manage_forums_delete
+  get 'admin' => 'admin#index'
+  namespace :admin do
+    resources :forum
+    resources :acl
+    resources :newsfeed
+  end
   #----------------------------------------
 
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
