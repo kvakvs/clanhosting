@@ -1,11 +1,14 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-        <%= post['title'] %>
-        @ <%= post['updated_at'] %>
-    </h3>
+<div class="row">
+  <div class="col-lg-12">
+    <h3><%= post['title'] %></h3>
   </div>
-  <div class="panel-body">
+</div>
+<div class="row">
+  <div class="col-lg-3">
+    By <%= post['created_by'] %><br/>
+    Updated at <%= post['updated_at'] %>
+  </div>
+  <div class="col-lg-9">
     <%= post['body'] %>
   </div>
 </div>

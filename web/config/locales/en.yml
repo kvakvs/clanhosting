@@ -60,6 +60,7 @@ en:
       clan_forums: "Clan Forums"
       alliance_forums: "Allied Clans' Forums"
       reply_button: "Post Reply"
+      back_to_forum_btn: "Back to discussions list"
   page:
     home:
       title: "Welcome"

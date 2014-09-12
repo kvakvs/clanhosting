@@ -1,5 +1,6 @@
-<h3><%= link_to thread['title'],
+<li class="list-group-item">
+  <%= link_to thread['title'],
                 thread_path(:clan_id => session[:user_clan],
                             :forum_id => forum['id'],
                             :id => thread['id'])
-%></h3>
+%></li>

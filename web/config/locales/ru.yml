@@ -61,6 +61,7 @@ ru:
       clan_forums: "Форумы клана"
       alliance_forums: "Форумы альянса"
       reply_button: "Ответить"
+      back_to_forum_btn: "Вернуться к списку обсуждений"
   page:
     home:
       title: "Добро пожаловать"
