@@ -98,6 +98,7 @@ ru:
       deleted: "Форум удалён"
       edit_forum: "Редактировать"
       update: "Обновить"
+      updated: "Свойства форума обновлены"
     forum:
       confirm_delete: "Желаете удалить этот форум?"
   acl:

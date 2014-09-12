@@ -30,6 +30,11 @@ class Forum
     rpc.call.ch_forum_api.add_forum(clan_id, fields)
   end
 
+  def self.update(clan_id, forum_id, fields)
+    rpc = Rails.application.get_rpc
+    rpc.call.ch_forum_api.update_one(clan_id, forum_id, fields)
+  end
+
   def self.delete(clan_id, forum_id)
     rpc = Rails.application.get_rpc
     rpc.call.ch_forum_api.delete_forum(clan_id, forum_id)

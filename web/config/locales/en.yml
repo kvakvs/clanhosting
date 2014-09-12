@@ -97,6 +97,7 @@ en:
       deleted: "Forum deleted"
       edit_forum: "Edit"
       update: "Update"
+      updated: "Forum properties updated"
     forum:
       confirm_delete: "Do you want to delete the following forum?"
   acl:
