@@ -1,0 +1,12 @@
+<h1><%= @thread['title'] %></h1>
+
+<p><%= link_to t('app.forums.reply_button'),
+                new_post_path(:thread_id => params[:id]),
+                :class => 'btn btn-primary' %></p>
+
+<!-- begin posts -->
+<% @posts.each do |post| %>
+  <%= render :partial => 'show_post',
+             :locals => { :post => post } %>
+<% end %>
+<!-- end posts -->

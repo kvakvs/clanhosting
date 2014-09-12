@@ -57,6 +57,9 @@ en:
       add_thread_btn: "Create Thread"
       title_empty: "Title field is empty"
       body_empty: "Текст сообщения не должен оставаться пустым"
+      clan_forums: "Clan Forums"
+      alliance_forums: "Allied Clans' Forums"
+      reply_button: "Post Reply"
   page:
     home:
       title: "Welcome"

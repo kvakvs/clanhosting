@@ -58,6 +58,9 @@ ru:
       add_thread_btn: "Создать обсуждение"
       title_empty: "Поле заголовка не должно оставаться пустым"
       body_empty: "Message body should not be empty"
+      clan_forums: "Форумы клана"
+      alliance_forums: "Форумы альянса"
+      reply_button: "Ответить"
   page:
     home:
       title: "Добро пожаловать"

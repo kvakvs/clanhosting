@@ -4,10 +4,11 @@ class ThreadController < ApplicationController
   end
 
   def show
-    # clan_id = session[:user_clan]
-    # forum_id = params[:id]
-    # @forum = Forum.read(clan_id, forum_id)
-    # @threads = ForumThread.list(clan_id, forum_id)
+    clan_id = session[:user_clan]
+    forum_id = params[:forum_id]
+    thread_id = params[:id]
+    @thread = ForumThread.read_one(clan_id, forum_id, thread_id)
+    @posts = ForumPost.list(clan_id, thread_id)
   end
 
   def create
@@ -21,9 +22,18 @@ class ThreadController < ApplicationController
     return redirect_to new_form,
                :alert => t('app.forums.body_empty') if params[:body]==''
 
-    fields = {:title => params[:title],
-              :body => params[:body] }
-    ForumThread.create(session[:user_clan], params[:forum_id], fields)
+    forum_fields = {:title => params[:title],
+                    :created_by => session[:user_account] }
+    thread_id = ForumThread.create(session[:user_clan],
+                                   params[:forum_id],
+                                   forum_fields)
+    post_fields = {:body => params[:body],
+                   :title => params[:title],
+                   :thread_id => thread_id,
+                   :created_by => session[:user_account] }
+    ForumPost.create(session[:user_clan],
+                             thread_id,
+                             post_fields)
     redirect_to forum_index_path(:clan_id => session[:user_clan],
                                  :forum_id => params[:forum_id])
   end

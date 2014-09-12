@@ -15,7 +15,8 @@
 add_forum(ClanId, Fields) ->
   ForumId = ch_db:make_id(),
   {reply, ok} = update_one(ClanId, ForumId, Fields),
-  {reply, ok} = add_to_index(ClanId, [ForumId]).
+  {reply, ok} = add_to_index(ClanId, [ForumId]),
+  {reply, ForumId}.
 
 delete_forum(ClanId, ForumId) ->
   {reply, ok} = remove_from_index(ClanId, [ForumId]),

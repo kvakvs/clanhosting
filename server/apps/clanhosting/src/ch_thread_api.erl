@@ -16,7 +16,8 @@
 add_thread(ClanId, ForumId, Fields) ->
   ThreadId = ch_db:make_id(),
   {reply, ok} = update_one(ClanId, ForumId, ThreadId, Fields),
-  {reply, ok} = add_to_index(ClanId, ForumId, [ThreadId]).
+  {reply, ok} = add_to_index(ClanId, ForumId, [ThreadId]),
+  {reply, ThreadId}.
 
 delete_thread(ClanId, ForumId, ThreadId) ->
   {reply, ok} = remove_from_index(ClanId, ForumId, [ThreadId]),

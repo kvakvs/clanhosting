@@ -9,10 +9,9 @@
                                 :forum_id => @forum['id']),
                 :class => 'btn btn-primary' %></p>
 
+<!-- begin threads -->
 <% @threads.each do |thread| %>
-  <h3><%= link_to thread['title'],
-                  thread_path(:clan_id => session[:user_clan],
-                              :forum_id => @forum['id'],
-                              :id => thread['id'])
-  %></h3>
+  <%= render :partial => 'thread_row',
+            :locals => {:thread => thread, :forum => @forum} %>
 <% end %>
+<!-- end threads -->

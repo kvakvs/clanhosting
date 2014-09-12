@@ -1,4 +1,4 @@
-<h1>Forums!</h1>
+<h1><%= t('app.forums.clan_forums') %></h1>
 
 <% @forums.each do |forum| %>
   <div class="panel panel-default">
@@ -15,3 +15,5 @@
     <% end %>
   </div>
 <% end %>
+
+<h1 class="bg-danger"><%= t('app.forums.alliance_forums') %></h1>

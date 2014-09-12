@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     scope '/forum/:forum_id/' do
       resources :thread, :only => [:index, :new, :show, :create]
       scope '/thread/:thread_id/' do
-        resources :post, :only => [:show, :create]
+        resources :post, :only => [:show, :create, :new]
       end
     end
   end
