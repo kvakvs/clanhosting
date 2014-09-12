@@ -18,7 +18,7 @@
       <td><%= forum['desc'] %></td>
       <td><%= forum['sort_by'] || '0' %></td>
       <td>
-        <%= button_to t('cp.forums.delete_forum'),
+        <%= link_to t('cp.forums.delete_forum'),
                       main_app.admin_forum_path(:id => forum['id']),
                       :onclick => "return confirm('#{t('cp.forum.confirm_delete')}\\n#{forum['title']}')",
                       :method => 'delete',

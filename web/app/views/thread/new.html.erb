@@ -1,7 +1,6 @@
 <h1><%= t 'app.forums.new_thread' %></h1>
 
-<%= form_tag main_app.thread_index_path(:clan_id => session[:user_clan],
-                                        :forum_id => params[:forum_id]),
+<%= form_tag main_app.thread_index_path,
              :role => 'form', :method => 'post' do %>
   <div class="form-group">
     <label for="title"><%= t('app.forums.thread_title') %></label>
@@ -14,6 +13,8 @@
               placeholder="<%= t('app.forums.thread_body_hint') %>"></textarea>
   </div>
 
+  <%= link_to t('cp.cancel_btn'), forum_path(:id => params[:forum_id]),
+        :class => 'btn btn-danger' %>
   <button type="submit" class="btn btn-primary"><%=
       t('app.forums.add_thread_btn') %></button>
 <% end %>

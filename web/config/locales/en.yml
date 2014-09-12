@@ -55,6 +55,8 @@ en:
       thread_body: "Message"
       thread_body_hint: "First message in the discussion thread"
       add_thread_btn: "Create Thread"
+      title_empty: "Title field is empty"
+      body_empty: "Текст сообщения не должен оставаться пустым"
   page:
     home:
       title: "Welcome"

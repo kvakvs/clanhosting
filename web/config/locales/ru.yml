@@ -56,6 +56,8 @@ ru:
       thread_body: "Сообщение"
       thread_body_hint: "Введите текст первого сообщения в обсуждении"
       add_thread_btn: "Создать обсуждение"
+      title_empty: "Поле заголовка не должно оставаться пустым"
+      body_empty: "Message body should not be empty"
   page:
     home:
       title: "Добро пожаловать"
@@ -108,7 +110,7 @@ ru:
       apply_sorting: "Изменить сортировку"
       delete_forum: "Удалить"
       deleted: "Форум удалён"
-      edit_forum: "Редактировать"
+      edit_forum: "Изменить"
       update: "Обновить"
       updated: "Свойства форума обновлены"
     forum:

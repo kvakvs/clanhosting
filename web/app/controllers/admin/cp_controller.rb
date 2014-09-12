@@ -1,4 +1,4 @@
-class Admin::AdminController < ApplicationController
+class Admin::CpController < ApplicationController
   include ApplicationHelper
   before_action :pre_check_site_exists!
 

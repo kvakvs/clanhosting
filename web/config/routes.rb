@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  #get 'admin/index'
-  #get 'admin/newsfeed'
-  #get 'admin/acl'
+  #get 'cp/index'
+  #get 'cp/newsfeed'
+  #get 'cp/acl'
 
   # This line mounts Forem's routes at /forum by default.
   # This means, any requests to the /forum URL of your application will go to Forem::ForumController#index.
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   #----------------------------------------
   namespace 'admin' do
     scope '/:clan_id/' do
-      get '/' => 'admin#index'
+      get '/' => 'cp#index'
       resources :forum, :only => [:index, :create, :new, :destroy, :edit, :update]
       resources :acl, :only => [:index]
       resources :newsfeed, :only => [:index, :show, :new, :destroy, :edit, :create]
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
     resources :forum, :only => [:index, :show]
     scope '/forum/:forum_id/' do
-      resources :thread, :only => [:index, :show, :create]
+      resources :thread, :only => [:index, :new, :show, :create]
       scope '/thread/:thread_id/' do
         resources :post, :only => [:show, :create]
       end
@@ -87,9 +87,9 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
+  #   namespace :cp do
+  #     # Directs /cp/products/* to Admin::ProductsController
+  #     # (app/controllers/cp/products_controller.rb)
   #     resources :products
   #   end
 end

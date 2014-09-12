@@ -16,8 +16,10 @@ class ThreadController < ApplicationController
 
     new_form = new_thread_path(:clan_id => session[:user_clan],
                                :forum_id => params[:forum_id])
-    return redirect_to new_form, :alert => 'title empty' if params[:title]==''
-    return redirect_to new_form, :alert => 'body empty' if params[:body]==''
+    return redirect_to new_form,
+               :alert => t('app.forums.title_empty') if params[:title]==''
+    return redirect_to new_form,
+               :alert => t('app.forums.body_empty') if params[:body]==''
 
     fields = {:title => params[:title],
               :body => params[:body] }
