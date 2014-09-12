@@ -1,17 +1,18 @@
-<h1>Show Forum!</h1>
+<h1><%= @forum['title'] %></h1>
+
+<% if @threads.empty? %>
+  <%= t 'app.forums.no_threads' %>
+<% end %>
+
+<p><%= link_to t('app.forums.new_thread'),
+                new_thread_path(:clan_id => session[:user_clan],
+                                :forum_id => @forum['id']),
+                :class => 'btn btn-primary' %></p>
 
 <% @threads.each do |thread| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3><%= link_to forum['title'],
-                      forum_path(:clan_id => session[:user_clan],
-                                 :id => forum['id'])
-      %></h3>
-    </div>
-    <% if forum['desc'] != '' %>
-      <div class="panel-body">
-        <p><%= forum['desc'] %></p>
-      </div>
-    <% end %>
-  </div>
+  <h3><%= link_to thread['title'],
+                  thread_path(:clan_id => session[:user_clan],
+                              :forum_id => @forum['id'],
+                              :id => thread['id'])
+  %></h3>
 <% end %>

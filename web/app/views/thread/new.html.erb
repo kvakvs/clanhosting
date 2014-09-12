@@ -1,0 +1,19 @@
+<h1><%= t 'app.forums.new_thread' %></h1>
+
+<%= form_tag main_app.thread_index_path(:clan_id => session[:user_clan],
+                                        :forum_id => params[:forum_id]),
+             :role => 'form', :method => 'post' do %>
+  <div class="form-group">
+    <label for="title"><%= t('app.forums.thread_title') %></label>
+    <input type="text" class="form-control" id="title" name="title"
+           placeholder="<%= t('app.forums.thread_title_hint') %>">
+  </div>
+  <div class="form-group">
+    <label for="body"><%= t('app.forums.thread_body') %></label>
+    <textarea class="form-control" id="body" name="body"
+              placeholder="<%= t('app.forums.thread_body_hint') %>"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary"><%=
+      t('app.forums.add_thread_btn') %></button>
+<% end %>

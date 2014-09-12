@@ -23,7 +23,6 @@ en:
   app:
     login_with_wot_id: "Login with WoT ID"
     register: "Register"
-    forums: "Forums"
     logout: "Log out"
     logged_in_as: "Logged in as"
     title: "WoT Clan Hosting"
@@ -47,6 +46,15 @@ en:
     control_panel: "Control Panel"
     site_is_not_created_notice: "Site for your clan does not exist."
     site_exists: "Site for your clan already exists"
+    forums:
+      link: "Forums"
+      new_thread: "Create thread"
+      no_threads: "This forum is empty for now. But you can create new discussion thread!"
+      thread_title: "Title"
+      thread_title_hint: "Enter title for discussion thread"
+      thread_body: "Message"
+      thread_body_hint: "First message in the discussion thread"
+      add_thread_btn: "Create Thread"
   page:
     home:
       title: "Welcome"
@@ -68,6 +76,8 @@ en:
       acl_moderate_forums: "Moderate topics and posts"
       acl_post_news: "Clan news"
       acl_alliances: "Clan alliance"
+      grant_btn: "Grant"
+      revoke_btn: "Revoke"
     newsfeed:
       add: "Add News Post"
       title: "Title"
@@ -81,6 +91,8 @@ en:
       deleted: "Post deleted"
       fill_at_least_short: "Fill at least short post text, other fields are optional"
       confirm_delete: "Delete news post?"
+      edit: "Edit"
+      update: "Update"
     alliance:
       about_short: "Alliance is a list of clans friendly to your clan. Members of an alliance can see selected forums of your clan, and vice versa."
     forums:
@@ -100,5 +112,6 @@ en:
       updated: "Forum properties updated"
     forum:
       confirm_delete: "Do you want to delete the following forum?"
+    cancel_btn: "Cancel"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

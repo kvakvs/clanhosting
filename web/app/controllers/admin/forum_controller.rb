@@ -1,5 +1,6 @@
 class Admin::ForumController < ApplicationController
   include ApplicationHelper
+  before_action :pre_check_site_exists!
 
   def index
     return unless require_acl('manage_forums') or require_clan_admin

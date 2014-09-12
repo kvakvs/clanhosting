@@ -4,7 +4,7 @@
     <% if @clan_acl[i[1]].include?(acl_name) %>
       <td>
         <span class="bg-success"><%= t('cp.acl.have') %></span>
-        <button type="button" class="btn btn-danger btn-xs">Revoke</button>
+        <button type="button" class="btn btn-danger btn-xs"><%= t('cp.acl.revoke_btn') %></button>
       </td>
     <% elsif User.is_user_clan_admin(session[:clan_info], i[1]) %>
       <td>
@@ -13,7 +13,7 @@
     <% else %>
       <td>
         <span class="bg-warning"><%= t('cp.acl.doesnt_have') %></span>
-        <button type="button" class="btn btn-success btn-xs">Grant</button>
+        <button type="button" class="btn btn-warning btn-xs"><%= t('cp.acl.grant_btn') %></button>
       </td>
     <% end %>
   <% end %>

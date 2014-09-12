@@ -16,7 +16,7 @@ class ForumThread
     }
   end
 
-  def self.create(clan_id, fields)
+  def self.create(clan_id, forum_id, fields)
     rpc = Rails.application.get_rpc
     rpc.call.ch_thread_api.add_thread(clan_id, forum_id, fields)
   end

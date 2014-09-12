@@ -15,5 +15,8 @@
               placeholder="<%= t('cp.forums.forum_desc_hint') %>"><%= @forum['desc'] %></textarea>
   </div>
 
+  <%= link_to t('cp.cancel_btn'),
+              main_app.admin_forum_index_path(session[:user_clan]),
+              :class => 'btn btn-danger' %>
   <button type="submit" class="btn btn-primary"><%= t('cp.forums.update') %></button>
 <% end %>

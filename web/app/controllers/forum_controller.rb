@@ -4,6 +4,9 @@ class ForumController < ApplicationController
   end
 
   def show
-    @threads = ForumThread::list(session[:user_clan], params[:forum_id])
+    clan_id = session[:user_clan]
+    forum_id = params[:id]
+    @forum = Forum.read(clan_id, forum_id)
+    @threads = ForumThread.list(clan_id, forum_id)
   end
 end

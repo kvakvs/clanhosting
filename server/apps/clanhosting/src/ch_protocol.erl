@@ -32,6 +32,8 @@ loop(Socket, Transport) ->
           Transport:close(Socket)
       end,
       loop(Socket, Transport);
+    {error, closed} ->
+      ok = Transport:close(Socket);
     {error, Reason} ->
       lager:error("read length: ~p", [Reason]),
       ok = Transport:close(Socket)

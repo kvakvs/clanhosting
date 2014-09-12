@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'admin/index'
-
-  get 'admin/newsfeed'
-
-  get 'admin/acl'
+  #get 'admin/index'
+  #get 'admin/newsfeed'
+  #get 'admin/acl'
 
   # This line mounts Forem's routes at /forum by default.
   # This means, any requests to the /forum URL of your application will go to Forem::ForumController#index.
@@ -26,39 +24,22 @@ Rails.application.routes.draw do
   post 'home/new_site' => 'home#new_site_create'
 
   #----------------------------------------
-  # get 'admin' => 'admin#index', :as => :admin
-
-  # get 'manage/newsfeed' => 'admin#newsfeed'
-  # get 'manage/newsfeed/add' => 'admin#newsfeed_add_form',
-  #       :as => :manage_newsfeed_add_form
-  # post 'manage/newsfeed/add' => 'admin#newsfeed_add',
-  #       :as => :manage_newsfeed_add
-  # delete 'manage/newsfeed/:id' => 'admin#newsfeed_delete',
-  #       :as => :manage_newsfeed_delete
-  #
-  # get 'manage/acl' => 'admin#acl'
-
-  # get 'manage/forums' => 'admin#forums'
-  # get 'manage/forums/add' => 'admin#forums_add_form',
-  #     :as => :manage_forums_add_form
-  # post 'manage/forums/add' => 'admin#forums_add',
-  #      :as => :manage_forums_add
-  # delete 'manage/forums/:forum_id' => 'admin#forums_delete',
-  #        :as => :manage_forums_delete
-  get 'admin' => 'admin#index'
-  namespace :admin do
-    resources :forum
-    resources :acl
-    resources :newsfeed
+  namespace 'admin' do
+    scope '/:clan_id/' do
+      get '/' => 'admin#index'
+      resources :forum, :only => [:index, :create, :new, :destroy, :edit, :update]
+      resources :acl, :only => [:index]
+      resources :newsfeed, :only => [:index, :show, :new, :destroy, :edit, :create]
+    end
   end
   #----------------------------------------
 
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
-    resources :forum
+    resources :forum, :only => [:index, :show]
     scope '/forum/:forum_id/' do
-      resources :thread
+      resources :thread, :only => [:index, :show, :create]
       scope '/thread/:thread_id/' do
-        resources :post
+        resources :post, :only => [:show, :create]
       end
     end
   end

@@ -1,0 +1,25 @@
+<h1><%= t 'cp.newsfeed.edit' %></h1>
+
+<%= form_tag main_app.admin_newsfeed_index_path,
+             :role => 'form', :method => 'post' do %>
+  <div class="form-group">
+    <label for="title"><%= t('cp.newsfeed.title') %></label>
+    <input type="text" class="form-control" id="title" name="title"
+       placeholder="<%= t('cp.newsfeed.title_hint') %>"
+       value="<%= @newsitem['title'] %>">
+  </div>
+  <div class="form-group">
+    <label for="short"><%= t('cp.newsfeed.short') %></label>
+    <textarea class="form-control" id="short" name="short"
+        placeholder="<%= t('cp.newsfeed.short_hint') %>"><%= @newsitem['short'] %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="long"><%= t('cp.newsfeed.long') %></label>
+    <textarea class="form-control" id="long" name="long" rows=7
+        placeholder="<%= t('cp.newsfeed.long_hint') %>"><%= @newsitem['long'] %></textarea>
+  </div>
+
+  <%= link_to t('cp.cancel_btn'), main_app.admin_newsfeed_index_path,
+        :class => 'btn btn-danger' %>
+  <button type="submit" class="btn btn-primary"><%= t('cp.newsfeed.update') %></button>
+<% end %>
