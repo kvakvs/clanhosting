@@ -111,8 +111,8 @@ read_set_object(Worker, ObjectId) ->
   end.
 
 make_id() ->
-  {ok, Id} = flake_server:id(),
-  libe_hex:bin_to_hex(Id).
+  {ok, <<Id:128>>} = flake_server:id(),
+  libe_hex:integer_to_base62(Id).
 
 -spec add_to_index(TypeKey :: type_and_key(), AddIds :: [set_value()]) -> ok.
 add_to_index(TypeKey, AddIds) ->

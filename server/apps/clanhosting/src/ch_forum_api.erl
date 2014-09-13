@@ -20,7 +20,16 @@ add_forum(ClanId, Fields) ->
 
 delete_forum(ClanId, ForumId) ->
   {reply, ok} = remove_from_index(ClanId, [ForumId]),
-  {reply, ok} = delete_one(ClanId, ForumId).
+  {reply, ok} = delete_one(ClanId, ForumId),
+  case ch_thread_api:read_index(ClanId, ForumId) of
+    {reply, {bert, nil}} -> ok;
+    {reply, Threads} ->
+      lists:foreach(fun(T) ->
+          ch_thread_api:delete_thread(ClanId, ForumId, T)
+        end,
+        Threads)
+  end,
+  {reply, ok}.
 
 -spec add_to_index(ClanId :: integer(), AddIds :: [ch_db:set_value()])
       -> {reply, ok}.
@@ -62,8 +71,7 @@ delete_one(ClanId, Id) ->
     {error, _E} -> {reply, {bert, nil}}
   end.
 
--spec read_index(ClanId :: integer())
-      -> {reply, {bert, dict, proplists:proplist()}}.
+-spec read_index(ClanId :: integer()) -> {reply, list(binary())}.
 read_index(ClanId) ->
   case riak_pool:with_worker(fun(Worker) ->
     ch_db:read_set_object(Worker, {forum, ClanId})

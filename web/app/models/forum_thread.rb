@@ -8,6 +8,9 @@ class ForumThread
   def self.list(clan_id, forum_id)
     rpc = Rails.application.get_rpc
     f_index = rpc.call.ch_thread_api.read_index(clan_id, forum_id) || []
+    f_index.sort!
+
+    # TODO: Paginate
 
     f_index.map! { |thread_id|
       read_one(clan_id, forum_id, thread_id)

@@ -1,14 +1,24 @@
 <div class="row">
-  <div class="col-lg-12">
-    <h3><%= post['title'] %></h3>
-  </div>
-</div>
-<div class="row">
   <div class="col-lg-3">
     By <%= post['created_by'] %><br/>
     Updated at <%= post['updated_at'] %>
   </div>
   <div class="col-lg-9">
-    <%= post['body'] %>
+    <div class="col-lg-9">
+      <h3><%= post['title'] %></h3>
+    </div>
+
+    <div class="row"><div class="col-lg-12">
+      <%= post['body'] %>
+    </div></div>
+
+    <div class="row"><div class="col-lg-12 text-right">
+      <%= link_to 'Reply',
+                  new_post_path(:thread_id => params[:id],
+                                :reply_to => post['id']),
+                  :class => 'btn btn-default btn-xs' %>
+      <%= link_to 'Edit', '#', :class => 'btn btn-default btn-xs' %>
+      <%= link_to 'Report', '#', :class => 'btn btn-warning btn-xs' %>
+    </div></div>
   </div>
 </div>

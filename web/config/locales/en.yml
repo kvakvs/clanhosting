@@ -61,6 +61,11 @@ en:
       alliance_forums: "Allied Clans' Forums"
       reply_button: "Post Reply"
       back_to_forum_btn: "Back to discussions list"
+      post_title: "Post Title"
+      post_title_hint: "Change post title if you wish, or leave unchanged"
+      post_body: "Message"
+      post_body_hint: "Enter reply message"
+      reply_page_title: "Reply into Discussion Thread"
   page:
     home:
       title: "Welcome"

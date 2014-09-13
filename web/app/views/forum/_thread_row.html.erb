@@ -1,6 +1,9 @@
-<li class="list-group-item">
-  <%= link_to thread['title'],
+<div class="row">
+  <div class="col-lg-8"><%= link_to thread['title'],
                 thread_path(:clan_id => session[:user_clan],
                             :forum_id => forum['id'],
                             :id => thread['id'])
-%></li>
+  %></div>
+  <div class="col-lg-2"><%= thread['created_by'] %></div>
+  <div class="col-lg-2"><%= thread['updated_at'] %></div>
+</div>

@@ -62,6 +62,11 @@ ru:
       alliance_forums: "Форумы альянса"
       reply_button: "Ответить"
       back_to_forum_btn: "Вернуться к списку обсуждений"
+      post_title: "Заголовок вашего сообщения"
+      post_title_hint: "Измените заголовок, если желаете, или оставьте как есть"
+      post_body: "Ваше сообщение"
+      post_body_hint: "Введите текст ответа"
+      reply_page_title: "В ответ на обсуждение"
   page:
     home:
       title: "Добро пожаловать"

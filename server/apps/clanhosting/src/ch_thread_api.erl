@@ -21,7 +21,16 @@ add_thread(ClanId, ForumId, Fields) ->
 
 delete_thread(ClanId, ForumId, ThreadId) ->
   {reply, ok} = remove_from_index(ClanId, ForumId, [ThreadId]),
-  {reply, ok} = delete_one(ClanId, ForumId, ThreadId).
+  {reply, ok} = delete_one(ClanId, ForumId, ThreadId),
+  case ch_post_api:read_index(ClanId, ThreadId) of
+    {reply, {bert, nil}} -> ok;
+    {reply, Posts} ->
+      lists:foreach(fun(P) ->
+          ch_post_api:delete_post(ClanId, ThreadId, P)
+        end,
+        Posts)
+  end,
+  {reply, ok}.
 
 -spec add_to_index(_ClanId :: integer(), ForumId :: binary(),
     AddIds :: [ch_db:set_value()]) -> {reply, ok}.

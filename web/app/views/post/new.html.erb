@@ -1,0 +1,22 @@
+<h1><%= t 'app.forums.reply_page_title' %></h1>
+
+<%= form_tag main_app.post_index_path,
+             :role => 'form', :method => 'post' do %>
+  <div class="form-group">
+    <label for="title"><%= t('app.forums.post_title') %></label>
+    <input type="text" class="form-control" id="title" name="title"
+          placeholder="<%= t('app.forums.post_title_hint') %>"
+          value="<%= @base_title %>">
+  </div>
+  <div class="form-group">
+    <label for="body"><%= t('app.forums.post_body') %></label>
+    <textarea class="form-control" id="body" name="body"
+              placeholder="<%= t('app.forums.post_body_hint') %>"
+        ><%= @base_body %></textarea>
+  </div>
+
+  <%= link_to t('cp.cancel_btn'), thread_path(:id => params[:thread_id]),
+        :class => 'btn btn-danger' %>
+  <button type="submit" class="btn btn-primary"><%=
+      t('app.forums.reply_button') %></button>
+<% end %>

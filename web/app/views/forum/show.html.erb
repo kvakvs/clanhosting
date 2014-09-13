@@ -10,10 +10,8 @@
                 :class => 'btn btn-primary' %></p>
 
 <!-- begin threads -->
-<ul class="list-group">
 <% @threads.each do |thread| %>
   <%= render :partial => 'thread_row',
-            :locals => {:thread => thread, :forum => @forum} %>
+             :locals => {:thread => thread, :forum => @forum} %>
 <% end %>
-</ul>
 <!-- end threads -->

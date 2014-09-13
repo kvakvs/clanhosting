@@ -23,18 +23,22 @@ class ThreadController < ApplicationController
                :alert => t('app.forums.body_empty') if params[:body]==''
 
     forum_fields = {:title => params[:title],
+                    :clan_id => session[:user_clan],
+                    :forum_id => params[:forum_id],
                     :created_by => session[:user_account] }
     thread_id = ForumThread.create(session[:user_clan],
                                    params[:forum_id],
                                    forum_fields)
+    # TODO: call post_controller.create instead
     post_fields = {:body => params[:body],
                    :title => params[:title],
+                   :clan_id => session[:user_clan],
                    :thread_id => thread_id,
                    :created_by => session[:user_account] }
     ForumPost.create(session[:user_clan],
                              thread_id,
                              post_fields)
-    redirect_to forum_index_path(:clan_id => session[:user_clan],
-                                 :forum_id => params[:forum_id])
+    redirect_to forum_path(:clan_id => session[:user_clan],
+                           :id => params[:forum_id])
   end
 end

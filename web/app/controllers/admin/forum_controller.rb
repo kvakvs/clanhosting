@@ -17,9 +17,11 @@ class Admin::ForumController < ApplicationController
     return unless require_acl('manage_forums') or require_clan_admin
     return redirect_to new_admin_forum_path,
                        :alert => t('cp.forums.fill_at_least_title') if params[:title]==''
+    clan_id = session[:user_clan]
     fields = {:title => params[:title],
+              :clan_id => clan_id,
               :desc => params[:desc] || '' }
-    Forum::create(session[:user_clan], fields)
+    Forum::create(clan_id, fields)
     redirect_to admin_forum_index_path
   end
 

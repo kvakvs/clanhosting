@@ -7,7 +7,7 @@
 
 -compile([native, {hipe, [o3]}]).
 
--export([bin_to_hex/1]).
+-export([bin_to_hex/1, integer_to_base62/1]).
 
 bin_to_hex(B) when is_binary(B) ->
   bin_to_hex(B, <<>>).
@@ -68,3 +68,15 @@ hex(X) ->
           16#4545, 16#4546, 16#4630, 16#4631, 16#4632, 16#4633, 16#4634,
           16#4635, 16#4636, 16#4637, 16#4638, 16#4639, 16#4641, 16#4642,
           16#4643, 16#4644, 16#4645, 16#4646}).
+
+integer_to_base62(X) -> iolist_to_binary(integer_to_base62(X, [])).
+
+%% @private
+integer_to_base62(0, Accum) -> Accum;
+integer_to_base62(X, Accum) ->
+  integer_to_base62(X div 62, [digit_base62(X rem 62), Accum]).
+
+%% @private
+digit_base62(X) when X < 10 -> $0 + X;
+digit_base62(X) when X < 10+26 -> $A + X - 10;
+digit_base62(X)  -> $a + X - 36.
