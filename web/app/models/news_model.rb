@@ -1,4 +1,4 @@
-class NewsfeedItem
+class NewsModel
   def self.all_for_clan(clan_id)
     rpc = Rails.application.get_rpc
     news = rpc.call.ch_newsfeed_api.read_index(clan_id) || []

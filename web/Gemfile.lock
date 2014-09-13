@@ -34,6 +34,7 @@ GEM
     arel (5.0.1.20140414130214)
     autoprefixer-rails (3.0.0.20140821)
       execjs
+    bb-ruby (1.0.4)
     bert (1.1.6)
     bertrpc (1.3.1)
       bert (>= 1.1.0, < 2.0.0)
@@ -126,6 +127,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store
   autoprefixer-rails
+  bb-ruby
   bertrpc
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)

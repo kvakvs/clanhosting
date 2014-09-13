@@ -66,6 +66,8 @@ en:
       post_body: "Message"
       post_body_hint: "Enter reply message"
       reply_page_title: "Reply into Discussion Thread"
+      created_by: "Created by"
+      updated_at: "Last updated"
   page:
     home:
       title: "Welcome"

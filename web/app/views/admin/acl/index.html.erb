@@ -5,7 +5,7 @@
 <table class="table table-condensed">
   <tr>
     <th><%= t 'cp.acl.member_name' %></th>
-    <% AccessRights::ACLS.each do |acl_name| %>
+    <% AclModel::ACLS.each do |acl_name| %>
     <th><%= t('cp.acl.acl_' + acl_name) %></th>
     <% end %>
   </tr>

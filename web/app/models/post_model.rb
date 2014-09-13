@@ -1,4 +1,4 @@
-class ForumPost
+class PostModel
   # Поля:
   # string id (задаётся при чтении прямо здесь, не хранится в БД)
   # string title utf8
@@ -24,6 +24,7 @@ class ForumPost
     value = rpc.call.ch_post_api.read_one(clan_id, thread_id, post_id)
     return nil if value.nil?
     value['id'] = post_id
+    value['title'] = value['title'].force_encoding('utf-8')
     value['body'] = value['body'].force_encoding('utf-8')
     value
   end

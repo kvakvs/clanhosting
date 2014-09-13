@@ -1,4 +1,4 @@
-class AccessRights
+class AclModel
   ACLS = %w(clan_admin edit_forums manage_forum moderate_forums post_news alliances)
 
   def self.read_for_user(clan_id, user_id)

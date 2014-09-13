@@ -1,3 +1,5 @@
+require 'bb-ruby'
+
 class PostController < ApplicationController
   include PostHelper
 
@@ -5,7 +7,7 @@ class PostController < ApplicationController
     # TODO: Check base_title/body access rights
     @base_title = @base_body = ''
     unless params[:reply_to].nil?
-      base_post = ForumPost.read_one(session[:user_clan],
+      base_post = PostModel.read_one(session[:user_clan],
                                      params[:thread_id],
                                      params[:reply_to])
       unless base_post.nil?
@@ -16,13 +18,14 @@ class PostController < ApplicationController
   end
 
   def create
-    post_fields = {:body => params[:body],
+    post_fields = {:body => params[:body].bbcode_to_html,
                    :title => params[:title],
                    :clan_id => session[:user_clan],
                    :thread_id => params[:thread_id],
                    :created_by => session[:user_account] }
-    ForumPost.create(session[:user_clan],
+    PostModel.create(session[:user_clan],
                      params[:thread_id],
                      post_fields)
+    redirect_to thread_path(:id => params[:thread_id])
   end
 end

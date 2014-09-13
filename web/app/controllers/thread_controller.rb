@@ -1,14 +1,18 @@
+require 'bb-ruby'
+
 class ThreadController < ApplicationController
+  include PostHelper
+
   def index
-    # @forums = Forum::list(session[:user_clan])
+    # @forums = ForumModel::list(session[:user_clan])
   end
 
   def show
     clan_id = session[:user_clan]
     forum_id = params[:forum_id]
     thread_id = params[:id]
-    @thread = ForumThread.read_one(clan_id, forum_id, thread_id)
-    @posts = ForumPost.list(clan_id, thread_id)
+    @thread = ThreadModel.read_one(clan_id, forum_id, thread_id)
+    @posts = PostModel.list(clan_id, thread_id)
   end
 
   def create
@@ -26,16 +30,16 @@ class ThreadController < ApplicationController
                     :clan_id => session[:user_clan],
                     :forum_id => params[:forum_id],
                     :created_by => session[:user_account] }
-    thread_id = ForumThread.create(session[:user_clan],
+    thread_id = ThreadModel.create(session[:user_clan],
                                    params[:forum_id],
                                    forum_fields)
     # TODO: call post_controller.create instead
-    post_fields = {:body => params[:body],
+    post_fields = {:body => params[:body].bbcode_to_html,
                    :title => params[:title],
                    :clan_id => session[:user_clan],
                    :thread_id => thread_id,
                    :created_by => session[:user_account] }
-    ForumPost.create(session[:user_clan],
+    PostModel.create(session[:user_clan],
                              thread_id,
                              post_fields)
     redirect_to forum_path(:clan_id => session[:user_clan],

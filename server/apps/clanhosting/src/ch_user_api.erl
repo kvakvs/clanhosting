@@ -6,19 +6,19 @@
 -module(ch_user_api).
 
 %% API
--export([after_login/3,
-  get_session/1, logged_out/1]).
+-export([query_account_info/3,
+  get_session/1, logged_out/1, get_username/2]).
 
 %% @doc Возвращает информацию об игроке
--spec after_login(AccountId :: integer(), Token :: binary(), Lang :: binary())
-      -> {reply, {bert, dict, proplists:proplist()}}.
-after_login(AccountId, Token, Lang) ->
+-spec query_account_info(AccountId :: integer(), Token :: binary(),
+    Lang :: binary()) -> {reply, {bert, dict, proplists:proplist()}}.
+query_account_info(AccountId, Token, _Lang) ->
   QueryFun = fun() ->
           Url = ch_http:format_url( ch_conf:wg_api_url("account", "info")
                                   , [ {"access_token", binary_to_list(Token)}
                                     , {"application_id", ch_conf:wg_app_id()}
                                     , {"account_id", integer_to_list(AccountId)}
-                                    , {"language", binary_to_list(Lang)}
+                                    %, {"language", binary_to_list(Lang)}
                                     ]),
           {ok, AccountInfoList} = ch_lib:json_api_request(get, Url),
           %% Данные находятся в info["data"][account_id]
@@ -29,6 +29,10 @@ after_login(AccountId, Token, Lang) ->
         end,
   AccountInfo = ch_lib:memoize(ch_user_cache, AccountId, QueryFun),
   {reply, {bert, dict, AccountInfo}}.
+
+get_username(AccountId, Token) ->
+  {reply, {bert, dict, A}} = query_account_info(AccountId, Token, <<"en">>),
+  {reply, proplists:get_value(<<"nickname">>, A)}.
 
 %% @!doc Создаёт новую сессию с айди и данными аккаунта. Для одновременного
 %% вызова account_info и new_session можно использовать after_login(id)

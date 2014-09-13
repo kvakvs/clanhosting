@@ -4,6 +4,6 @@
                             :forum_id => forum['id'],
                             :id => thread['id'])
   %></div>
-  <div class="col-lg-2"><%= thread['created_by'] %></div>
+  <div class="col-lg-2"><%= get_username(thread['created_by']) %></div>
   <div class="col-lg-2"><%= thread['updated_at'] %></div>
 </div>

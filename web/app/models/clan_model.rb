@@ -1,4 +1,4 @@
-class Clan
+class ClanModel
   # Assumes clan is cached in session
   def self.get_members_helper clan_info
     clan_members = []

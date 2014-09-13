@@ -1,4 +1,4 @@
-<h1><%= @forum['title'] %></h1>
+<h1><%= @forum_model['title'] %></h1>
 
 <% if @threads.empty? %>
   <%= t 'app.forums.no_threads' %>
@@ -6,12 +6,12 @@
 
 <p><%= link_to t('app.forums.new_thread'),
                 new_thread_path(:clan_id => session[:user_clan],
-                                :forum_id => @forum['id']),
+                                :forum_id => @forum_model['id']),
                 :class => 'btn btn-primary' %></p>
 
 <!-- begin threads -->
 <% @threads.each do |thread| %>
   <%= render :partial => 'thread_row',
-             :locals => {:thread => thread, :forum => @forum} %>
+             :locals => {:thread => thread, :forum => @forum_model} %>
 <% end %>
 <!-- end threads -->

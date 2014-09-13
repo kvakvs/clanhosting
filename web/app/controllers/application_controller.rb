@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       if @current_user
         @current_user
       else
-        u = User.new(:id => session[:user_account],)
+        u = UserModel.new(:id => session[:user_account],)
         @current_user = u
       end
     else

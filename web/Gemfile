@@ -52,3 +52,4 @@ gem 'autoprefixer-rails'
 # gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
 
 gem 'bertrpc'
+gem 'bb-ruby'

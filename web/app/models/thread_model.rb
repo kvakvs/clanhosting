@@ -1,4 +1,4 @@
-class ForumThread
+class ThreadModel
   # Поля:
   # string id (задаётся при чтении прямо здесь, не хранится в БД)
   # string title utf8

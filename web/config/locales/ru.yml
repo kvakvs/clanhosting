@@ -67,6 +67,8 @@ ru:
       post_body: "Ваше сообщение"
       post_body_hint: "Введите текст ответа"
       reply_page_title: "В ответ на обсуждение"
+      created_by: "Автор"
+      updated_at: "Создано"
   page:
     home:
       title: "Добро пожаловать"

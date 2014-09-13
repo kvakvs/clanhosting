@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-3">
-    By <%= post['created_by'] %><br/>
-    Updated at <%= post['updated_at'] %>
+    <%= t('app.forums.created_by') + ' ' + get_username(post['created_by']) %><br/>
+    <%= t('app.forums.updated_at') %> <%= post['updated_at'] %>
   </div>
   <div class="col-lg-9">
     <div class="col-lg-9">

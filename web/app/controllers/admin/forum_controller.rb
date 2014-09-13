@@ -5,7 +5,7 @@ class Admin::ForumController < ApplicationController
   def index
     return unless require_acl('manage_forums') or require_clan_admin
 
-    @forums = Forum.list(session[:user_clan])
+    @forums = ForumModel.list(session[:user_clan])
   end
 
   def new
@@ -21,34 +21,34 @@ class Admin::ForumController < ApplicationController
     fields = {:title => params[:title],
               :clan_id => clan_id,
               :desc => params[:desc] || '' }
-    Forum::create(clan_id, fields)
+    ForumModel::create(clan_id, fields)
     redirect_to admin_forum_index_path
   end
 
   def destroy
     return unless require_acl('manage_forums') or require_clan_admin
-    Forum.delete(session[:user_clan], params[:id])
+    ForumModel.delete(session[:user_clan], params[:id])
     redirect_to admin_forum_index_path, :notice => t('cp.forums.deleted')
   end
 
   def edit
     return unless require_acl('manage_forums') or require_clan_admin
-    @forum = Forum.read(session[:user_clan], params[:id])
+    @forum_model = ForumModel.read(session[:user_clan], params[:id])
   end
 
   def update
     return unless require_acl('manage_forums') or require_clan_admin
     fields = {:title => params[:title],
               :desc => params[:desc] || ''}
-    Forum.update(session[:user_clan], params[:id], fields)
+    ForumModel.update(session[:user_clan], params[:id], fields)
     redirect_to admin_forum_index_path, :notice => t('cp.forums.updated')
   end
 
   # def index
-  #   @forums = Forum::list(session[:user_clan])
+  #   @forums = ForumModel::list(session[:user_clan])
   # end
   #
   # def show
-  #   @threads = ForumThread::list(session[:user_clan], params[:forum_id])
+  #   @threads = ThreadModel::list(session[:user_clan], params[:forum_id])
   # end
 end
