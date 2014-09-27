@@ -7,13 +7,14 @@
 -module(ch_clan_api).
 
 %% API
--export([ clan_info/3
+-export([clan_info/3
         , list_alliances/1
         , add_alliance/2
         , break_alliance/2
         , list_alliance_requests/1
         , request_alliance/2
         , delete_alliance_request/2
+        , search_clans/2
         ]).
 
 %% @doc Возвращает информацию об игроке из кэша или из базы данных Wargaming
@@ -22,10 +23,10 @@
 clan_info(ClanId, Token, Lang) ->
   QueryFun = fun() ->
             Url = ch_http:format_url( ch_conf:wg_api_url("clan", "info")
-                                    , [ {"access_token", binary_to_list(Token)}
+                                    , [ {"access_token", libe_types:as_string(Token)}
                                       , {"application_id", ch_conf:wg_app_id()}
-                                      , {"clan_id", integer_to_list(ClanId)}
-                                      , {"language", binary_to_list(Lang)}
+                                      , {"clan_id", libe_types:as_string(ClanId)}
+                                      , {"language", libe_types:as_string(Lang)}
                                       ]),
             {ok, ClanInfoList} = ch_lib:json_api_request(get, Url),
             %% Данные находятся в info["data"][clan_id]
@@ -36,6 +37,24 @@ clan_info(ClanId, Token, Lang) ->
           end,
   ClanInfo = ch_lib:memoize(ch_clan_cache, ClanId, QueryFun),
   {reply, {bert, dict, ClanInfo}}.
+
+%% @doc Возвращает информацию об игроке из кэша или из базы данных Wargaming
+-spec search_clans(Query :: binary(), Lang :: binary())
+      -> {reply, list({bert, dict, proplists:proplist()})}.
+search_clans(Query, Lang) ->
+  QueryFun = fun() ->
+    Url = ch_http:format_url( ch_conf:wg_api_url("clan", "list")
+      , [ {"application_id", ch_conf:wg_app_id()}
+        , {"search", libe_types:as_string(Query)}
+        , {"language", libe_types:as_string(Lang)}
+        ]),
+    {ok, ClanInfoList} = ch_lib:json_api_request(get, Url),
+    %% Данные находятся в info["data"][clan_id]
+    ClansFound = proplists:get_value(<<"data">>, ClanInfoList),
+    lists:map(fun(C) -> ch_lib:proplist_to_bert_dict(C, []) end, ClansFound)
+  end,
+  Clans = ch_lib:memoize(ch_clan_search_cache, Query, QueryFun),
+  {reply, lists:map(fun(C) -> {bert, dict, C} end, Clans)}.
 
 %% @doc Ошибки быть не может, пустой список если данных в БД нет
 list_alliances(ClanId) ->

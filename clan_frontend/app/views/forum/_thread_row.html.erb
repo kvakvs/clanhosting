@@ -5,5 +5,8 @@
                              :id => thread['id'])
   %></td>
   <td><%= get_username(thread['created_by']) %></td>
-  <td><%= thread['updated_at'] %></td>
+  <td>
+    <%= distance_of_time_in_words_to_now(thread['created_at_d'], {include_seconds: true}) %>
+    <%= t 'app.forums.ago' %>
+  </td>
 </tr>

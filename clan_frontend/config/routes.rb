@@ -35,7 +35,9 @@ Rails.application.routes.draw do
   end
   #----------------------------------------
 
+  post '/clan_search' => 'home#clan_search'
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do
+    get '/' => 'home#clan_index', :as => :clan_index
     resources :forum, :only => [:index, :show]
     scope '/forum/:forum_id/' do
       resources :thread, :only => [:index, :new, :show, :create]

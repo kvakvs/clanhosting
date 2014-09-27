@@ -73,6 +73,12 @@ en:
       edit_button: "Edit"
       report_button: "Report"
       forum_empty: "This forum is mepty now. But you can create new discussion thread!"
+    search:
+      find_btn: "Search Clans"
+      search_box_ph: "Find what?"
+      results: "Search Results"
+      empty_request: "Search query was empty, will not search like this."
+      found_n_results: "Found %{count} results."
   page:
     home:
       title: "Welcome"
@@ -122,6 +128,8 @@ en:
       confirm_reject: "Please confirm that you want to reject clan alliance request?"
       no_requests: "At this moment you have no incoming alliance offers."
       no_allied_clans: "You have no allied clans at the moment."
+      how_to: "To create an alliance, find another clan using search box, using some search words, title or its numeric ID (if you know it)."
+      what_gives: "Alliances allow you to open some of your forums to friendly clans' members. This can be used, for example, to organize cooperative battles or events."
     forums:
       about_short: "Forum control allows you to restructure forums of your clan, also has some options and moderation tools."
       forum_title: "Forum Title"
@@ -140,10 +148,5 @@ en:
     forum:
       confirm_delete: "Do you want to delete the following forum?"
     cancel_btn: "Cancel"
-    dropcap:
-      forums: "Fm"
-      alliances: "CA"
-      news: "Nws"
-      acl: "Acl"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

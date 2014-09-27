@@ -1,8 +1,11 @@
 <h1><%= t 'cp.manage_alliances' %></h1>
 
-<p><%= t 'cp.alliance.non_transitive' %></p>
+<p><%= t 'cp.alliance.what_gives' %>
+  <%= t 'cp.alliance.non_transitive' %></p>
 
 <h2><%= t 'cp.alliance.allied_clans' %></h2>
+
+<p><%= t 'cp.alliance.how_to' %></p>
 
 <% unless @vars[:alliances].empty? %>
 <table class="table table-condensed">

@@ -23,6 +23,8 @@ class ThreadModel
     return nil if value.nil?
     value['id'] = thread_id
     value['title'] = value['title'].force_encoding('utf-8')
+    value['created_at_d'] = DateTime.iso8601(value['created_at'])
+    value['updated_at_d'] = DateTime.iso8601(value['updated_at'])
     value
   end
 

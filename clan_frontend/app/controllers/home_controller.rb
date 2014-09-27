@@ -73,4 +73,16 @@ class HomeController < ApplicationController
     m = clan_info['members'][session[:user_account].to_s]
     session[:is_clan_leader] = (not m.nil? and m['role'] == 'leader')
   end
+
+  def clan_search
+    redirect_to request.referer,
+                :alert => t('app.search.empty_request') if params['search'].empty?
+    lang = session[:locale] || 'en'
+    @vars = {}
+    @vars[:clans] = ClanModel.search_clans(params['search'], lang)
+  end
+
+  def clan_index
+
+  end
 end

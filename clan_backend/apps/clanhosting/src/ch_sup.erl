@@ -25,10 +25,10 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {one_for_one, 5, 10},
-      [
-        cache_worker(ch_session_cache, worker, cache, [[{n, 6}, {ttl, 3600}]]),
-        cache_worker(ch_clan_cache, worker, cache, [[{n, 6}, {ttl, 3600}]]),
-        cache_worker(ch_user_cache, worker, cache, [[{n, 6}, {ttl, 3600}]])
-      ]} }.
-
+  {ok, { {one_for_one, 5, 10},
+    [ cache_worker(ch_session_cache, worker, cache, [[{n, 6}, {ttl, 3600}]])
+    , cache_worker(ch_clan_cache, worker, cache, [[{n, 6}, {ttl, 3600}]])
+    , cache_worker(ch_user_cache, worker, cache, [[{n, 6}, {ttl, 3600}]])
+    , cache_worker(ch_clan_search_cache, worker, cache, [[{n, 4}, {ttl, 300}]])
+    ]}
+  }.

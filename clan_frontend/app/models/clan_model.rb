@@ -38,4 +38,15 @@ class ClanModel
     rpc = Rails.application.get_rpc
     rpc.call.ch_clan_api.delete_alliance_request(clan1, clan2)
   end
+
+  def self.search_clans(query, lang)
+    rpc = Rails.application.get_rpc
+    clans = rpc.call.ch_clan_api.search_clans(query, lang)
+    clans.map! { |clan|
+      clan['abbreviation'] = clan['abbreviation'].force_encoding('utf-8')
+      clan['name']         = clan['name'].force_encoding('utf-8')
+      clan['motto']        = clan['motto'].force_encoding('utf-8')
+      clan
+    }
+  end
 end

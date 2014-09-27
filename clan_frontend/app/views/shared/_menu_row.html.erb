@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-8">
     <%= link_to t('app.frontpage'), main_app.root_path,
                 :class => 'btn btn-default' %>
     <% if session[:user_clan] != 'null' and
@@ -16,8 +16,27 @@
       <%= t('app.no_site_yet') %>
     <% end %>
   </div>
+  <div class="col-lg-3">
+    <!-- search -->
+    <%= form_tag clan_search_path, :role => 'form',
+                 :method => 'post', :class => 'form-inline'  do %>
+      <input type="text" name="search" class="form-control" style="width: 60%"
+        placeholder="<%= t 'app.search.search_box_ph' %>">
+      <button type="submit" class="btn btn-default" style="width: 35%">
+        <%= t 'app.search.find_btn' %></button>
+    <% end %>
+  </div>
 
-  <div class="col-lg-6 text-right">
+  <div class="col-lg-1 text-right">
+    <!-- language -->
+    <%= t 'app.lang_switch' %>
+    <%= link_to 'RU', :locale => 'ru' %>
+    <%= link_to 'EN', :locale => 'en' %>
+  </div><!--col-->
+</div>
+
+<div class="row">
+  <div class="col-lg-12 text-right">
     <% if user_signed_in? %>
       <%=t 'app.logged_in_as' %> <strong><%= session[:user_nickname] %></strong>,
       <% if session[:user_clan] != 'null' %>
@@ -39,11 +58,5 @@
         <input type="submit" value="<%=t 'app.login_with_wot_id' %>" class="btn btn-primary" />
       </form>
     <% end %>
-  </div><!--col-->
-
-  <div class="col-lg-2 text-right">
-    <%= t 'app.lang_switch' %>
-    <%= link_to 'RU', main_app.root_url(:locale => 'ru') %>
-    <%= link_to 'EN', main_app.root_url(:locale => 'en') %>
   </div><!--col-->
 </div><!--row-->
