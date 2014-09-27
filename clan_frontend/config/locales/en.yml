@@ -56,7 +56,7 @@ en:
       add_thread_btn: "Create Thread"
       title_empty: "Title field is empty"
       body_empty: "Message body should not be empty"
-      clan_forums: "Clan Forums"
+      clan_forums: "Forums for clan [%{abbreviation}] %{name}"
       alliance_forums: "Allied Clans' Forums"
       reply_button: "Post Reply"
       back_to_forum_btn: "Back to discussions list"
@@ -74,11 +74,19 @@ en:
       report_button: "Report"
       forum_empty: "This forum is mepty now. But you can create new discussion thread!"
     search:
-      find_btn: "Search Clans"
+      find_btn: "Find Clans"
       search_box_ph: "Find what?"
       results: "Search Results"
       empty_request: "Search query was empty, will not search like this."
       found_n_results: "Found %{count} results."
+      members_count: "Members: %{count}"
+    alliance:
+      in_alliance: "This and your clan are in alliance."
+      not_in_alliance: "This clan is not allied with yours. Clan leaders can offer alliance to other clans."
+      this_is_your_clan: "You are member of this clan."
+    clan:
+      wg_armory: "Clan page on Wargaming website"
+      wg_clan_battles: "Clan battles on Wargaming website"
   page:
     home:
       title: "Welcome"
@@ -131,7 +139,7 @@ en:
       how_to: "To create an alliance, find another clan using search box, using some search words, title or its numeric ID (if you know it)."
       what_gives: "Alliances allow you to open some of your forums to friendly clans' members. This can be used, for example, to organize cooperative battles or events."
       ally_with: "Offer Alliance"
-      clan_has_no_site: "Can't offer alliance, as clan has no website here."
+      clan_has_no_site: "Can't offer them alliance, as that clan has no website with us."
     forums:
       about_short: "Forum control allows you to restructure forums of your clan, also has some options and moderation tools."
       forum_title: "Forum Title"

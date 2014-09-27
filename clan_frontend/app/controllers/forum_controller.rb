@@ -1,7 +1,9 @@
 class ForumController < ApplicationController
   def index
     @vars = {}
-    @vars[:forums] = ForumModel::list(session[:user_clan])
+    @vars[:clan_id]   = Integer(params[:clan_id])
+    @vars[:clan_info] = ClanModel.clan_info(@vars[:clan_id])
+    @vars[:forums]    = ForumModel::list(session[:user_clan])
   end
 
   def show

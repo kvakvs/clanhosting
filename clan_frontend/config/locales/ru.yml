@@ -57,7 +57,7 @@ ru:
       add_thread_btn: "Создать обсуждение"
       title_empty: "Поле заголовка не должно оставаться пустым"
       body_empty: "Текст сообщения не должен оставаться пустым"
-      clan_forums: "Форумы клана"
+      clan_forums: "Форумы клана [%{abbreviation}] %{name}"
       alliance_forums: "Форумы альянса"
       reply_button: "Ответить"
       back_to_forum_btn: "Вернуться к списку обсуждений"
@@ -81,6 +81,14 @@ ru:
       results: "Результаты поиска"
       empty_request: "Поисковый запрос оказался пустым, поиск не выполнен."
       found_n_results: "Найдено результатов: %{count}"
+      members_count: "Участников: %{count}"
+    alliance:
+      in_alliance: "Этот клан состоит в альянсе с вашим кланом."
+      not_in_alliance: "Этот клан не состоит в альянсе с вашим. Командиры кланов могут предлагать альянс другим кланам."
+      this_is_your_clan: "Вы состоите в этом клане."
+    clan:
+      wg_armory: "Страница клана на сайте Wargaming"
+      wg_clan_battles: "Назначенные бои клана на сайте Wargaming"
   page:
     home:
       title: "Добро пожаловать"

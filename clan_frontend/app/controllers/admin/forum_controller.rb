@@ -5,7 +5,8 @@ class Admin::ForumController < ApplicationController
   def index
     return unless require_acl('manage_forums') or require_clan_admin
 
-    @forums = ForumModel.list(session[:user_clan])
+    @vars = {}
+    @vars[:forums]    = ForumModel.list(session[:user_clan])
   end
 
   def new

@@ -10,24 +10,8 @@
   <% @vars[:clans].each_slice(3) do |slice| %>
     <div class="row" style="margin-top: 16px; margin-bottom: 24px;">
     <% slice.each do |clan| %>
-    <div class="col-lg-4">
-      <div class="media">
-        <%= image_tag clan['emblems']['large'], :class => 'pull-left' %>
-        <h4><%= clan['link_or_title'] %></h4>
-        <p class="text-muted"><%= clan['motto'] %></p>
-        <% if @vars[:can_do_alliance] and clan['clan_id'] != session[:user_clan] %>
-          <small>
-            <% if clan['site_exists'] %>
-            <%= link_to t('cp.alliance.ally_with'),
-                          '#',
-                          :class => 'btn btn-primary'
-            %><% else %>
-            <%= t('cp.alliance.clan_has_no_site') %>
-            <% end %>
-          </small>
-      <% end %>
-      </div>
-    </div>
+    <%= render :partial => 'search_results_clan',
+               :locals => {:clan => clan} %>
     <% end %> <!-- row -->
     </div>
   <% end %> <!-- slice -->

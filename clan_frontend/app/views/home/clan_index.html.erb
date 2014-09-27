@@ -1,1 +1,58 @@
-<h1>Clan <%= params['clan_id'] %></h1>
+<div class="row">
+  <div class="col-lg-1"><%= image_tag @vars[:clan_info]['emblems']['large']  %></div>
+  <div class="col-lg-11">
+    <h3>[<%= @vars[:clan_info]['abbreviation'] %>]
+      <%= @vars[:clan_info]['name'] %></h3></div>
+</div>
+
+<hr/>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-user"></span></div>
+  <div class="col-lg-11 vcenter">
+    <%= t('app.search.members_count',
+          :count => @vars[:clan_info]['members_count'])%></div>
+</div>
+
+
+<% if ClanModel.are_in_alliance(session[:user_clan], @vars[:clan_id]) %>
+  <div class="row">
+    <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-heart"></span></div>
+    <div class="col-lg-11 vcenter"><%= t('app.alliance.in_alliance') %></div>
+  </div>
+<% else %>
+  <% if session[:user_clan] != @vars[:clan_id] %>
+    <div class="row">
+      <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-heart-empty"></span></div>
+      <div class="col-lg-11 vcenter"> <%= t('app.alliance.not_in_alliance') %></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-ok"></span></div>
+      <div class="col-lg-11 vcenter"><%= t('app.alliance.this_is_your_clan') %></div>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-tasks"></span></div>
+  <div class="col-lg-11 vcenter"><strong>
+  <%= link_to t('app.forums.clan_forums',
+                {:abbreviation => @vars[:clan_info]['abbreviation'],
+                 :name         => @vars[:clan_info]['name']}),
+              forum_index_path(:clan_id => @vars[:clan_id]) %></strong>
+</div></div>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-globe"></span></div>
+  <div class="col-lg-11 vcenter">
+    <%= link_to t('app.clan.wg_armory'),
+                "http://worldoftanks.ru/community/clans/#{@vars[:clan_id]}/" %></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-fire"></span></div>
+  <div class="col-lg-11 vcenter">
+    <%= link_to t('app.clan.wg_clan_battles'),
+                "http://worldoftanks.ru/community/clans/#{@vars[:clan_id]}/battles/" %></div>
+</div>

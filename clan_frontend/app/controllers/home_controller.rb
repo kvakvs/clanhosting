@@ -100,6 +100,8 @@ class HomeController < ApplicationController
   end
 
   def clan_index
-
+    @vars = {}
+    @vars[:clan_id]   = Integer(params[:clan_id])
+    @vars[:clan_info] = ClanModel.clan_info(@vars[:clan_id])
   end
 end

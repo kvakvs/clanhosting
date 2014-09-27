@@ -12,7 +12,7 @@
     <th><%= t 'cp.forums.sorting_id' %></th>
     <th></th>
   </tr>
-  <% @forums.each do |forum| %>
+  <% @vars[:forums].each do |forum| %>
     <tr>
       <td><%= forum['title'] %></td>
       <td><%= forum['desc'] %></td>

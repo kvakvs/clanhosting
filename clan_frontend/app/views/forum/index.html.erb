@@ -1,4 +1,7 @@
-<h1><%= t('app.forums.clan_forums') %></h1>
+<h1><%= t('app.forums.clan_forums',
+          {:abbreviation => @vars[:clan_info]['abbreviation'],
+           :name         => @vars[:clan_info]['name']}
+        ) %></h1>
 
 <% @vars[:forums].each do |forum| %>
   <div class="panel panel-default">

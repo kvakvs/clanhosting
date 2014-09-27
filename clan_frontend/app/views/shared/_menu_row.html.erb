@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-7">
     <%= link_to t('app.frontpage'), main_app.root_path,
                 :class => 'btn btn-default' %>
     <% if session[:user_clan] != 'null' and
@@ -27,11 +27,16 @@
     <% end %>
   </div>
 
-  <div class="col-lg-1 text-right">
+  <div class="col-lg-2 text-right">
     <!-- language -->
     <%= t 'app.lang_switch' %>
-    <%= link_to 'RU', :locale => 'ru' %>
-    <%= link_to 'EN', :locale => 'en' %>
+    <% if request.method == 'GET' %>
+      <%= link_to 'RU', :locale => 'ru' %>
+      <%= link_to 'EN', :locale => 'en' %>
+    <% else %>
+      <%= link_to 'RU', root_path(:locale => 'ru') %>
+      <%= link_to 'EN', root_path(:locale => 'en') %>
+    <% end %>
   </div><!--col-->
 </div>
 
