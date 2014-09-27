@@ -130,6 +130,8 @@ en:
       no_allied_clans: "You have no allied clans at the moment."
       how_to: "To create an alliance, find another clan using search box, using some search words, title or its numeric ID (if you know it)."
       what_gives: "Alliances allow you to open some of your forums to friendly clans' members. This can be used, for example, to organize cooperative battles or events."
+      ally_with: "Offer Alliance"
+      clan_has_no_site: "Can't offer alliance, as clan has no website here."
     forums:
       about_short: "Forum control allows you to restructure forums of your clan, also has some options and moderation tools."
       forum_title: "Forum Title"

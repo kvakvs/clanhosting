@@ -80,6 +80,23 @@ class HomeController < ApplicationController
     lang = session[:locale] || 'en'
     @vars = {}
     @vars[:clans] = ClanModel.search_clans(params['search'], lang)
+    @vars[:clans].map! { |clan|
+      formatted_title = "[#{clan['abbreviation']}] #{clan['name']}"
+      if SiteModel.exists(clan['clan_id'])
+        clan['site_exists'] = true
+        clan['link_or_title'] =
+            view_context.link_to formatted_title,
+                                 clan_index_path(:clan_id => clan['clan_id'])
+      else
+        clan['site_exists'] = false
+        clan['link_or_title'] = formatted_title
+      end
+      clan
+    }
+
+    @vars[:can_do_alliance] = AclModel.has_access(session[:user_clan],
+                                                  'alliances',
+                                                  session[:user_account])
   end
 
   def clan_index
