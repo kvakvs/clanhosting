@@ -1,0 +1,18 @@
+<h1><%= @vars[:thread]['title'] %></h1>
+
+<p>
+    <%= link_to t('app.forums.back_to_forum_btn'),
+                forum_path(:id => params[:forum_id]),
+                :class => 'btn btn-default' %>
+    <%= link_to t('app.forums.reply_button'),
+                new_post_path(:thread_id => params[:id]),
+                :class => 'btn btn-primary' %>
+</p>
+
+<hr/>
+<!-- begin posts -->
+<% @vars[:posts].each do |post| %>
+  <%= render :partial => 'show_post',
+             :locals => { :post => post } %>
+<% end %>
+<!-- end posts -->

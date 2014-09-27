@@ -1,0 +1,24 @@
+<h1><%= t('app.forums.clan_forums') %></h1>
+
+<% @vars[:forums].each do |forum| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3><%= link_to forum['title'],
+                      forum_path(:clan_id => session[:user_clan],
+                                 :id => forum['id'])
+      %></h3>
+    </div>
+    <% if forum['desc'] != '' %>
+      <div class="panel-body">
+        <p><%= forum['desc'] %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% unless @vars[:forums] %>
+  <p><%= t 'app.forums.no_forums' %></p>
+<% end %>
+
+<h1><%= t('app.forums.alliance_forums') %></h1>
+
+<p class="bg-danger">TODO: Поддержка альянсов и форумы дружественных кланов</p>

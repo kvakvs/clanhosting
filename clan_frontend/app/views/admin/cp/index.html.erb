@@ -1,0 +1,42 @@
+<h1><%= t 'app.control_panel' %></h1>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><%= t 'cp.dropcap.forums' %></div>
+  <div class="col-lg-3 vcenter">
+    <%= link_to t('cp.manage_forums'),
+                admin_forum_index_path(session[:user_clan]) %>
+  </div>
+  <div class="col-lg-8">
+    <%= t('cp.forums.about_short') %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><%= t 'cp.dropcap.alliances' %></div>
+  <div class="col-lg-3 vcenter">
+    <%= link_to t('cp.manage_alliances'),
+                admin_alliance_index_path %>
+  </div>
+  <div class="col-lg-8">
+    <%= t('cp.alliance.about_short') %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><%= t 'cp.dropcap.news' %></div>
+  <div class="col-lg-3 vcenter">
+    <%= link_to t('cp.manage_newsfeed'),
+                admin_newsfeed_index_path %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><%= t 'cp.dropcap.acl' %></div>
+  <div class="col-lg-3 vcenter">
+    <%= link_to t('cp.manage_acl'),
+                admin_acl_index_path %>
+  </div>
+  <div class="col-lg-8">
+    <%= t('cp.acl.about_short') %>
+  </div>
+</div>

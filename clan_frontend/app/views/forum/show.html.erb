@@ -1,0 +1,31 @@
+<h1><%= @vars[:forum]['title'] %></h1>
+
+<p><%= link_to t('app.forums.new_thread'),
+                new_thread_path(:clan_id => session[:user_clan],
+                                :forum_id => @vars[:forum]['id']),
+                :class => 'btn btn-primary' %></p>
+
+<!-- begin threads -->
+<% unless @vars[:threads].empty? %>
+<table class="table">
+  <tr>
+    <th><%= t 'app.forums.thread_title' %></th>
+    <th><%= t 'app.forums.created_by' %></th>
+    <th><%= t 'app.forums.updated_at' %></th>
+  </tr>
+
+<% @vars[:threads].each do |thread| %>
+  <%= render :partial => 'thread_row',
+             :locals => {:thread => thread,
+                         :forum => @vars[:forum]} %>
+<% end %>
+</table>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    <%= t 'app.forums.forum_empty' %>
+  </div>
+<% end %>
+<!-- end threads -->
+
+
+<p class="bg-danger">TODO: переделать форумы поживее на Angular/React/JQuery.</p>

@@ -1,0 +1,186 @@
+# coding: utf-8
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  app:
+    login_with_wot_id: "Войти с помощью WoT ID"
+    register: "Регистрация"
+    logout: "Выйти"
+    logged_in_as: "Пользователь"
+    title: "WoT Clan Hosting"
+    no_clan: "не состоит в клане"
+    member_of_clan: "участник клана"
+    frontpage: "Главная"
+    lang_switch: "Язык"
+    no_site_yet: "Сайта клана пока нет."
+    create_site: "Как командир клана, вы можете создать новый сайт для вашего клана или дайте право создать его другому участнику клана"
+    new_site:
+      title: "Новый сайт для вашего клана"
+      delegate_nobody: "- ни с кем не делиться, я всё сам -"
+      delegate_label: "Поделиться правом управления сайтом с другим участником клана"
+      delegate_help: "Вы сможете изменить или отменить это позже через панель управления сайтом"
+      submit: "Создать сайт"
+      created: "Сайт для вашего клана создан! Для настройки перейдите в панель управления по ссылке вверху."#      activate_pwall: "Включить стену с личными публикациями участников"
+    create_site_only_leader: "Только командир клана может создать новый сайт для клана."
+    logged_out: "Вы вышли из учётной записи"
+    leader_of_clan: "командир клана"
+    create_site_button: "Создать!"
+    control_panel: "Панель управления"
+    site_is_not_created_notice: "Сайт вашего клана не найден или удалён."
+    site_exists: "Сайт для вашего клана уже существует."
+    forums:
+      link: "Форумы"
+      new_thread: "Создать обсуждение"
+      thread_title: "Заголовок обсуждения"
+      thread_title_hint: "Введите текст заголовка обсуждения"
+      thread_body: "Сообщение"
+      thread_body_hint: "Введите текст первого сообщения в обсуждении"
+      add_thread_btn: "Создать обсуждение"
+      title_empty: "Поле заголовка не должно оставаться пустым"
+      body_empty: "Текст сообщения не должен оставаться пустым"
+      clan_forums: "Форумы клана"
+      alliance_forums: "Форумы альянса"
+      reply_button: "Ответить"
+      back_to_forum_btn: "Вернуться к списку обсуждений"
+      post_title: "Заголовок вашего сообщения"
+      post_title_hint: "Измените заголовок, если желаете, или оставьте как есть"
+      post_body: "Ваше сообщение"
+      post_body_hint: "Введите текст ответа"
+      reply_page_title: "В ответ на обсуждение"
+      created_by: "Автор"
+      updated_at: "Обновлено"
+      forum_not_found: "Форум с таким кодом не найден в базе данных"
+      no_forums: "Здесь пока нет форумов. Создайте в панели управления."
+      created_at: "Создано"
+      ago: "назад"
+      edit_button: "Правка"
+      report_button: "Пожаловаться"
+      forum_empty: "Этот форум сейчас пуст. Создайте новое обсуждение!"
+  page:
+    home:
+      title: "Добро пожаловать"
+  cp:
+    manage_forums: "Управление форумами"
+    manage_newsfeed: "Управление лентой новостей клана"
+    manage_acl: "Управление правами доступа"
+    manage_alliances: "Управление альянсами кланов"
+    acl:
+      leader_is_always_admin: "Командир клана всегда является администратором сайта клана."
+      grant: "Дать права"
+      about_short: "Списки доступа позволяют наделить некоторых участников вашего клана правами управления сайтом."
+      have: "Есть"
+      doesnt_have: "Нет"
+      member_name: "Участник клана"
+      acl_clan_admin: "Управление сайтом"
+      acl_edit_forums: "Управление форумами"
+      acl_moderate_forums: "Модерация тем и постов"
+      acl_post_news: "Новости клана"
+      acl_alliances: "Альянс"
+      yes_leader: "Есть (командир)"
+      grant_btn: "Дать"
+      revoke_btn: "Забрать"
+    newsfeed:
+      add: "Разместить публикацию"
+      title: "Заголовок"
+      title_hint: "Короткий однострочный заголовок. Можно оставить поле пустым!"
+      short: "Короткий текст"
+      short_hint: "Несколько строк краткого описания новости"
+      long: "Длинный текст"
+      long_hint: "Полный текст новости. Можно оставить поле пустым!"
+      updated: "Обновлено"
+      delete_post: "Удалить"
+      deleted: "Пост удалён"
+      fill_at_least_short: "Заполните хотя бы короткий текст. Остальные поля необязательны."
+      confirm_delete: "Удалить публикацию?"
+      edit: "Изменить"
+      update: "Обновить"
+    alliance:
+      about_short: "Альянс — это один или несколько кланов, дружественных вашему клану. Участники альянса могут видеть некоторые выбранные вами форумы вашего клана и наоборот."
+      request_expiration: "Запросы на альянс удаляются автоматически через месяц ожидания."
+      allied_clans: "Кланы в альянсе с нами"
+      other_clan: "Название клана"
+      alliance_requests: "Запросы на дружбу с нами"
+      non_transitive: "Альянсы не транзитивны. Это означает, что если клан А в альянсе с кланом Б, а Б в альянсе с В, то А и В автоматически не считаются в альянсе. Кланам А и В следует подружиться отдельно."
+      confirm_delete: "Разорвать альянс с кланом?"
+      confirm_reject: "Подтвердите, что желаете отклонить предложение альянса?"
+      no_requests: "На этот момент нет входящих предложений альянса."
+      no_allied_clans: "На данный момент вы не имеете кланов в альянсе."
+    forums:
+      about_short: "Управление форумами позволит вам перенастроить структуру форумов, а также содержит дополнительные настройки и средства модерации."
+      forum_title: "Название форума"
+      forum_desc: "Описание форума"
+      add: "Добавить форум"
+      forum_title_hint: "Однострочный текст крупным шрифтом в списке форумов"
+      forum_desc_hint: "Одна или несколько строк с описанием форума, выводятся мелким шрифтом под заголовком форума."
+      fill_at_least_title: "Заполните хотя бы поле с заголовком"
+      sorting_id: "Сортировка"
+      apply_sorting: "Изменить сортировку"
+      delete_forum: "Удалить"
+      deleted: "Форум удалён"
+      edit_forum: "Изменить"
+      update: "Обновить"
+      updated: "Свойства форума обновлены"
+    forum:
+      confirm_delete: "Желаете удалить этот форум?"
+    cancel_btn: "Отмена"
+    dropcap:
+      forums: "Ф"
+      alliances: "Ал"
+      news: "Нов"
+      acl: "Пр"
+  acl:
+    no_rights_to_see_this: "У вас недостаточно прав, чтобы находиться на этой странице"
+  datetime:
+    distance_in_words:
+      half_a_minute: "полминуты"
+      less_than_x_seconds:
+        zero: "менее секунды"
+        one: "секунду"
+        other: "менее %{count} с."
+      x_seconds:
+        one: "секунду"
+        other: "%{count} секунд"
+      x_minutes:
+        one: "минуту"
+        other: "%{count} мин."
+      less_than_x_minutes:
+        zero: "менее минуты"
+        one: "минуту"
+        other: "менее %{count} мин."
+      about_x_hours:
+        one: "около часа"
+        other: "около %{count} ч."
+      x_days:
+        one: "день"
+        other: "%{count} д."
+      about_x_months:
+        one: "около месяца"
+        other: "около %{count} мес."
+      x_months:
+        one: "месяц"
+        other: "%{count} мес."
+      about_x_years:
+        one: "около года"
+        other: "%{count} года(лет)"
+      over_x_years:
+        one: "более года"
+        other: "более %{count} года(лет)"

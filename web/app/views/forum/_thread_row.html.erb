@@ -1,9 +1,0 @@
-<div class="row">
-  <div class="col-lg-8"><%= link_to thread['title'],
-                thread_path(:clan_id => session[:user_clan],
-                            :forum_id => forum['id'],
-                            :id => thread['id'])
-  %></div>
-  <div class="col-lg-2"><%= get_username(thread['created_by']) %></div>
-  <div class="col-lg-2"><%= thread['updated_at'] %></div>
-</div>
