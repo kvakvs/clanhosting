@@ -21,6 +21,7 @@ class Admin::ForumController < ApplicationController
     clan_id = session[:user_clan]
     fields = {:title => params[:title],
               :clan_id => clan_id,
+              :in_alliance => params[:in_alliance] ? 1 : 0,
               :desc => params[:desc] || '' }
     ForumModel::create(clan_id, fields)
     redirect_to admin_forum_index_path
@@ -34,12 +35,14 @@ class Admin::ForumController < ApplicationController
 
   def edit
     return unless require_acl('manage_forums') or require_clan_admin
-    @forum_model = ForumModel.read(session[:user_clan], params[:id])
+    @vars = {}
+    @vars[:forum] = ForumModel.read(session[:user_clan], params[:id])
   end
 
   def update
     return unless require_acl('manage_forums') or require_clan_admin
     fields = {:title => params[:title],
+              :in_alliance => params[:in_alliance] ? 1 : 0,
               :desc => params[:desc] || ''}
     ForumModel.update(session[:user_clan], params[:id], fields)
     redirect_to admin_forum_index_path, :notice => t('cp.forums.updated')

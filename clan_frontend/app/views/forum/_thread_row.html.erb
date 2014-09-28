@@ -4,7 +4,8 @@
                              :forum_id => forum['id'],
                              :id => thread['id'])
   %></td>
-  <td><%= get_username(thread['created_by']) %></td>
+  <td><%= link_to UserModel.get_username(thread['created_by']),
+                  UserModel.wg_url(thread['created_by']) %></td>
   <td>
     <%= distance_of_time_in_words_to_now(thread['created_at_d'], {include_seconds: true}) %>
     <%= t 'app.forums.ago' %>

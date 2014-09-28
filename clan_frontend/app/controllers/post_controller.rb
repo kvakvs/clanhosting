@@ -6,6 +6,8 @@ class PostController < ApplicationController
   def new
     @vars = {}
     # TODO: Check base_title/body access rights
+    # Check that 1) User belongs to clan owning the forum
+    # or 2) User belongs to allied clan AND forum is public for alliance
     @vars[:base_title] = @vars[:base_body] = ''
     unless params[:reply_to].nil?
       base_post = PostModel.read_one(session[:user_clan],
@@ -19,9 +21,10 @@ class PostController < ApplicationController
   end
 
   def create
-    if params[:body].length < 5
+    limit = 5
+    if params[:body].length < limit
       return redirect_to new_post_path,
-                         :alert => t('app.forums.body_empty')
+                         :alert => t('app.forums.body_empty', :limit => limit)
     end
     post_fields = {:body => params[:body],
                    :title => params[:title],

@@ -5,12 +5,18 @@
   <div class="form-group">
     <label for="title"><%= t('cp.forums.forum_title') %></label>
     <input type="text" class="form-control" id="title" name="title"
-           placeholder="<%= t('cp.forums.forum_title_hint') %>">
+           placeholder="<%= t('cp.forums.forum_title_hint') %>"
+           value="<%= params[:title] %>">
   </div>
   <div class="form-group">
     <label for="desc"><%= t('cp.forums.forum_desc') %></label>
     <textarea class="form-control" id="desc" name="desc"
-              placeholder="<%= t('cp.forums.forum_desc_hint') %>"></textarea>
+              placeholder="<%= t('cp.forums.forum_desc_hint') %>"><%= params[:desc] %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="in_alliance"><%= t('cp.forums.in_alliance_desc') %>
+      <input type="checkbox" name="in_alliance">
+    </label>
   </div>
 
   <button type="submit" class="btn btn-primary"><%= t('cp.forums.add') %></button>

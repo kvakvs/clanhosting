@@ -25,10 +25,16 @@ class ThreadController < ApplicationController
 
     new_form = new_thread_path(:clan_id => session[:user_clan],
                                :forum_id => params[:forum_id])
-    return redirect_to new_form,
-               :alert => t('app.forums.title_empty') if params[:title]==''
-    return redirect_to new_form,
-               :alert => t('app.forums.body_empty') if params[:body]==''
+
+    limit = 5
+    return redirect_to new_thread_path(:title => params[:title],
+                                       :body => params[:body]),
+               :alert => t('app.forums.title_empty',
+                           :limit => limit) if params[:title].length < limit
+    return redirect_to new_thread_path(:title => params[:title],
+                                       :body => params[:body]),
+               :alert => t('app.forums.body_empty',
+                           :limit => limit) if params[:body].length < limit
 
     forum_fields = {:title => params[:title],
                     :clan_id => session[:user_clan],

@@ -5,12 +5,13 @@
   <div class="form-group">
     <label for="title"><%= t('app.forums.thread_title') %></label>
     <input type="text" class="form-control" id="title" name="title"
-           placeholder="<%= t('app.forums.thread_title_hint') %>">
+           placeholder="<%= t('app.forums.thread_title_hint') %>"
+           value="<%= params[:title] %>">
   </div>
   <div class="form-group">
     <label for="body"><%= t('app.forums.thread_body') %></label>
     <textarea class="form-control" id="body" name="body"
-              placeholder="<%= t('app.forums.thread_body_hint') %>"></textarea>
+              placeholder="<%= t('app.forums.thread_body_hint') %>"><%= params[:body] %></textarea>
   </div>
 
   <%= link_to t('cp.cancel_btn'), forum_path(:id => params[:forum_id]),

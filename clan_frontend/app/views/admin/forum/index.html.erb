@@ -10,6 +10,7 @@
     <th><%= t 'cp.forums.forum_title' %></th>
     <th><%= t 'cp.forums.forum_desc' %></th>
     <th><%= t 'cp.forums.sorting_id' %></th>
+    <th><%= t 'cp.forums.in_alliance' %></th>
     <th></th>
   </tr>
   <% @vars[:forums].each do |forum| %>
@@ -17,6 +18,7 @@
       <td><%= forum['title'] %></td>
       <td><%= forum['desc'] %></td>
       <td><%= forum['sort_by'] || '0' %></td>
+      <td><%= forum['in_alliance'] || '0' %></td>
       <td>
         <%= link_to t('cp.forums.delete_forum'),
                       main_app.admin_forum_path(:id => forum['id']),

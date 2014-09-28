@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    redirect_to clan_index_path(session[:user_clan]) if
+        view_context.user_signed_in?
   end
 
   def wot_logged_in

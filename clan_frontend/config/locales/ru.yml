@@ -55,8 +55,8 @@ ru:
       thread_body: "Сообщение"
       thread_body_hint: "Введите текст первого сообщения в обсуждении"
       add_thread_btn: "Создать обсуждение"
-      title_empty: "Поле заголовка не должно оставаться пустым"
-      body_empty: "Текст сообщения не должен оставаться пустым"
+      title_empty: "Поле заголовка не должно быть короче %{limit} симв."
+      body_empty: "Текст сообщения не должен быть короче %{limit} симв."
       clan_forums: "Форумы клана [%{abbreviation}] %{name}"
       alliance_forums: "Форумы альянса"
       reply_button: "Ответить"
@@ -75,6 +75,8 @@ ru:
       edit_button: "Правка"
       report_button: "Пожаловаться"
       forum_empty: "Этот форум сейчас пуст. Создайте новое обсуждение!"
+      show_thread_title: "Обсуждение: %{title}"
+      show_forum_title: "Форум: %{title}"
     search:
       find_btn: "Найти клан"
       search_box_ph: "Что ищем?"
@@ -157,6 +159,11 @@ ru:
       edit_forum: "Изменить"
       update: "Обновить"
       updated: "Свойства форума обновлены"
+      in_alliance_desc: "Кланы в альянсе с вами могут видеть этот форум"
+      edit:
+        page:
+          title: "Изменение форума"
+      in_alliance: "Виден кланам альянса?"
     forum:
       confirm_delete: "Желаете удалить этот форум?"
     cancel_btn: "Отмена"

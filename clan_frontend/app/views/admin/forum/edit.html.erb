@@ -1,18 +1,26 @@
-<h1><%= t 'cp.forums.edit_forum' %></h1>
+<h1><%= t 'cp.forums.edit.page.title' %></h1>
 
 <%= form_tag main_app.admin_forum_path,
-             :role => 'form', :method => 'put' do %>
-  <%= hidden_field_tag :name => 'id', :value => @forum_model['id'] %>
+             :role => 'form',
+             :method => 'put' do %>
+  <%= hidden_field_tag :name => 'id',
+                       :value => @vars[:forum]['id'] %>
   <div class="form-group">
     <label for="title"><%= t('cp.forums.forum_title') %></label>
     <input type="text" class="form-control" id="title" name="title"
            placeholder="<%= t('cp.forums.forum_title_hint') %>"
-          value="<%= @forum_model['title'] %>">
+          value="<%= @vars[:forum]['title'] %>">
   </div>
   <div class="form-group">
     <label for="desc"><%= t('cp.forums.forum_desc') %></label>
     <textarea class="form-control" id="desc" name="desc"
-              placeholder="<%= t('cp.forums.forum_desc_hint') %>"><%= @forum_model['desc'] %></textarea>
+              placeholder="<%= t('cp.forums.forum_desc_hint') %>"><%= @vars[:forum]['desc'] %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="in_alliance"><%= t('cp.forums.in_alliance_desc') %>
+      <input type="checkbox" id="in_alliance" name="in_alliance"
+             value="<%= @vars[:forum]['in_alliance'] %>">
+    </label>
   </div>
 
   <%= link_to t('cp.cancel_btn'),

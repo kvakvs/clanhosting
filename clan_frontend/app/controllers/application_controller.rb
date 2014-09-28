@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def pre_fetch_account_info!
+    # TODO: Transform get_session into session store
     if not session.has_key?(:account_info) and session[:user_account].is_a? Integer
       rpc = Rails.application.get_rpc
       acc_info = rpc.call.ch_user_api.get_session(session[:user_account])

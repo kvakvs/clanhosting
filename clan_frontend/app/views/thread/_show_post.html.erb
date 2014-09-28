@@ -1,7 +1,10 @@
 <div class="row forumPost">
   <div class="col-lg-3">
-    <%= t('app.forums.created_by') + ' ' + get_username(post['created_by']) %><br/>
-    <%= distance_of_time_in_words_to_now(post['created_at_d'], {include_seconds: true}) %>
+    <%= t('app.forums.created_by')%>
+    <%= link_to UserModel.get_username(post['created_by']),
+                UserModel.wg_url(post['created_by']) %><br/>
+    <%= distance_of_time_in_words_to_now(post['created_at_d'],
+                                         {include_seconds: true}) %>
     <%= t 'app.forums.ago' %>
   </div>
   <div class="col-lg-9">

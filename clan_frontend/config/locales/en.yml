@@ -54,8 +54,8 @@ en:
       thread_body: "Message"
       thread_body_hint: "First message in the discussion thread"
       add_thread_btn: "Create Thread"
-      title_empty: "Title field is empty"
-      body_empty: "Message body should not be empty"
+      title_empty: "Title field should not be shorter than %{limit} characters"
+      body_empty: "Message body should not be shorter than %{limit} characters"
       clan_forums: "Forums for clan [%{abbreviation}] %{name}"
       alliance_forums: "Allied Clans' Forums"
       reply_button: "Post Reply"
@@ -73,6 +73,8 @@ en:
       edit_button: "Edit"
       report_button: "Report"
       forum_empty: "This forum is mepty now. But you can create new discussion thread!"
+      show_thread_title: "Discussion: %{title}"
+      show_forum_title: "Forum: %{title}"
     search:
       find_btn: "Find Clans"
       search_box_ph: "Find what?"
@@ -155,6 +157,11 @@ en:
       edit_forum: "Edit"
       update: "Update"
       updated: "Forum properties updated"
+      in_alliance_desc: "Clans which are allied with your clan can see this forum"
+      edit:
+        page:
+          title: "Editing forum"
+      in_alliance: "Visible for allied clans?"
     forum:
       confirm_delete: "Do you want to delete the following forum?"
     cancel_btn: "Cancel"
