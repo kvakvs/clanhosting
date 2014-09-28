@@ -12,4 +12,8 @@ class UserModel
   def self.wg_url(user_id)
     "http://worldoftanks.ru/community/accounts/#{user_id}/"
   end
+
+  def self.test_acc_info(id)
+    {}
+  end
 end

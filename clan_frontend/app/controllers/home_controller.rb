@@ -25,6 +25,19 @@ class HomeController < ApplicationController
     end
   end
 
+  def dev_logged_in
+    redirect to root_path, alert: 'nope' unless Rails.env.development?
+
+    tcid = Integer(params[:test_clan])
+    session[:user_nickname]      = "testuser#{tcid}"
+    session[:user_account]       = Integer(1000000000 + tcid)
+    session[:user_token] = token = "testtoken#{tcid}"
+    session[:user_expires_at]    = 86400 * 30 + Time.now.to_i
+    session[:account_info]       = UserModel.test_acc_info(tcid)
+    session[:user_clan]          = UserModel.test_acc_info(tcid)
+    redirect_to root_path
+  end
+
   def wot_log_out
     rpc = Rails.application.get_rpc
     rpc.call.ch_user_api.logged_out(session[:user_account])

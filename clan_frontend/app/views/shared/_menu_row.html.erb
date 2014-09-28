@@ -61,6 +61,14 @@
         <input type="hidden" name="redirect_uri" value="<%= main_app.home_wot_logged_in_url %>" />
         <input type="hidden" name="expires_at" value="86400" />
         <input type="submit" value="<%=t 'app.login_with_wot_id' %>" class="btn btn-primary" />
+        <% if Rails.env.development? %>
+          <%= link_to 'Clan1',
+                      home_dev_logged_in_path(:test_clan=>'1'),
+                      :class => 'btn btn-warning' %>
+          <%= link_to 'Clan2',
+                      home_dev_logged_in_path(:test_clan=>'2'),
+                      :class => 'btn btn-warning' %>
+        <% end %>
       </form>
     <% end %>
   </div><!--col-->

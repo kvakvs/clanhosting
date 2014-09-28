@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get 'home/dev_logged_in' => 'home#dev_logged_in'
   get 'home/wot_logged_in' => 'home#wot_logged_in'
   delete 'home/wot_log_out' => 'home#wot_log_out', :as => :wot_log_out
 
