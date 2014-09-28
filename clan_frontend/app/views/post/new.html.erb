@@ -6,13 +6,13 @@
     <label for="title"><%= t('app.forums.post_title') %></label>
     <input type="text" class="form-control" id="title" name="title"
           placeholder="<%= t('app.forums.post_title_hint') %>"
-          value="<%= params[:title] || @vars[:base_title] %>">
+          value="<%= @vars[:base_title] %>">
   </div>
   <div class="form-group">
     <label for="body"><%= t('app.forums.post_body') %></label>
     <textarea class="form-control" id="body" name="body"
               placeholder="<%= t('app.forums.post_body_hint') %>"
-        ><%= params[:body] || @vars[:base_body] %></textarea>
+        ><%= @vars[:base_body] %></textarea>
   </div>
 
   <%= link_to t('cp.cancel_btn'), thread_path(:id => params[:thread_id]),
