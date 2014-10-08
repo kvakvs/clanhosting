@@ -1,13 +1,12 @@
-<h3 class="bg-danger">Найти клан</h3>
+<h3><%= t 'app.search.find_btn' %></h3>
 
-<form class="form-inline" role="form">
-  <div class="form-group">
-    <input type="text" class="form-control" id="clan" placeholder="Full or partial clan name">
-  </div>
-  <button type="submit" class="btn btn-default">Find!</button>
-</form>
+<p><%= t 'app.search.about_text' %></p>
+
+<%= render :partial => 'shared/search_form_inline' %>
 
 <h3>Присоединиться к одному из кланов?</h3>
 
-<p>Пройдите в наш <a href="#" class="bg-danger">центр призыва</a> и
-  посмотрите, какие из кланов вам подходят.</p>
+<p><%= raw t('app.wg_recruitment',
+         :link => link_to(t('app.recruitment_center'),
+                         'http://worldoftanks.ru/community/recruitstation/')) %>
+  </p>

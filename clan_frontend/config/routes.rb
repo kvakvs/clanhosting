@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'domain/index'
+  end
 
-  #get 'cp/index'
-  #get 'cp/newsfeed'
-  #get 'cp/acl'
+  namespace :admin do
+  get 'domain/create'
+  end
 
-  # This line mounts Forem's routes at /forum by default.
-  # This means, any requests to the /forum URL of your application will go to Forem::ForumModelsController#index.
-  # If you would like to change where this extension is mounted, simply change the :at option to something different.
-  #
-  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  #mount Forem::Engine, :at => '/forum'
+  namespace :admin do
+  get 'domain/edit'
+  end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  namespace :admin do
+  get 'domain/destroy'
+  end
 
   # You can have the root of your site routed with "root"
   root 'home#index'
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
   get 'home/new_site' => 'home#new_site'
   post 'home/new_site' => 'home#new_site_create'
 
-  #----------------------------------------
   namespace 'admin' do
     scope '/:clan_id/' do
       get '/' => 'cp#index'
@@ -32,9 +32,9 @@ Rails.application.routes.draw do
       resources :acl, :only => [:index]
       resources :newsfeed, :only => [:index, :show, :new, :destroy, :edit, :create]
       resources :alliance, :only => [:index, :create, :show, :new, :destroy]
+      resources :domain, :only => [:index, :create, :edit, :destroy]
     end
   end
-  #----------------------------------------
 
   post '/clan_search' => 'home#clan_search'
   scope '/clan/:clan_id/', :constraints => { :clan_id => /\d+/ } do

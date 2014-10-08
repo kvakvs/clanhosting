@@ -1,0 +1,8 @@
+<!-- search -->
+<%= form_tag clan_search_path, :role => 'form',
+             :method => 'post', :class => 'form-inline'  do %>
+  <input type="text" name="search" class="form-control" style="width: 60%"
+         placeholder="<%= t 'app.search.search_box_ph' %>">
+  <button type="submit" class="btn btn-default" style="width: 35%">
+    <%= t 'app.search.find_btn' %></button>
+<% end %>

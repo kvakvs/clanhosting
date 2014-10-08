@@ -82,6 +82,7 @@ en:
       empty_request: "Search query was empty, will not search like this."
       found_n_results: "Found %{count} results."
       members_count: "Members: %{count}"
+      about_text: "Know the clan name? Find it here!"
     alliance:
       in_alliance: "This and your clan are in alliance."
       not_in_alliance: "This clan is not allied with yours. Clan leaders can offer alliance to other clans."
@@ -89,6 +90,8 @@ en:
     clan:
       wg_armory: "Clan page on Wargaming website"
       wg_clan_battles: "Clan battles on Wargaming website"
+    recruitment_center: "Wargaming recruitment center"
+    wg_recruitment: "You can visit %{link} and see which clans are good for you."
   page:
     home:
       title: "Welcome"
@@ -165,5 +168,19 @@ en:
     forum:
       confirm_delete: "Do you want to delete the following forum?"
     cancel_btn: "Cancel"
+    manage_domain: "Your own domain"
+    domain:
+      about_short: "You can configure your existing domain to be used with your clan website."
+      about_long: "Alternatively you can use our free subdomain, which for your site may look like: %{free_subdomain_link}"
+      manage_domain: "Manage your domain"
+      yourdom:
+        status: "Your custom domain status:"
+      status_enabled: "Enabled"
+      subdom:
+        status: "Our free subdomain"
+      status_disabled: "Disabled"
+      configure_btn: "Configure"
+      enable_btn: "Enable"
+      disable_btn: "Disable"
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

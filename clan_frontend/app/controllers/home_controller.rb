@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    redirect_to clan_index_path(session[:user_clan]) if
+    redirect_to clan_index_path(:clan_id => session[:user_clan]) if
         view_context.user_signed_in?
   end
 
@@ -29,12 +29,12 @@ class HomeController < ApplicationController
     redirect to root_path, alert: 'nope' unless Rails.env.development?
 
     tcid = Integer(params[:test_clan])
-    session[:user_nickname]      = "testuser#{tcid}"
-    session[:user_account]       = Integer(1000000000 + tcid)
-    session[:user_token] = token = "testtoken#{tcid}"
-    session[:user_expires_at]    = 86400 * 30 + Time.now.to_i
-    session[:account_info]       = UserModel.test_acc_info(tcid)
-    session[:user_clan]          = UserModel.test_acc_info(tcid)
+    session[:user_nickname]   = "testuser#{tcid}"
+    session[:user_account]    = Integer(1000000000 + tcid)
+    session[:user_token]      = "testtoken#{tcid}"
+    session[:user_expires_at] = 86400 * 30 + Time.now.to_i
+    session[:account_info]    = UserModel.test_acc_info(tcid)
+    session[:user_clan]       = UserModel.test_acc_info(tcid)
     redirect_to root_path
   end
 

@@ -84,6 +84,7 @@ ru:
       empty_request: "Поисковый запрос оказался пустым, поиск не выполнен."
       found_n_results: "Найдено результатов: %{count}"
       members_count: "Участников: %{count}"
+      about_text: "Знаете название клана, который ищете?"
     alliance:
       in_alliance: "Этот клан состоит в альянсе с вашим кланом."
       not_in_alliance: "Этот клан не состоит в альянсе с вашим. Командиры кланов могут предлагать альянс другим кланам."
@@ -91,6 +92,8 @@ ru:
     clan:
       wg_armory: "Страница клана на сайте Wargaming"
       wg_clan_battles: "Назначенные бои клана на сайте Wargaming"
+    recruitment_center: "военкомат Wargaming"
+    wg_recruitment: "Пройдите в %{link} и посмотрите, какие из кланов вам подходят."
   page:
     home:
       title: "Добро пожаловать"
@@ -167,6 +170,20 @@ ru:
     forum:
       confirm_delete: "Желаете удалить этот форум?"
     cancel_btn: "Отмена"
+    manage_domain: "Подключение домена"
+    domain:
+      about_short: "Есть возможность настроить ваш собственный домен для работы с сайтом вашего клана."
+      about_long: "Либо вы можете продолжать использовать наш бесплатный домен, который для вашего сайта может выглядеть так: %{free_subdomain_link}"
+      manage_domain: "Управление вашим доменом"
+      status_enabled: "Включено"
+      yourdom:
+        status: "Ваш собственный домен"
+      subdom:
+        status: "Наш бесплатный домен"
+      status_disabled: "Отключено"
+      configure_btn: "Настроить"
+      enable_btn: "Включить"
+      disable_btn: "Отключить"
   acl:
     no_rights_to_see_this: "У вас недостаточно прав, чтобы находиться на этой странице"
   datetime:

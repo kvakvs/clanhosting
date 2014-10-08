@@ -1,0 +1,31 @@
+<h1><%= t 'cp.domain.manage_domain' %></h1>
+
+<p><%= t 'cp.domain.about_short' %>
+  <%= raw t('cp.domain.about_long',
+        :free_subdomain_link => link_to(@vars[:custom_domain],
+                                        @vars[:custom_domain])) %></p>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-globe"></span></div>
+  <div class="col-lg-6 vcenter">
+    <%= t 'cp.domain.yourdom.status' %>:
+    <%= t 'cp.domain.status_enabled' %>
+  </div>
+  <div class="col-lg-5 text-right">
+    <%= link_to t('cp.domain.configure_btn'), '#', :class => 'btn btn-default' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-home"></span></div>
+  <div class="col-lg-6 vcenter">
+    <%= t 'cp.domain.subdom.status' %>:
+    <%= t 'cp.domain.status_disabled' %>
+    (<%= link_to(@vars[:custom_domain], @vars[:custom_domain]) %>)
+  </div>
+  <div class="col-lg-5 text-right">
+    <%= link_to t('cp.domain.enable_btn'), '#', :class => 'btn btn-primary' %>
+    <%= link_to t('cp.domain.disable_btn'), '#', :class => 'btn btn-danger' %>
+    <%= link_to t('cp.domain.configure_btn'), '#', :class => 'btn btn-default' %>
+  </div>
+</div>
