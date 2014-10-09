@@ -32,7 +32,10 @@ Rails.application.routes.draw do
       resources :acl, :only => [:index]
       resources :newsfeed, :only => [:index, :show, :new, :destroy, :edit, :create]
       resources :alliance, :only => [:index, :create, :show, :new, :destroy]
-      resources :domain, :only => [:index, :create, :edit, :destroy]
+      # resources :domain, :only => [:index, :edit]
+      get 'domain' => 'domain#index' #, :as => :admin_domain_index
+      get 'domain/custom/edit' => 'domain#custom_domain_edit' #, :as => :admin_domain_edit
+      get 'domain/free/edit' => 'domain#free_domain_edit' #, :as => :admin_domain_edit
     end
   end
 

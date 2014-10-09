@@ -182,5 +182,11 @@ en:
       configure_btn: "Configure"
       enable_btn: "Enable"
       disable_btn: "Disable"
+      yourclan: "yourclan"
+      customdomain: "your_domain.com"
+      cust:
+        edit: "Support for your own domain"
+        about1: "Your domain MUST already be registered, and you MUST host domain DNS somewhere (like Amazon Route53 or some free service). Do not confuse DNS hosting and regular web-hosting. You will need to have access to your domain's DNS settings at hand."
+        about2: "Enter your own domain name, also in domain DNS settings, on DNS-hosting website, change IP address to point to %{ip}."
   acl:
     no_rights_to_see_this: "You do not have enough access rights to see this page"

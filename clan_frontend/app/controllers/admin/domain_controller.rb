@@ -1,19 +1,34 @@
 class Admin::DomainController < ApplicationController
   def index
     @vars = {}
-    @vars[:custom_domain] = custom_domain
+    @vars[:site] = SiteModel.read(session[:user_clan])
+    @vars[:free_subdomain] = free_subdomain(@vars[:site])
+    @vars[:custom_domain] = custom_domain(@vars[:site])
   end
 
   def create
   end
 
-  def edit
+  def custom_domain_edit
+    @vars = {}
+    @vars[:site] = SiteModel.read(session[:user_clan])
+  end
+
+  def free_domain_edit
+    @vars = {}
+    @vars[:site] = SiteModel.read(session[:user_clan])
   end
 
   def destroy
   end
 
-  def custom_domain
-    "#{request.protocol}yourclan.#{request.host}"
+  def free_subdomain(site)
+    free_sd = site['free_subdomain'] || t('cp.domain.yourclan')
+    "#{request.protocol}#{free_sd}.clan.#{request.host}"
+  end
+
+  def custom_domain(site)
+    custom_d = site['custom_domain'] || t('cp.domain.customdomain')
+    "#{request.protocol}#{custom_d}"
   end
 end
