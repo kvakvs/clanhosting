@@ -2,3 +2,15 @@
 
 <p><%= t 'cp.domain.cust.about1' %></p>
 <p><%= t 'cp.domain.cust.about2' %></p>
+
+<%= form_tag admin_domain_custom_path,
+             :role => 'form',
+             :method => 'post' do %>
+  <div class="form-group">
+    <label for="title"><%= t('cp.domain.cust.domain_field') %></label>
+    <input type="text" class="form-control" id="title" name="title"
+           placeholder="<%= t('cp.domain.cust.domain_field_hint') %>"
+           value="<%= @vars[:site]['custom_domain'] %>">
+  </div>
+  <button type="submit" class="btn btn-primary"><%= t('cp.domain.update') %></button>
+<% end %>

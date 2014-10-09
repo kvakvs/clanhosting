@@ -4,6 +4,7 @@ class Admin::DomainController < ApplicationController
     @vars[:site] = SiteModel.read(session[:user_clan])
     @vars[:free_subdomain] = free_subdomain(@vars[:site])
     @vars[:custom_domain] = custom_domain(@vars[:site])
+    @vars[:clan_index] = view_context.link_to(clan_index_url, clan_index_url)
   end
 
   def create
@@ -12,6 +13,10 @@ class Admin::DomainController < ApplicationController
   def custom_domain_edit
     @vars = {}
     @vars[:site] = SiteModel.read(session[:user_clan])
+  end
+
+  def custom_domain_update
+    redirect_to admin_domain_path
   end
 
   def free_domain_edit
