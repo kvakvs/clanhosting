@@ -1,16 +1,18 @@
 <h1><%= t 'cp.domain.cust.edit'  %></h1>
 
 <p><%= t 'cp.domain.cust.about1' %></p>
-<p><%= t 'cp.domain.cust.about2' %></p>
+<p><%= raw t 'cp.domain.cust.about2', :lb_ip => @vars[:lb_ip] %></p>
+<p><%= t 'cp.domain.cust.about3' %></p>
 
 <%= form_tag admin_domain_custom_path,
              :role => 'form',
              :method => 'post' do %>
   <div class="form-group">
-    <label for="title"><%= t('cp.domain.cust.domain_field') %></label>
-    <input type="text" class="form-control" id="title" name="title"
+    <label for="domain"><%= t('cp.domain.cust.domain_field') %></label>
+    <input type="text" class="form-control" id="domain" name="domain"
            placeholder="<%= t('cp.domain.cust.domain_field_hint') %>"
            value="<%= @vars[:site]['custom_domain'] %>">
   </div>
+  <p><%= t 'cp.domain.alphabet' %></p>
   <button type="submit" class="btn btn-primary"><%= t('cp.domain.update') %></button>
 <% end %>

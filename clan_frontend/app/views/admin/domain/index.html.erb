@@ -7,7 +7,7 @@
   <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-home"></span></div>
   <div class="col-lg-6 vcenter">
     <%= t 'cp.domain.subdom.status' %>:
-    <%= render :partial => @vars[:site]['custom_domain'].present? ? 'status_enabled' : 'status_disabled' %>
+    <%= render :partial => @vars[:site]['free_subdomain'].present? ? 'status_enabled' : 'status_disabled' %>
     (<%= link_to(@vars[:free_subdomain],
                  @vars[:free_subdomain]) %>)
   </div>
@@ -21,8 +21,8 @@
 <div class="row">
   <div class="col-lg-1 dropcap"><span class="glyphicon glyphicon-globe"></span></div>
   <div class="col-lg-6 vcenter">
-    <%= t 'cp.domain.yourdom.status' %>:
-    <%= render :partial => @vars[:site]['free_subdomain'].present? ? 'status_enabled' : 'status_disabled' %>
+    <%= t 'cp.domain.cust.status' %>:
+    <%= render :partial => @vars[:site]['custom_domain'].present? ? 'status_enabled' : 'status_disabled' %>
     (<%= link_to(@vars[:custom_domain], @vars[:custom_domain]) %>)
   </div>
   <div class="col-lg-5 text-right">

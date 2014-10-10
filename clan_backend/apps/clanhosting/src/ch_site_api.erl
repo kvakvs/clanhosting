@@ -20,6 +20,7 @@ exists(ClanId) ->
 -spec update(ClanId :: integer(), Fields :: dict()) -> {reply, ok}.
 update(ClanId, Fields0) ->
   Fields = dict:to_list(Fields0),
+  lists:foreach(fun({K,V}) -> on_field_updated(ClanId, K, V) end, Fields),
   R = riak_pool:with_worker(fun(Worker) ->
                       ch_db:update_map(Worker, {site, ClanId}, Fields, [])
                     end),
@@ -40,3 +41,15 @@ read(ClanId) ->
 %%% INTERNAL
 %%%-----------------------------------------------------------------------------
 
+
+%% @private
+%% @doc Записывает изменения в конфигурацию домена клана. Даёт сигнал
+%% пересоздания конфига nginx.
+on_field_updated(ClanId, <<"custom_domain">>, _V) ->
+  ch_db:add_to_index({hosting, <<(ClanId rem ?HOSTING_INDEX_FRAGMENTS):16>>}
+                    , [ClanId]),
+  ok;
+on_field_updated(ClanId, <<"free_subdomain">>, _V) ->
+  ch_hosting:queue_change_for_clanid(ClanId, free_subdomain, V),
+  ok;
+on_field_updated(_ClanId, _K, _V) -> ok.
