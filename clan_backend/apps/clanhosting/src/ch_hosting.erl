@@ -22,4 +22,3 @@ queue_change_for_clanid(ClanId, free_subdomain, _Value) ->
 set_refresh_mark(ClanId) ->
   ch_db:add_to_index({hosting, <<(ClanId rem ?HOSTING_INDEX_FRAGMENTS):16>>}
                     , [ClanId]).
-3

@@ -119,4 +119,10 @@ class HomeController < ApplicationController
     @vars[:clan_id]   = Integer(params[:clan_id])
     @vars[:clan_info] = ClanModel.clan_info(@vars[:clan_id])
   end
+
+  def show_static
+    redirect index_path unless params[:page_name].present?
+    @vars = {}
+    @vars[:page_name] = params[:page_name]
+  end
 end

@@ -57,10 +57,10 @@
         <% if Rails.env.development? %>
           <%= link_to 'Clan1',
                       home_dev_logged_in_path(:test_clan=>'1'),
-                      :class => 'btn btn-warning' %>
+                      :class => 'btn btn-warning hidden' %>
           <%= link_to 'Clan2',
                       home_dev_logged_in_path(:test_clan=>'2'),
-                      :class => 'btn btn-warning' %>
+                      :class => 'btn btn-warning hidden' %>
         <% end %>
       </form>
     <% end %>

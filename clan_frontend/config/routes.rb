@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'home/new_site' => 'home#new_site'
   post 'home/new_site' => 'home#new_site_create'
 
+  get 'page/:page_name' => 'home#show_static'
+
   namespace 'admin' do
     scope '/:clan_id/' do
       get '/' => 'cp#index'
