@@ -45,11 +45,10 @@ read(ClanId) ->
 %% @private
 %% @doc Записывает изменения в конфигурацию домена клана. Даёт сигнал
 %% пересоздания конфига nginx.
-on_field_updated(ClanId, <<"custom_domain">>, _V) ->
-  ch_db:add_to_index({hosting, <<(ClanId rem ?HOSTING_INDEX_FRAGMENTS):16>>}
-                    , [ClanId]),
+on_field_updated(ClanId, <<"custom_domain">>, V) ->
+  ch_hosting:queue_change_for_clanid(ClanId, custom_domain, V),
   ok;
-on_field_updated(ClanId, <<"free_subdomain">>, _V) ->
+on_field_updated(ClanId, <<"free_subdomain">>, V) ->
   ch_hosting:queue_change_for_clanid(ClanId, free_subdomain, V),
   ok;
 on_field_updated(_ClanId, _K, _V) -> ok.
