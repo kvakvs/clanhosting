@@ -52,7 +52,7 @@ gem 'autoprefixer-rails'
 # gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
 
 # gem 'bertrpc'
-gem 'bert', :github => 'mojombo/bert', :branch => 'master' #, :path => 'deps/bert'
+gem 'bert', :github => 'mojombo/bert', :branch => 'master', :path => 'deps/bert'
 gem 'bertrpc', :github => 'mojombo/bertrpc', :branch => 'master' #, :path => 'deps/bertrpc'
 
 gem 'bb-ruby' # bbcode

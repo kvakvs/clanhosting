@@ -71,12 +71,11 @@ class HomeController < ApplicationController
   end
 
   def new_site_create
-    site = {:clan_id => session[:user_clan],
-            :clan_tag => session[:clan_info]['abbreviation'],
-            :clan_name => session[:clan_info]['name'] }
-    rpc = Rails.application.get_rpc
     # update works as new too
-    rpc.call.ch_site_api.update(session[:user_clan], site)
+    SiteModel.update(session[:user_clan],
+                     :clan_id => session[:user_clan],
+                     :clan_tag => session[:clan_info]['abbreviation'],
+                     :clan_name => session[:clan_info]['name'])
 
     flash[:notice] = t('app.new_site.created')
     redirect_to root_path
