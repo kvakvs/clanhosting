@@ -1,4 +1,9 @@
 class UserModel
+  def self.query_account_info(acc_id, token, lang)
+    rpc = Rails.application.get_rpc
+    rpc.call.ch_user_api.query_account_info(acc_id, token, lang)
+  end
+
   def self.is_user_clan_admin(clan_info, user_id)
     m = clan_info['members'][user_id.to_s]
     return (not m.nil? and m['role'] == 'leader')

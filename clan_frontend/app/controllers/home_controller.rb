@@ -13,12 +13,18 @@ class HomeController < ApplicationController
       session[:user_token] = token = params['access_token']
       session[:user_expires_at]    = Integer(params['expires_at']) + Time.now.to_i
 
-      # Check user_token
+      # Check user_token and fetch user info
       acc_id = Integer(params['account_id'])
-      acc_info = ClanModel.query_account_info(acc_id, token, 'en')
+      acc_info = UserModel.query_account_info(acc_id, token, 'en')
       session[:account_info] = acc_info
-      session[:user_clan] = acc_info['clan_id']
-      fetch_clan_info
+      session[:user_clan]    = acc_info['clan_id']
+
+      # Fetching clan info
+      clan_info = ClanModel.clan_info_2(session[:user_clan], session[:user_token], 'en')
+      session[:clan_info] = clan_info
+
+      m = clan_info['members'][session[:user_account].to_s]
+      session[:is_clan_leader] = (not m.nil? and m['role'] == 'leader')
 
       redirect_to root_path
     end
@@ -72,20 +78,6 @@ class HomeController < ApplicationController
 
     flash[:notice] = t('app.new_site.created')
     redirect_to root_path
-  end
-
-  def fetch_clan_info
-    rpc = Rails.application.get_rpc
-    clan_info = rpc.call.ch_clan_api.clan_info(session[:user_clan],
-                                               session[:user_token],
-                                               'en')
-    clan_info['name'] = clan_info['name'].force_encoding('utf-8')
-    clan_info['abbreviation'] = clan_info['abbreviation'].force_encoding('utf-8')
-
-    session[:clan_info] = clan_info
-
-    m = clan_info['members'][session[:user_account].to_s]
-    session[:is_clan_leader] = (not m.nil? and m['role'] == 'leader')
   end
 
   def clan_search
