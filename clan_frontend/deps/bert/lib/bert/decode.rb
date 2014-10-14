@@ -90,13 +90,13 @@ module BERT
     end
 
     def read_string(length)
-      read(length)
+      read(length).force_encoding('utf-8')
     end
 
     def read_atom
       fail("Invalid Type, not an atom") unless read_1 == ATOM
       length = read_2
-      a = read_string(length).force_encoding('utf-8')
+      a = read_string(length)
       case a
         when ""
           Marshal.load("\004\b:\005") # Workaround for inability to do ''.to_sym
