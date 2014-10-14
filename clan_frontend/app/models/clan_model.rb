@@ -1,4 +1,12 @@
 class ClanModel
+  def self.query_account_info(account_id, token, lang)
+    rpc = Rails.application.get_rpc
+    acc_info = rpc.call.ch_user_api.query_account_info(acc_id, token, 'en')
+    acc_info['abbreviation'] = acc_info['abbreviation'].force_encoding('utf-8')
+    acc_info['name'] = acc_info['name'].force_encoding('utf-8')
+    acc_info
+  end
+
   def self.clan_info(clan_id)
     rpc = Rails.application.get_rpc
     clan = rpc.call.ch_clan_api.clan_info(clan_id)

@@ -15,8 +15,7 @@ class HomeController < ApplicationController
 
       # Check user_token
       acc_id = Integer(params['account_id'])
-      rpc = Rails.application.get_rpc
-      acc_info = rpc.call.ch_user_api.query_account_info(acc_id, token, 'en')
+      acc_info = ClanModel.query_account_info(acc_id, token, 'en')
       session[:account_info] = acc_info
       session[:user_clan] = acc_info['clan_id']
       fetch_clan_info
