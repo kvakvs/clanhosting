@@ -1,16 +1,18 @@
+require 'ch_lib'
+
 class ClanModel
   def self.clan_info_2(clan_id, token, lang)
     rpc = Rails.application.get_rpc
     clan_info = rpc.call.ch_clan_api.clan_info(clan_id, token, lang)
-    clan_info['name'] = clan_info['name'].force_encoding('utf-8')
-    clan_info['abbreviation'] = clan_info['abbreviation'].force_encoding('utf-8')
-    clan_info
+    # clan_info['name']         = clan_info['name'].force_encoding('utf-8')
+    # clan_info['abbreviation'] = clan_info['abbreviation'].force_encoding('utf-8')
+    ChLib.from_rpc(clan_info)
   end
 
   def self.clan_info(clan_id)
     rpc = Rails.application.get_rpc
     clan = rpc.call.ch_clan_api.clan_info(clan_id)
-    process_clan_after_read(clan)
+    ChLib.from_rpc(clan)
   end
 
   # TODO: Request this from backend, cache on backend
@@ -62,13 +64,13 @@ class ClanModel
   def self.search_clans(query, lang)
     rpc = Rails.application.get_rpc
     clans = rpc.call.ch_clan_api.search_clans(query, lang)
-    clans.map! { |clan| process_clan_after_read(clan) }
+    clans.map! { |clan| ChLib.from_rpc(clan) }
   end
 
-  def self.process_clan_after_read(clan)
-    clan['abbreviation'] = clan['abbreviation'].force_encoding('utf-8')
-    clan['name']         = clan['name'].force_encoding('utf-8')
-    clan['motto']        = clan['motto'].force_encoding('utf-8')
-    clan
-  end
+  # def self.process_clan_after_read(clan)
+  #   clan['abbreviation'] = clan['abbreviation'].force_encoding('utf-8')
+  #   clan['name']         = clan['name'].force_encoding('utf-8')
+  #   clan['motto']        = clan['motto'].force_encoding('utf-8')
+  #   clan
+  # end
 end

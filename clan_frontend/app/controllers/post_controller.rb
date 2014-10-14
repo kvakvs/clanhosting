@@ -26,7 +26,7 @@ class PostController < ApplicationController
     limit = 5
     if params[:body].length < limit
       return redirect_to new_post_path(:body => params[:body],
-                                       :title => params[:title]),3
+                                       :title => params[:title]),
                          :alert => t('app.forums.body_empty', :limit => limit)
     end
     post_fields = {:body => params[:body],

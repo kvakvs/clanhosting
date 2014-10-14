@@ -27,6 +27,8 @@ class HomeController < ApplicationController
       session[:is_clan_leader] = (not m.nil? and m['role'] == 'leader')
 
       redirect_to root_path
+    else
+      redirect_to root_path, :alert => t('app.login_error')
     end
   end
 

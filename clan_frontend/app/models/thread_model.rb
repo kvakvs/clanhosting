@@ -1,3 +1,5 @@
+require 'ch_lib'
+
 class ThreadModel
   # Поля:
   # string id (задаётся при чтении прямо здесь, не хранится в БД)
@@ -22,10 +24,10 @@ class ThreadModel
     value = rpc.call.ch_thread_api.read_one(clan_id, forum_id, thread_id)
     return nil if value.nil?
     value['id'] = thread_id
-    value['title'] = value['title'].force_encoding('utf-8')
     value['created_at_d'] = DateTime.iso8601(value['created_at'])
     value['updated_at_d'] = DateTime.iso8601(value['updated_at'])
-    value
+    ChLib.from_rpc(value)
+    # value['title'] = value['title'].force_encoding('utf-8')
   end
 
   def self.create(clan_id, forum_id, fields)

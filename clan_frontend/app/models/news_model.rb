@@ -1,3 +1,5 @@
+require 'ch_lib'
+
 class NewsModel
   def self.all_for_clan(clan_id)
     rpc = Rails.application.get_rpc

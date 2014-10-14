@@ -1,3 +1,5 @@
+require 'ch_lib'
+
 class ForumModel
   # Поля:
   # string id (задаётся при чтении прямо здесь, не хранится в БД)
@@ -20,11 +22,11 @@ class ForumModel
     rpc = Rails.application.get_rpc
     value = rpc.call.ch_forum_api.read_one(clan_id, forum_id)
     return nil unless value
-
     value['id'] = forum_id
-    value['title'] = value['title'].force_encoding('utf-8')
-    value['desc'] = value['desc'].force_encoding('utf-8')
-    value
+    ChLib.from_rpc(value)
+    # value['title'] = value['title'].force_encoding('utf-8')
+    # value['desc'] = value['desc'].force_encoding('utf-8')
+    # value
   end
 
   def self.create(clan_id, fields)

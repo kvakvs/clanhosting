@@ -1,3 +1,5 @@
+require 'ch_lib'
+
 class SiteModel < ActiveRecord::Base
   def self.exists(clan)
     rpc = Rails.application.get_rpc
@@ -11,7 +13,7 @@ class SiteModel < ActiveRecord::Base
 
     value['clan_id'] = clan_id
     # value['title'] = value['title'].force_encoding('utf-8')
-    value
+    ChLib.from_rpc(value)
   end
 
   def self.update(clan_id, fields)

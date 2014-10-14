@@ -92,6 +92,7 @@ en:
       wg_clan_battles: "Clan battles on Wargaming website"
     recruitment_center: "Wargaming recruitment center"
     wg_recruitment: "You can visit %{link} and see which clans are good for you."
+    login_error: "There was an error while authenticating. Try again"
   page:
     home:
       title: "Welcome"

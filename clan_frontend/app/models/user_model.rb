@@ -1,7 +1,10 @@
+require 'ch_lib'
+
 class UserModel
   def self.query_account_info(acc_id, token, lang)
     rpc = Rails.application.get_rpc
-    rpc.call.ch_user_api.query_account_info(acc_id, token, lang)
+    acc_info = rpc.call.ch_user_api.query_account_info(acc_id, token, lang)
+    ChLib.from_rpc(acc_info)
   end
 
   def self.is_user_clan_admin(clan_info, user_id)
@@ -11,7 +14,12 @@ class UserModel
 
   def self.get_username(user_id)
     rpc = Rails.application.get_rpc
-    rpc.call.ch_user_api.get_username(Integer(user_id)) || "User#{user_id}"
+    username = rpc.call.ch_user_api.get_username(Integer(user_id))
+    if username[0] == :reply
+      ChLib.str_from_rpc(username[1])
+    else
+      "User#{user_id}"
+    end
   end
 
   def self.wg_url(user_id)

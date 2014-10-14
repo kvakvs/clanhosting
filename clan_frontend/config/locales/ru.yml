@@ -94,6 +94,7 @@ ru:
       wg_clan_battles: "Назначенные бои клана на сайте Wargaming"
     recruitment_center: "военкомат Wargaming"
     wg_recruitment: "Пройдите в %{link} и посмотрите, какие из кланов вам подходят."
+    login_error: "Произошла ошибка при идентификации пользователя, попробуйте снова"
   page:
     home:
       title: "Добро пожаловать"
