@@ -132,6 +132,6 @@ gen_read_index(RecType, Key1) when is_atom(RecType) ->
   case riak_pool:with_worker(fun(Worker) ->
     ch_db:read_set_object(Worker, {RecType, Key1})
   end) of
-    {ok, SetObject} -> riakc_set:value(SetObject);
-    {error, _E}     -> []
+    {ok, SetObject} -> {ok, riakc_set:value(SetObject)};
+    {error, _E}     -> {ok, []}
   end.
