@@ -10,7 +10,7 @@ module BERT
 
     def self.encode(data)
       io = StringIO.new
-      io.set_encoding('ASCII-8BIT') if io.respond_to?(:set_encoding)
+      io.set_encoding('binary') if io.respond_to?(:set_encoding)
       self.new(io).write_any(data)
       io.string
     end
@@ -46,7 +46,7 @@ module BERT
     end
 
     def write_string(string)
-      out.write(string)
+      out.write(string.force_encoding('ascii-8bit'))
     end
 
     def write_boolean(bool)
