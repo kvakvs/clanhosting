@@ -2,6 +2,8 @@
 
 This is an unfinished project to provide clan hosting service for World of Tanks (WoT) clans.
 
+The project was developed for WGDC competition and did not pass. See https://github.com/kvakvs/clanhosting/blob/master/clan_frontend/app/views/shared/_page_about.html.erb (Russian)
+
 # LICENSE
 
 Do what you want public license: http://www.wtfpl.net/about/
